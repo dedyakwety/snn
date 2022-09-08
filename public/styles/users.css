@@ -1,0 +1,288 @@
+.users{
+	margin-top: 25vh;
+	width: 80%;
+	margin-left: 10%;
+}
+h1{
+	font-size: 30px;
+	text-align: center;
+	text-transform: uppercase;
+}
+.form-1{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+.info{
+	width: 25%;
+	height: 40px;
+	padding-top: 10px;
+	font-family: sans-serif;
+	text-transform: uppercase;
+}
+.info-button{
+	width: 25%;
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+.agents{
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+.infos{
+	width: 24.5%;
+	margin-top: 15px;
+	margin-left: 0.5%;
+	box-shadow: 5px 5px 15px 5px #d4d4d4;
+	padding-top: 7px;
+	padding-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+}
+.info-1{
+	width: 100%;
+	margin-bottom: 7px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.info-1 img{
+	width: 150px;
+	height: 200px;
+}
+.info-2{
+	width: 100%;
+	text-align: center;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+#a{
+	font-size: 12px;
+	text-transform: lowercase;
+}
+
+
+
+
+@media only screen and (max-width: 400px)
+{
+	.users{
+		margin-top: 90px;
+		width: 95%;
+		margin-left: 2.5%;
+	}
+	h1{
+		font-size: 15px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	.form-1{
+		width: 100%;
+		height: 150px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+	.champ{
+		font-size: 12px;
+		padding-top: 12px;
+	}
+	#champ{
+		margin-top: 4px;
+		font-size: 12px;
+	}
+	.div-boutton{
+		width: 100%;
+		padding-top: 5px;
+		padding-right: 15px;
+		display: flex;
+		flex-direction: row-reverse;
+	}
+	.agents{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	.infos{
+		width: 100%;
+		margin-top: 15px;
+		margin-left: 0%;
+		box-shadow: 5px 5px 15px 5px #d4d4d4;
+		padding-top: 7px;
+		padding-bottom: 10px;
+		display: flex;
+		flex-direction: column;
+	}
+	.info-1{
+		width: 100%;
+		margin-bottom: 7px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.info-1 img{
+		width: 150px;
+		height: 200px;
+	}
+	.info-2{
+		width: 100%;
+		text-align: center;
+		font-size: 14px;
+		text-transform: uppercase;
+	}
+	#a{
+		font-size: 12px;
+		text-transform: lowercase;
+	}	
+}
+
+
+
+
+@media only screen and (max-width: 500px)
+{
+	.users{
+		margin-top: 120px;
+		width: 95%;
+		margin-left: 2.5%;
+	}
+	h1{
+		font-size: 15px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	.form-1{
+		width: 100%;
+		height: 170px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+	.champ{
+		font-size: 12px;
+		padding-top: 12px;
+	}
+	#champ{
+		margin-top: 2px;
+		font-size: 12px;
+	}
+	.div-boutton{
+		width: 100%;
+		padding-top: 5px;
+		padding-right: 15px;
+		display: flex;
+		flex-direction: row-reverse;
+	}
+	.agents{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	.infos{
+		width: 100%;
+		margin-top: 15px;
+		margin-left: 0%;
+		padding-top: 7px;
+		box-shadow: 5px 5px 15px 5px #d4d4d4;
+		padding-bottom: 10px;
+		display: flex;
+		flex-direction: column;
+	}
+	.info-1{
+		width: 100%;
+		margin-bottom: 7px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.info-1 img{
+		width: 150px;
+		height: 200px;
+	}
+	.info-2{
+		width: 100%;
+		text-align: center;
+		font-size: 14px;
+		text-transform: uppercase;
+	}
+	#a{
+		font-size: 12px;
+		text-transform: lowercase;
+	}	
+}
+
+
+
+@media only screen and (max-width: 760px)
+{
+	.users{
+		margin-top: 120px;
+		width: 95%;
+		margin-left: 2.5%;
+	}
+	h1{
+		font-size: 18px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	.form-1{
+		width: 100%;
+		height: 170px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+	.champ{
+		font-size: 12px;
+		padding-top: 12px;
+	}
+	#champ{
+		margin-top: 2px;
+		font-size: 12px;
+	}
+	.div-boutton{
+		width: 100%;
+		padding-top: 5px;
+		padding-right: 15px;
+		display: flex;
+		flex-direction: row-reverse;
+	}
+	.agents{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+	}
+	.infos{
+		width: 50%;
+		margin-top: 15px;
+		padding-top: 7px;
+		box-shadow: 5px 5px 15px 5px #d4d4d4;
+		padding-bottom: 10px;
+		display: flex;
+		flex-direction: column;
+	}
+	.info-1{
+		width: 100%;
+		margin-bottom: 7px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.info-1 img{
+		width: 150px;
+		height: 200px;
+	}
+	.info-2{
+		width: 100%;
+		text-align: center;
+		font-size: 14px;
+		text-transform: uppercase;
+	}
+	#a{
+		font-size: 12px;
+		text-transform: lowercase;
+	}	
+}

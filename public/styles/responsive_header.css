@@ -1,0 +1,165 @@
+/*@media only screen and (max-width: 959px)
+{
+	
+}
+
+
+
+@media only screen and (max-width: 767px)
+{
+
+}
+
+
+
+@media only screen and (max-width: 539px)
+{
+	.image-caroussel-2{
+		width: 100%;
+		height: 90vh;
+	}	
+	#caroussel-1{
+		display: none;
+	}
+	.logo_container a
+	{
+		font-size: 12px;
+	}
+	.logo_container
+	{
+		width: 75px;
+		height: 40px;
+		position: absolute;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+		transform: translateY(-50%);
+		left: 15px;
+	}
+	.logo{
+		width: 100%;
+		height: 100%;
+	}
+	.hamburger_container
+	{
+		margin-left: 50px;
+		height: 50px;
+	}
+	.hamburger_container i
+	{
+		color: #1315b9;
+		margin-top: 15px;
+		font-size: 20px;
+	}
+	.hamburger_close
+	{
+		top: 14px;
+		right: 4px;
+		width: 50px;
+		height: 50px;
+	}
+	.hamburger_close i
+	{
+		color: #1315b9;
+		font-size: 23px;
+		height: 50px;
+	}
+	.hamburger_menu_content
+	{
+		padding-right: 15px;
+		padding-top: 70px;
+	}
+	.menu_item
+	{
+		border-bottom-color: rgba(181, 174, 196, 0.5);
+	}
+	.menu_item > a
+	{
+		font-size: 12px;
+		line-height: 40px;
+		height: 35px;
+	}
+	.menu_selection li a
+	{
+		font-size: 12px;
+		line-height: 35px;
+		height: 35px;
+	}
+}
+*/
+
+@media only screen and (max-width: 480px)
+{
+	
+	.logo_container a
+	{
+		font-size: 12px;
+	}
+	#caroussel-1{
+		display: none;
+	}
+	.logo_container
+	{
+		width: 75px;
+		height: 40px;
+		position: absolute;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+		transform: translateY(-50%);
+		left: 15px;
+	}
+	.logo{
+		width: 100%;
+		height: 100%;
+	}
+	.hamburger_container
+	{
+		margin-left: 50px;
+		height: 50px;
+	}
+	.hamburger_container i
+	{
+		color: #1315b9;
+		margin-top: 15px;
+		font-size: 20px;
+	}
+	.hamburger_close
+	{
+		top: 14px;
+		right: 4px;
+		width: 50px;
+		height: 50px;
+	}
+	.hamburger_close i
+	{
+		color: #1315b9;
+		font-size: 23px;
+		height: 50px;
+	}
+	.hamburger_menu_content
+	{
+		padding-right: 15px;
+		padding-top: 70px;
+	}
+	.menu_item
+	{
+		border-bottom-color: rgba(181, 174, 196, 0.5);
+	}
+	.menu_item > a
+	{
+		font-size: 12px;
+		line-height: 40px;
+		height: 35px;
+	}
+	.menu_selection li a
+	{
+		font-size: 12px;
+		line-height: 35px;
+		height: 35px;
+	}
+}
