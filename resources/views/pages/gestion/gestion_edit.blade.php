@@ -1,6 +1,6 @@
 @extends('application')
 
-@section('body-gestion-edit')
+@section('gestion-edit')
 
 	<div class="gestion_edit">
 		<h2>Edition de gestion</h2>

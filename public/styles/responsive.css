@@ -249,17 +249,6 @@
 		margin-top: 30px;
 		margin-bottom: 40px;
 	}
-	.footer_nav_container
-	{
-		height: auto;
-		margin-top: 65px;
-	}
-	.footer_social
-	{
-		height: auto;
-		margin-top: 20px;
-		margin-bottom: 65px;
-	}
 }
 
 /************
@@ -282,6 +271,24 @@
 		margin-top: 120px;
 		display: flex;
 		flex-direction: row-reverse;
+	}
+	.menu_item > a
+	{
+		font-size: 14px;
+		line-height: 35px;
+		height: 35px;
+		text-transform: lowercase;
+	}
+	#btn-logout{
+		font-size: 12px;
+		text-transform: lowercase;
+	}
+	.menu_selection li a
+	{
+		font-size: 14px;
+		line-height: 35px;
+		height: 35px;
+		text-transform: lowercase;
 	}
 }
 
@@ -421,6 +428,11 @@
 		display: flex;
 		flex-direction: row-reverse;
 	}
+	.form-recherche{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+	}
 	#champ-recherche{
 		color: #000;
 		width: 90%;
@@ -434,39 +446,13 @@
 		padding-right: 10px;
 	}
 	#div-btn{
-		background-color: gray;
 		max-width: 100%;
 		height: 50px;
 		display: flex;
 		flex-direction: row-reverse;
 	}
-	.form-recherche{
-		width: 40%;
-		display: flex;
-		flex-direction: row;
-	}
 
 
-	.cr
-	{
-		display: block;
-		margin-right: 0px;
-		margin-bottom: 30px;
-		font-size: 13px;
-	}
-	.footer_nav
-	{
-		margin-bottom: 20px;
-	}
-	.footer_nav li
-	{
-		display: block;
-		margin-right: 0px;
-	}
-	.footer_nav li a
-	{
-		font-size: 13px;
-	}
 }
 
 /************
@@ -493,6 +479,42 @@
 
 @media only screen and (max-width: 479px)
 {
+	/*********************************
+	3.6 Logo
+	*********************************/
+
+	.logo_container
+	{
+		position: absolute;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+		transform: translateY(-50%);
+		left: 15px;
+	}
+	.logo_container img
+	{
+		width: 100%;
+		height: 40px;
+		margin-right: 100px;
+		font-size: 24px;
+		color: #000;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	.logo_container a
+	{
+		font-size: 24px;
+		color: #000;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	.logo_container a span
+	{
+		color: #1315b9;
+	}
 	.new_arrivals
 	{
 		margin-top: -15px;
@@ -538,7 +560,7 @@
 		flex-direction: row-reverse;
 	}
 	.form-recherche{
-		width: 40%;
+		width: 100%;
 		display: flex;
 		flex-direction: row;
 	}
@@ -577,12 +599,18 @@
 		font-size: 12px;
 		line-height: 35px;
 		height: 35px;
+		text-transform: lowercase;
+	}
+	#btn-logout{
+		font-size: 11px;
+		text-transform: lowercase;
 	}
 	.menu_selection li a
 	{
 		font-size: 12px;
 		line-height: 35px;
 		height: 35px;
+		text-transform: lowercase;
 	}
 	.navbar
 	{
@@ -645,6 +673,7 @@
 	.product
 	{
 		height: auto;
+		margin-bottom: 20px;
 	}
 	.product_name a
 	{
@@ -769,23 +798,6 @@
 	{
 		font-size: 12px !important;
 		padding-left: 0px;
-	}
-	.footer_nav_container
-	{
-		margin-top: 35px;
-	}
-	.cr
-	{
-		margin-bottom: 20px;
-	}
-	.footer_nav
-	{
-		margin-bottom: 20px;
-	}
-	.footer_social
-	{
-		margin-top: 5px;
-		margin-bottom: 30px;
 	}
 }
 

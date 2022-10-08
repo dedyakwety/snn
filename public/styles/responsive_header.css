@@ -92,13 +92,29 @@
 
 @media only screen and (max-width: 480px)
 {
-	
+	.logo{
+		position: absolute;
+		width: 50px;
+		height: 25px;
+		top: 20px;
+		right: 75%;
+	}
+	.img-logo{
+		width: 50px;
+		height: 25px;
+	}
 	.logo_container a
 	{
 		font-size: 12px;
 	}
 	#caroussel-1{
 		display: none;
+	}
+
+	.navbar_user
+	{
+		margin-left: 37px;
+		margin-right: 0px;
 	}
 	.logo_container
 	{

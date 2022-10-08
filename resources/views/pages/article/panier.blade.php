@@ -21,7 +21,8 @@ use App\Models\Articles;
 
 		<div class="row">
 			@forelse($commandes as $commande)
-				<div class="col-lg-7" id="cadre-1">
+
+				<div class="col-lg-7">
 					<div class="single_product_pics">
 						<div class="row">
 							<div class="col-lg-3 thumbnails_col order-lg-1 order-2">
@@ -33,7 +34,7 @@ use App\Models\Articles;
 									</ul>
 								</div>
 							</div>
-							<div class="col-lg-9 image_col order-lg-2 order-1">
+							<div class="col-lg-9 image_col order-lg-2 order-1" id="ordre-2">
 								<div class="single_product_image">
 									<div class="single_product_image_background">
 										<img src="{{ asset(Storage::url(articles::find($commande->article->id)->image->path_1)) }}" alt="image-pricipale" class="image-principale">
@@ -43,10 +44,10 @@ use App\Models\Articles;
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-5" id="cadre-2">
+				<div class="col-lg-5">
 					<div class="product_details">
 						<div class="product_details_title">
-							<h2>{{ Articles::find($commande->article->id)->modele->modele }}</h2>
+							<h2 class="h2">{{ Articles::find($commande->article->id)->modele->modele }}</h2>
 							<p>{{ $commande->article->commentaire }}</p>
 						</div>
 						<div class="div-infos">
@@ -55,7 +56,7 @@ use App\Models\Articles;
 									Taille
 								</div>
 								<div class="infos-2">
-									<p>{{ $commande->taille }}</p>
+									<p class="p-prix">{{ $commande->taille }}</p>
 								</div>
 							</div>
 						</div>
@@ -65,7 +66,7 @@ use App\Models\Articles;
 									Prix Unitaire
 								</div>
 								<div class="infos-2">
-									<p>
+									<p class="p-prix">
 										@if($commande->article->prix < 20)
 											${{ number_format(((double)$commande->article->prix + $gestion->gain_1), 2, '.', ' ') }}
 										@elseif($commande->article->prix >= 20)
@@ -81,7 +82,7 @@ use App\Models\Articles;
 									Quantité
 								</div>
 								<div class="infos-2">
-									<p>{{ $commande->quantite }}</p>
+									<p class="p-prix">{{ $commande->quantite }}</p>
 								</div>
 							</div>
 						</div>
@@ -91,7 +92,7 @@ use App\Models\Articles;
 									Prix Total
 								</div>
 								<div class="infos-2">
-									<p>
+									<p class="p-prix">
 										@if($commande->article->prix < 20)
 											${{ number_format((double)$commande->prix_total, 2, '.', ' ') }}
 										@elseif($commande->article->prix >= 20)
@@ -102,24 +103,22 @@ use App\Models\Articles;
 							</div>
 						</div>
 						<div class="div-infos">
-							<div class="infos">
-								<div class="infos-1">
+							<div class="infos-boutton">
 									<a href="{{ route('Panier.edit', $commande->id) }}">
 										<button type="submit" class="btn btn-primary">Modifier</button>
 									</a>
-								</div>
-								<div class="infos-2">
 									<form action="{{ route('Panier.destroy', $commande->id) }}" method="POST">
 										@csrf
 										@method('DELETE')
-											<button type="submit" class="btn btn-danger">Suprimer de la commande</button>
+											<button type="submit" class="btn btn-danger">Suprimer
+											</button>
 									</form>
-								</div>
 							</div>
 						</div>
 						
 					</div>
 				</div>
+
 			@empty
 			@if(Session::has('succes'))
 				<div class="panier-vide">
@@ -132,17 +131,20 @@ use App\Models\Articles;
 			@endif
 			@endforelse
 			@if(count($commandes))
-				<div class="div-infos_commande">
+				<div class="div-infos-commande">
 					<form action="{{ route('Livraison.store') }}" method="POST">
 						@csrf
-						<h2 class="h2">Informations pour la livraison</h2>
-						<div class="infos">
-							<div class="infos-1">
+						<h2 class="h2-info">Informations pour la livraison</h2>
+						<div class="infos-liv">
+							<div class="infos-liv-1">
 								Date et heure
 							</div>
-							<div class="infos-2">
-								<input type="date" name="date_livraison" class="form-control" required>
-								<select name="heure_livraison" class="form-control" required>
+							<div class="infos-liv-2">
+								<div class="div-input">
+									<input type="date" name="date_livraison" class="input-form" required>
+								</div>
+								<div class="div-input">
+									<select name="heure_livraison" class="input-form" required>
 									<option>HEURE</option>
 									<option value="08H00 à 08H30">08H00 à 08H30</option>
 									<option value="08H30 à 09H00">08H30 à 09H00</option>
@@ -162,15 +164,11 @@ use App\Models\Articles;
 									<option value="15H30 à 16H00">15H30 à 16H00</option>
 									<option value="16H00 à 16H30">16H00 à 16H30</option>
 								</select>
+								</div>
 							</div>
 						</div>
-						<div class="comment">
-							<div class="infos-comment-1">
-								Adresse la livraison
-							</div>
-							<div class="infos-comment-2">
-								<textarea name="adresse_livraison" cols="30" rows="10" id="commentaire" class="form-control" min="50" max="200" required></textarea>
-							</div>
+						<div class="commentaire">
+							<textarea name="adresse_livraison" class="text" min="50" max="200" placeholder="Adresse" required></textarea>
 						</div>
 						<div class="infos-button">
 								<button type="submit" class="btn btn-primary">Valider la Commande</button>

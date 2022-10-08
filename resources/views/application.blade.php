@@ -15,10 +15,8 @@
 <link rel="shortcut icon" href="{{ asset('images/logo/LOGO-NA-NDAKU-2.png') }}">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/header.css') }}">
-
-@if(Route::is('login'))
-	<link rel="stylesheet" type="text/css" href="{{ asset('styles/login.css') }}">
-@endif
+<link rel="stylesheet" type="text/css" href="{{ asset('styles/responsive_header.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('styles/footer.css') }}">
 
 @if(Route::is('register'))
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/inscription.css') }}">
@@ -43,15 +41,26 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/profil-edit.css') }}">
 @endif
 
-@if(Route::is('Articles.show') OR Route::is('Panier.index') OR Route::is('Panier.edit'))
+@if(Route::is('Articles.show'))
 	<link rel="stylesheet" href="{{ asset('plugins/themify-icons/themify-icons.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/single_styles.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/single_responsive.css') }}">
 @endif
 
+@if(Route::is('Panier.index') OR Route::is('Panier.edit'))
+	<link rel="stylesheet" href="{{ asset('plugins/themify-icons/themify-icons.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('styles/panier_styles.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('styles/panier_responsive.css') }}">
+@endif
+
 @if(Route::is('Mot_de_passe.index'))
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/password_edit.css') }}">
+@endif
+
+@if(Route::is('Livraison.show'))
+	<link rel="stylesheet" type="text/css" href="{{ asset('styles/commandes_client.css') }}">
 @endif
 
 @if(Route::is('Livraison.index'))
@@ -78,6 +87,9 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/boutique_articles.css') }}">
 @endif
 
+@if(Route::is('client_index'))
+	<link rel="stylesheet" type="text/css" href="{{ asset('styles/client_index.css') }}">
+@endif
 
 @if(Route::is('commande_index'))
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/detaille_commande.css') }}">
@@ -93,6 +105,16 @@
 
 @if(Route::is('reset_password_user_index'))
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/reset_password_user.css') }}">
+@endif
+
+@if(Route::is('Gestion.index'))
+	<link rel="stylesheet" type="text/css" href="{{ asset('styles/gestion_index.css') }}">
+@endif
+@if(Route::is('Gestion.edit'))
+	<link rel="stylesheet" type="text/css" href="{{ asset('styles/gestion_edit.css') }}">
+@endif
+@if(Route::is('boutique_index'))
+	<link rel="stylesheet" type="text/css" href="{{ asset('styles/boutique_index.css') }}">
 @endif
 
 </head>
@@ -169,7 +191,7 @@
 													<li><a href="{{ route('Gestion.index') }}">Gestion</a></li>
 													<li><a href="{{ route('boutique_index') }}">Boutique</a></li>
 													@endif
-													<li><a href="#">Clients</a></li>
+													<li><a href="{{ route('client_index') }}">Clients</a></li>
 												</ul>
 											</li>
 										@endif
@@ -212,14 +234,19 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12 text-right">
-							<div class="logo_container">
+							<!--div class="logo_contenair">
 								<a href="{{ route('index') }}">
 									<img src="{{ asset('images/logo/logo.jpg') }}" alt="image-logo">
 								</a>
 							</div>
+							<div class="logo">
+								<a href="{{ route('index') }}">
+									<img src="{{ asset('images/logo/logo.jpg') }}" alt="image-logo" class="img-logo">
+								</a>
+							</div-->
 							<nav class="navbar">
 								<ul class="navbar_menu">
-									<li><a href="{{ route('index') }}">Home</a></li>
+									<li><a href="{{ route('index') }}">Accueil</a></li>
 									<li><a href="{{ route('categorie', ['id' => 'homme']) }}">Hommes</a></li>
 									<li><a href="{{ route('categorie', ['id' => 'femme']) }}">Femmes</a></li>
 									<li><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfants</a></li>
@@ -242,15 +269,15 @@
 													<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 													<span id="checkout_items" class="checkout_items">
 													@if(Auth::user()->role_id == 1)
-													{{ count($notification) }}
+													{{ $notification }}
 													@endif
 
 													@if(Auth::user()->role_id == 4)
-													{{ count($notification) }}
+													{{ $notification }}
 													@endif
 
 													@if(Auth::user()->role_id == 5)
-													{{ count($notification) }}
+													{{ $notification }}
 													@endif
 													</span>
 												</a>
@@ -284,7 +311,7 @@
 						</ul>
 					</li-->
 					<li class="menu_item has-children">
-						<a href="#">
+						<a href="#" id="a">
 							@guest
 								Mon compte
 							@endguest
@@ -302,7 +329,7 @@
 							<form method="POST" action="{{ route('logout') }}">
 	                            @csrf
 	                            <li><a href="{{ route('register') }}">
-	                            	<button type="submit" class="btn btn-second">Deconnexion</button>
+	                            	<button type="submit" class="btn btn-second" id="btn-logout">Deconnexion</button>
 	                            </li></a>
 	                        </form>
 							@endauth
@@ -355,19 +382,39 @@
 
 		@yield('profil-index')
 
+		@yield('completion')
+
 		@yield('panier')
 
 		@yield('article-show')
 
 		@yield('livraison-index')
 
+		@yield('boutique')
+
+		@yield('articles-boutique')
+
 		@yield('detaille_commande')
 
 		@yield('commande_quantite_view')
 
+		@yield('commandes-client')
+
 		@yield('facture')
 
 		@yield('article-edit')
+
+		@yield('gestion-index')
+
+		@yield('gestion-edit')
+
+		@yield('reset_password')
+
+		@yield('client-index')
+
+		@if(!Route::is('login'))
+			@include('layouts.footer.footer')
+		@endif
 
 	</div>
 

@@ -1,9 +1,9 @@
 @extends('application')
 
-@section('body-boutique-articles')
+@section('articles-boutique')
 
 	<div class="boutique-articles">
-		<h2>Boutique {{ $boutique->nom." +243 ".$boutique->contact_whatsapp }}<br>{{ count($articles) }} Articles</h2>
+		<h2>Boutique : {{ $boutique->nom.", Tél : +243 ".$boutique->contact_whatsapp }}<br>{{ count($articles) }} Articles</h2>
 
 	</div>
 	<!-- New Arrivals -->

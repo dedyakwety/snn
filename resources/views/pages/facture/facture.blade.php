@@ -2,25 +2,35 @@
 
 <?php
 use App\Models\Articles;
+use App\Models\User;
 
-$incrementation = 1;
+    if($livraison->livreur_id)
+    {
+        $livreur_existe = User::findOrFail($livraison->livreur_id);
+    } else{
+        $livreur_existe = false;
+    }
+
+    $incrementation = 1;
+
 ?>
 
 @section('facture')
 <div class="div-facture">
     <div class="div-tete">
         @if($livraison->livree == 1)
-            <a href="{{ route('telechargement', ['id' => $livraison->id]) }}" class="btn btn-primary">
-                Télécharger facture en pdf
+            <a href="{{ route('telechargement', ['id' => $livraison->id]) }}" class="btn-facture">
+                Télécharger en pdf
             </a>
         @endif
         @if($livraison->livreur_id == Auth::user()->id)
             @if($livraison->livree == 0)
-                <form action="{{ route('Livraison.update', $livraison->id) }}" method="POST">
+                <form action="{{ route('Livraison.update', $livraison->id) }}" method="POST" class="form-confirm">
                     @csrf
                     @method('PUT')
+                    <input type="password" name="password" placeholder="Mot de passe" class="champs" required>
                     <a href="">
-                        <button type="submit" class="btn btn-primary">Confirmer la livraison</button>
+                        <button type="submit" class="btn-facture">Confirmer</button>
                     </a>
                 </form>
             @endif
@@ -32,35 +42,55 @@ $incrementation = 1;
         <p>{{ Session::get('succes') }}</p>
     @endif
     @if(Auth::user()->role_id == 1)
-        <form method="POST" action="{{ route('Livraison.update', $livraison->id) }}">
-            @csrf
-            @method('PUT')
-            <div class="form-row">
-                <div class="col">
-                    <select name="livreur" class="form-control" required>
-                        @if(count($users_livreurs) < 15)
-                            @foreach($users as $user)
+        @if(!$livraison->livree)
+            <form method="POST" action="{{ route('Livraison.update', $livraison->id) }}" class="form">
+                @csrf
+                @method('PUT')
+                <select name="livreur" class="input" required />
+
+                    @if(!$livraison->livreur_id)
+                        <option>Choisissez livreur</option>
+                    @endif
+
+                    @if($livraison->livreur_id)
+                        <option>{{ $livreur_existe->prenom." ".$livreur_existe->name }}</option>
+                    @endif
+
+                    @if(count($users_livreurs) < 15)
+
+                        @foreach($users as $user)
+                                <!-- VERIFIER SI L'UTILISATEUR EST CLIENT NE L'AFFICHE PAS -->
                                 @if($user->role_id == 5)
                                 @else
-                                    <option value="{{ $user->id }}">{{ $user->prenom." ".$user->name }}</option>
+                                    <!-- VERIFIER S'IL Y A LE LIVREUR AFFECTE A CETTE COMMANDE -->
+                                    @if($livraison->livreur_id)
+                                        @if($user->id == $livraison->livreur_id)
+                                        @else
+                                            <option value="{{ $user->id }}">{{ $user->prenom." ".$user->name }}</option>
+                                        @endif
+                                    @else
+                                        <!-- PAR CONTRE AFFICHE TOUT -->
+                                        <option value="{{ $user->id }}">{{ $user->prenom." ".$user->name }}</option>
+                                    @endif
                                 @endif
-                            @endforeach
-                        @elseif(count($users_livreurs) > 15)
-                            @foreach($users_livreurs as $user)
-                                <option value="{{ $user->id }}">{{ $user->prenom." ".$user->name }}</option>
-                            @endforeach
-                        @endif
-                    </select>
-                </div>
-                <div class="col">
-                    <button type="submit" class="btn btn-outline-success">Valider</button>
-                </div>
-            </div>
-        </form>
+
+                        @endforeach
+
+                    @elseif(count($users_livreurs) > 15)
+                        @foreach($users_livreurs as $user)
+                            <option value="{{ $user->id }}" {{ $desactiver }}>{{ $user->prenom." ".$user->name }}</option>
+                        @endforeach
+                    @endif
+                </select>
+                <button type="submit" class="boutton">Valider</button>
+            </form>
+        @else
+            <p class="p-livreur">Livrée par : {{ $livreur_existe->prenom." ".$livreur_existe->name." le ".$livraison->date_livraison }}</p>
+        @endif
     @endif
 
-    <h3>FACTURE PDF</h3>
-    <table class="table table-bordered">
+    <h3>FACTURE</h3>
+    <table>
         <thead>
             <tr>
                 <th id="numero">Nº</th>

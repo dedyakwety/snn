@@ -99,10 +99,10 @@ class Update_commande extends Controller
 
         } elseif($article->prix >= 20)
         {
-            echo $prix_vente = ((((double)$article->prix / 100) * (double)$gestion->gain_2) + (double)$article->prix) * (double)$commande->quantite;
+            $prix_vente = ((((double)$article->prix / 100) * (double)$gestion->gain_2) + (double)$article->prix) * (double)$commande->quantite;
         }
 
-        echo $remise = ((double)$prix_vente / 100) * (double)$livraison->remise_pourcentage;
+        $remise = ((double)$prix_vente / 100) * (double)$livraison->remise_pourcentage;
 
         $nombre_article = (int)$livraison->nombre_article - (int)$commande->quantite;
         $prix_achat_in = (double)$livraison->prix_achat - (double)$prix_achat;

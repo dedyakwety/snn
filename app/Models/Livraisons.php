@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Commandes;
+use App\Models\User;
 
 class Livraisons extends Model
 {
@@ -32,5 +33,10 @@ class Livraisons extends Model
     public function commandes()
     {
         return $this->hasMany('App\Models\Commandes');
+    }
+
+    public function client()
+    {
+        return $this->belongsTo('App\Models\User');
     }
 }

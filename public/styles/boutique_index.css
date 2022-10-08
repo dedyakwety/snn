@@ -3,3 +3,278 @@
 	margin-top: 25vh;
 	margin-left: 10%;
 }
+h2{
+	text-transform: uppercase;
+	font-size: 22px;
+	font-family: sans-serif;
+	text-align: center;
+}
+#form{
+	width: 40%;
+	margin-left: 30%;
+	display: flex;
+	flex-direction: column;
+}
+.input{
+	color: #000;
+	margin-top: 10px;
+	border: 0px solid #d4d4d4;
+	border-bottom: 1px solid #d4d4d4;
+}
+#btn{
+	margin-top: 10px;
+	float: right;
+}
+.boutiquer{
+	width: 40%;
+	margin-left: 30%;
+	margin-top: 100px;
+}
+.info{
+	width: 100%;
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+tr{
+	text-align: center;
+	text-transform: uppercase;
+}
+.div-responsive{
+	display: none;
+}
+
+
+
+
+
+@media only screen and (max-width: 1000px)
+{
+	.boutique{
+		width: 80%;
+		margin-top: 30vh;
+		margin-left: 10%;
+	}
+	#form{
+		width: 60%;
+		margin-left: 20%;
+	}
+	.input{
+		color: #000;
+		margin-top: 10px;
+		border: 0px solid #d4d4d4;
+		border-bottom: 1px solid #d4d4d4;
+	}
+	#btn{
+		font-size: 13px;
+		margin-top: 10px;
+		float: right;
+	}
+	h2{
+		text-transform: uppercase;
+		font-size: 22px;
+		font-family: sans-serif;
+		text-align: center;
+	}
+	.boutiquer{
+		width: 60%;
+		margin-left: 20%;
+		margin-top: 100px;
+	}
+	#table{
+		width: 100%;
+	}
+	tr{
+		font-size: 12px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}
+
+
+
+@media only screen and (max-width: 796px)
+{
+	.boutique{
+		width: 80%;
+		margin-top: 30vh;
+		margin-left: 10%;
+	}
+	#form{
+		width: 80%;
+		margin-left: 10%;
+	}
+	.input{
+		color: #000;
+		margin-top: 10px;
+		border: 0px solid #d4d4d4;
+		border-bottom: 1px solid #d4d4d4;
+	}
+	#btn{
+		font-size: 11px;
+		margin-top: 10px;
+		float: right;
+	}
+	.boutiquer{
+		width: 80%;
+		margin-left: 10%;
+		margin-top: 100px;
+	}
+}
+
+
+
+
+@media only screen and (max-width: 650px)
+{
+	.boutique{
+		width: 80%;
+		margin-top: 30vh;
+		margin-left: 10%;
+	}
+	#form{
+		width: 90%;
+		margin-left: 5%;
+	}
+	.input{
+		color: #000;
+		margin-top: 10px;
+		border: 0px solid #d4d4d4;
+		border-bottom: 1px solid #d4d4d4;
+	}
+	.boutiquer{
+		width: 90%;
+		margin-left: 5%;
+		margin-top: 100px;
+	}
+	tr{
+		font-size: 10px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}
+
+
+
+
+@media only screen and (max-width: 450px)
+{
+	.boutique{
+		width: 95%;
+		margin-top: 100px;
+		margin-left: 2.5%;
+	}
+	#form{
+		width: 90%;
+		margin-left: 5%;
+	}
+	.input{
+		color: #000;
+		margin-top: 10px;
+		border: 0px solid #d4d4d4;
+		border-bottom: 1px solid #d4d4d4;
+	}
+	.boutiquer{
+		width: 90%;
+		margin-left: 5%;
+		margin-top: 80px;
+	}
+	h2{
+		text-transform: uppercase;
+		font-size: 17px;
+		font-family: sans-serif;
+		text-align: center;
+	}
+	tr{
+		font-size: 10px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}
+
+
+
+
+@media only screen and (max-width: 290px)
+{
+	.boutique{
+		width: 95%;
+		margin-top: 100px;
+		margin-left: 2.5%;
+	}
+	#form{
+		width: 90%;
+		margin-left: 5%;
+	}
+	.input{
+		color: #000;
+		margin-top: 10px;
+		border: 0px solid #d4d4d4;
+		border-bottom: 1px solid #d4d4d4;
+	}
+	.boutiquer{
+		width: 90%;
+		margin-left: 5%;
+		margin-top: 30px;
+	}
+	h2{
+		text-transform: uppercase;
+		font-size: 14px;
+		font-family: sans-serif;
+		text-align: center;
+	}
+	.input::placeholder{
+		color: red;
+	}
+	.input{
+		font-size: 11px;
+		color: #000;
+		margin-top: 10px;
+		border: 0px solid #d4d4d4;
+		border-bottom: 1px solid #d4d4d4;
+	}
+	#btn{
+		font-size: 10px;
+		margin-top: 10px;
+		float: right;
+	}
+	#table{
+		display: none;
+	}
+	.div-responsive{
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	.div-boutique{
+    	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+		color: #000;
+		font-size: 11px;
+		width: 100%;
+		height: 35px;
+		text-transform: uppercase;
+		margin-top: 5px;
+		padding-top: 7px;
+		padding-left: 5px;
+		padding-right: 5px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	.div-boutique-2{
+    	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+		color: #000;
+		font-size: 11px;
+		width: 100%;
+		height: 35px;
+		text-transform: uppercase;
+		margin-top: 5px;
+		padding-top: 7px;
+		padding-left: 5px;
+		padding-right: 5px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}

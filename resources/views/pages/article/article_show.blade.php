@@ -9,7 +9,7 @@
 			<div class="col" id="tete">
 
 				<!-- Breadcrumbs -->
-				<h3 class="h3">{{ $article->categorie->categorie."eee" }}</h3>
+				<h3 class="h3">{{ $article->categorie->categorie }}</h3>
 				<div class="breadcrumbs d-flex flex-row align-items-center">
 					<ul>
 						<li><a>Catégorie</a></li>

@@ -21,7 +21,7 @@ class Home extends Controller
 
         $articles = Articles::where('valide', true)
                             ->orderBy('created_at', 'desc')
-                            ->paginate(6);
+                            ->paginate(60);
 
         if(count($articles) > 0)
         {

@@ -142,9 +142,9 @@
 					<input type="password" name="password" placeholder="Mot de passe" class="form-control" required>
 					<button type="submit" class="btn btn-primary">
 					@if($user->valide)
-					Suspendre
+						Suspendre
 					@else
-					Léver la suspension
+						Léver la suspension
 					@endif
 					</button>
 				</form>

@@ -6,7 +6,11 @@ use App\Models\User;
 @section('livraison-index')
 	<div class="div-livraisons">
 		@if($commandes)
-		  	<h2>Commandes</h2> 
+		  	<h2>Commandes
+		  		@if(Auth::user()->role_id == 1 OR Auth::user()->role_id == 4)
+		  			{{ $encour."/".$livree }}
+		  		@endif
+		  	</h2> 
 
 	  		@if(Session::has('succes'))
 	  			<div class="message">
@@ -47,7 +51,7 @@ use App\Models\User;
 			        		</td>
 		        		@endif
 		        		<td>{{ $commande->nombre_article }}</td>
-		        		<td>${{ $commande->prix_total }}</td>
+		        		<td>${{ number_format($commande->prix_total, "2", ".", " ") }}</td>
 		        		@if(Auth::user()->role_id == 1)
 		        			<td>
 				        		@if($commande->livreur_id)
@@ -63,9 +67,13 @@ use App\Models\User;
 	        						Facture
 	        					</a>
 	        				@else
-	        					<a href="{{ route('commande_index', ['id' => $commande->id]) }}" id="a" class="btn btn-primary">
-	        						Détail
-	        					</a>
+	        					@if(Auth::user()->role_id == 5)
+		        					<a href="{{ route('commande_index', ['id' => $commande->id]) }}" id="a" class="btn btn-primary">
+	        					@else
+		        					<a href="{{ route('viewFacture', ['id' => $commande->id]) }}" id="a" class="btn btn-primary">
+	        					@endif
+	        							Détail
+		        					</a>
 	        				@endif
 		        		</td>
 		      		</tr>
@@ -85,14 +93,18 @@ use App\Models\User;
 				  		Quantité : {{ $commande->nombre_article }}</br>
 				  		Prix total : {{ $commande->prix_total }}</br>
 				  		@if($commande->livree)
-							<a href="{{ route('viewFacture', ['id' => $commande->id]) }}" id="a" class="btn btn-primary">
-								Facture
-							</a>
-						@else
-							<a href="{{ route('viewFacture', ['id' => $commande->id]) }}" id="a" class="btn btn-primary">
-								Détail
-							</a>
-						@endif
+        					<a href="{{ route('viewFacture', ['id' => $commande->id]) }}" id="a" class="btn btn-primary">
+        						Facture
+        					</a>
+        				@else
+        					@if(Auth::user()->role_id == 5)
+	        					<a href="{{ route('commande_index', ['id' => $commande->id]) }}" id="a" class="btn btn-primary">
+        					@else
+	        					<a href="{{ route('viewFacture', ['id' => $commande->id]) }}" id="a" class="btn btn-primary">
+        					@endif
+        							Détail
+	        					</a>
+        				@endif
 				  	</div>
 			  	@empty
 			  		<div class="no-commande">
@@ -108,5 +120,8 @@ use App\Models\User;
 	  			</div>
 	  		</div>
 	  	@endif
+	  	<div class="div-paginate">
+			{{ $commandes->links() }}
+		</div>
 	</div>
 @endsection

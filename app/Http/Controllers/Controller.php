@@ -21,19 +21,19 @@ class Controller extends BaseController
         {
             if(Auth::user()->role_id == 1)
             {
-                $commande = Livraisons::All()->where('livree', false);
+                $commande = Livraisons::All()->where('livree', false)->count();
 
             } elseif(Auth::user()->role_id == 5)
             {
                 $commande = Commandes::All()
                                     ->where('user_id', Auth::user()->id)
-                                    ->where('valide', 0);
+                                    ->where('valide', 0)->count();
                 
             } elseif(Auth::user()->role_id == 4)
             {
                 $commande = Livraisons::All()
                                     ->where('livreur_id', Auth::user()->id)
-                                    ->where('livree', false);
+                                    ->where('livree', false)->count();
             }
             
             return $commande;

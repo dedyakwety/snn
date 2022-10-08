@@ -5,6 +5,7 @@ use App\Models\Articles;
 
 @section('detaille_commande')
 	<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
+		
 		<div class="div-h2">
 			<a href="{{ route('annulation_commande', ['id' => $livraison->id]) }}" class="btn btn-primary">Annuler la commande</a>
 		</div>

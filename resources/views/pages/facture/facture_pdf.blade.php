@@ -210,13 +210,14 @@ $incrementation = 1;
             height: 300px;
             left: 10%;
             bottom: 0px;
-            opacity: 0.6;
+            opacity: 0.1;
+            top: 40%;
             transform: rotate(-45deg);
         }
     </style>
     
     <div class="contenair">
-            <img src="images/cachet/CACHET.jpg" class="fond">
+            <img src="images/logo/logo.jpg" class="fond">
         <div class="div-header">
             <div class="div-logo-1">
                 <img src="images/logo/logo.jpg" class="logo">
@@ -259,7 +260,7 @@ $incrementation = 1;
             <div class="infos-2">
                 <div class="info">
                         <strong>Adresse Livraison</strong>
-                    : {{ $livraison->adresse_livraison }} bvzge fujzqeifi jirqjgij rqjgir gqor,gk rkqeg,r,g kqrkkn
+                    : {{ $livraison->adresse_livraison }}
                 </div>
                 <div class="info">
                         <strong>Achat Nº</strong>
@@ -312,19 +313,19 @@ $incrementation = 1;
                         <td class="td-2"><strong>{{ $total_general }}</strong></td>
                     </tr>
 
-                    @if($livraison->beneficier)
-                    <tr>
-                        <td class="td-designation-2">REMISE</td>
-                        <td class="td-2"><strong>-{{ $livraison->montant_remise }}</strong></td>
-                    </tr>
-                    <tr>
-                        <td class="td-designation-2">MONTANT A PAYER</td>
-                        <td class="td-2"><strong>{{ (double)$total_general - (double)$livraison->montant_remise }}</strong></td>
-                    </tr>
+                    @if($livraison->montant_remise > 0)
+                        <tr>
+                            <td class="td-designation-2">REMISE</td>
+                            <td class="td-2"><strong>-{{ number_format($livraison->montant_remise, "2", ".", " ") }}</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="td-designation-2">MONTANT A PAYER</td>
+                            <td class="td-2"><strong>{{ number_format((double)$total_general - (double)$livraison->montant_remise, "2", ".", " ") }}</strong></td>
+                        </tr>
                     @else
                     <tr>
                         <td class="td-designation-2">MONTANT A PAYER</td>
-                        <td class="td-2"><strong>{{ $total_general }}</strong></td>
+                        <td class="td-2"><strong>{{ number_format($total_general, "2", ".", " ") }}</strong></td>
                     </tr>
                     @endif
                 </tbody>

@@ -29,22 +29,38 @@ class Livraison extends Controller
         {
             $commandes = Livraisons::where('valide', true)
                                     ->orderBy('created_at', 'desc')
-                                    ->take(50)
-                                    ->get();
+                                    ->paginate(30);
+
+            $livree = Livraisons::where('valide', true)
+                                ->count();
+
+            $encour = Livraisons::where('valide', true)
+                                ->where('livree', true)
+                                ->count();
                                     
         } elseif(Auth::user()->role_id == 4){
 
             $commandes = Livraisons::where('livreur_id', Auth::user()->id)
                                     ->orderBy('created_at', 'desc')
-                                    ->take(50)
-                                    ->get();
+                                    ->paginate(30);
+
+            $livree = Livraisons::where('valide', true)
+                                ->where('livreur_id', Auth::user()->id)
+                                ->count();
+
+            $encour = Livraisons::where('valide', true)
+                                ->where('livree', true)
+                                ->where('livreur_id', Auth::user()->id)
+                                ->count();
 
         } elseif(Auth::user()->role_id == 5){
 
             $commandes = Livraisons::where('user_id', Auth::user()->id)
                                     ->orderBy('created_at', 'desc')
-                                    ->take(50)
-                                    ->get();
+                                    ->paginate(30);
+
+            $livree = "";
+            $encour = "";
         }
 
         return view('pages.livraisons.livraisons', [
@@ -52,6 +68,8 @@ class Livraison extends Controller
             'numero' => $numero,
             'numero_1' => $numero_1,
             'notification' => parent::commande(),
+            'livree' => $livree,
+            'encour' => $encour,
         ]);
     }
 
@@ -94,9 +112,10 @@ class Livraison extends Controller
         // VERIFIER SI C'EST LA 5ème LIVRAISON
         $verifier_remise = Livraisons::All()
                                     ->where('user_id', Auth::user()->id)
-                                    ->where('beneficier', false);
-
-        if(count($verifier_remise) == 4)
+                                    ->where('beneficier', false)
+                                    ->count();
+                                   
+        if($verifier_remise == 4)
         {
             $reception_remise = (double)$verifier_remise->sum('remise') + (double)$remise;
         } else{
@@ -139,7 +158,11 @@ class Livraison extends Controller
      */
     public function show($id)
     {
-        //
+        
+        
+        return view('pages.commande.commandes', [
+            'notification' => parent::commande(),
+        ]);
     }
 
     /**
@@ -162,9 +185,10 @@ class Livraison extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $gestion = Gestions::findOrFail(1);
         $livraison = Livraisons::findOrFail($id);
-
+        
         if((!$livraison->livreur_id) && (Auth::user()->role_id == 1))
         {
             $request->validate([
@@ -181,98 +205,112 @@ class Livraison extends Controller
 
         } elseif($livraison->livreur_id)
         {
-            $livraison = Livraisons::findOrFail($id);
-
-            $commandes = Commandes::All()->where('livraison_id', $id);
+            $request->validate([
+                'password' => ['required'],
+            ]);
             
-            $date_vente = $livraison->date_livraison;
-            $achat = $livraison->prix_achat;
-            $vente = $livraison->prix_total;
-            $gain_brut = (double)$vente - (double)$achat;
-            $remise_in = $livraison->remise;
-
-            if($livraison->montant_remise > 0)
-            {
-                $remise_out = $livraison->montant_remise;
-
-            } else{
-
-                $remise_out = 0;
-            }
-
-            $transport = $gestion->transport;
-            $gain = (double)$gain_brut - ((double)$remise_in + (double)$transport);
-            $depense = ((double)$gain / 100) * $gestion->depense;
-            $agent = ((double)$gain / 100) * $gestion->agent;
-            $admin = ((double)$gain / 100) * $gestion->admin;
-            $entreprise = ((double)$gain / 100) * $gestion->entreprise;
-            $remise_pourcentage = $livraison->remise_pourcentage;
-
-            // VERIFIER SI LA DATE EXISTE DANS LA BDD
-            $verifier_date = Partages::All()->where('date_vente', $livraison->date_livraison);
-            
-            if(count($verifier_date) == 0)
+            if(password_verify($request->password, Auth::user()->password))
             {
 
-                Partages::create([
-                    'date_vente' => $date_vente,
-                    'achat' => $achat,
-                    'vente' => $vente,
-                    'gain_brut' => $gain_brut,
-                    'remise_in' => $remise_in,
-                    'remise_out' => $remise_out,
-                    'transport' => $transport,
-                    'gain' => $gain,
-                    'depense' => $depense,
-                    'agent' => $agent,
-                    'admin' => $admin,
-                    'entreprise' => $entreprise,
-                    'remise_pourcentage' => $remise_pourcentage,
-                ]);
+                $livraison = Livraisons::findOrFail($id);
+                $client = User::findOrFail($livraison->user_id);
 
-            } elseif(count($verifier_date) == 1){
-            
+                $commandes = Commandes::All()->where('livraison_id', $id);
+
+                $date_vente = $livraison->date_livraison;
+                $achat = $livraison->prix_achat;
+                $vente = $livraison->prix_total;
+                $gain_brut = (double)$vente - (double)$achat;
+                $remise_in = $livraison->remise;
+
+                if($livraison->montant_remise > 0)
+                {
+                    $remise_out = $livraison->montant_remise;
+
+                } else{
+
+                    $remise_out = 0;
+                }
+
+                $transport = $gestion->transport;
+                $gain = (double)$gain_brut - ((double)$remise_in + (double)$transport);
+                $depense = ((double)$gain / 100) * $gestion->depense;
+                $agent = ((double)$gain / 100) * $gestion->agent;
+                $admin = ((double)$gain / 100) * $gestion->admin;
+                $entreprise = ((double)$gain / 100) * $gestion->entreprise;
+                $remise_pourcentage = $livraison->remise_pourcentage;
+
+                // VERIFIER SI LA DATE EXISTE DANS LA BDD
+                $verifier_date = Partages::All()->where('date_vente', $livraison->date_livraison);
                 
-                $partage_id = Partages::select('id')->where('date_vente', $livraison->date_livraison)->first()->id;
-                $partage_achat = Partages::select('achat')->where('date_vente', $livraison->date_livraison)->first()->achat;
-                $partage_vente = Partages::select('vente')->where('date_vente', $livraison->date_livraison)->first()->vente;
-                $partage_gain_brut = Partages::select('gain_brut')->where('date_vente', $livraison->date_livraison)->first()->gain_brut;
-                $partage_remise_in = Partages::select('remise_in')->where('date_vente', $livraison->date_livraison)->first()->remise_in;
-                $partage_remise_out = Partages::select('remise_out')->where('date_vente', $livraison->date_livraison)->first()->remise_out;
-                $partage_transport = Partages::select('transport')->where('date_vente', $livraison->date_livraison)->first()->transport;
-                $partage_gain = Partages::select('gain')->where('date_vente', $livraison->date_livraison)->first()->gain;
-                $partage_depense = Partages::select('depense')->where('date_vente', $livraison->date_livraison)->first()->depense;
-                $partage_agent = Partages::select('agent')->where('date_vente', $livraison->date_livraison)->first()->agent;
-                $partage_admin = Partages::select('admin')->where('date_vente', $livraison->date_livraison)->first()->admin;
-                $partage_entreprise = Partages::select('entreprise')->where('date_vente', $livraison->date_livraison)->first()->entreprise;
+                if(count($verifier_date) == 0)
+                {
+
+                    Partages::create([
+                        'date_vente' => $date_vente,
+                        'achat' => $achat,
+                        'vente' => $vente,
+                        'gain_brut' => $gain_brut,
+                        'remise_in' => $remise_in,
+                        'remise_out' => $remise_out,
+                        'transport' => $transport,
+                        'gain' => $gain,
+                        'depense' => $depense,
+                        'agent' => $agent,
+                        'admin' => $admin,
+                        'entreprise' => $entreprise,
+                        'remise_pourcentage' => $remise_pourcentage,
+                    ]);
+
+                } elseif(count($verifier_date) == 1){
                 
-                Partages::where('date_vente', $livraison->date_livraison)
+                    
+                    $partage_id = Partages::select('id')->where('date_vente', $livraison->date_livraison)->first()->id;
+                    $partage_achat = Partages::select('achat')->where('date_vente', $livraison->date_livraison)->first()->achat;
+                    $partage_vente = Partages::select('vente')->where('date_vente', $livraison->date_livraison)->first()->vente;
+                    $partage_gain_brut = Partages::select('gain_brut')->where('date_vente', $livraison->date_livraison)->first()->gain_brut;
+                    $partage_remise_in = Partages::select('remise_in')->where('date_vente', $livraison->date_livraison)->first()->remise_in;
+                    $partage_remise_out = Partages::select('remise_out')->where('date_vente', $livraison->date_livraison)->first()->remise_out;
+                    $partage_transport = Partages::select('transport')->where('date_vente', $livraison->date_livraison)->first()->transport;
+                    $partage_gain = Partages::select('gain')->where('date_vente', $livraison->date_livraison)->first()->gain;
+                    $partage_depense = Partages::select('depense')->where('date_vente', $livraison->date_livraison)->first()->depense;
+                    $partage_agent = Partages::select('agent')->where('date_vente', $livraison->date_livraison)->first()->agent;
+                    $partage_admin = Partages::select('admin')->where('date_vente', $livraison->date_livraison)->first()->admin;
+                    $partage_entreprise = Partages::select('entreprise')->where('date_vente', $livraison->date_livraison)->first()->entreprise;
+                    
+                    Partages::where('date_vente', $livraison->date_livraison)
+                            ->update([
+                                'achat' => (double)$achat + (double)$partage_achat,
+                                'vente' => (double)$vente + (double)$partage_vente,
+                                'gain_brut' => (double)$gain_brut + (double)$partage_gain_brut,
+                                'remise_in' => (double)$remise_in + (double)$partage_remise_in,
+                                'remise_out' => (double)$remise_out + (double)$partage_remise_out,
+                                'transport' => (double)$transport + (double)$partage_transport,
+                                'gain' => (double)$gain + (double)$partage_gain,
+                                'depense' => (double)$depense + (double)$partage_depense,
+                                'agent' => (double)$agent + (double)$partage_agent,
+                                'admin' => (double)$admin + (double)$partage_admin,
+                                'entreprise' => (double)$entreprise + (double)$partage_entreprise,
+                            ]);
+
+                }
+                // SIGNALER QUE LA LIVRAISON EST FAITE
+                Livraisons::findOrFail($id)
                         ->update([
-                            'achat' => (double)$achat + (double)$partage_achat,
-                            'vente' => (double)$vente + (double)$partage_vente,
-                            'gain_brut' => (double)$gain_brut + (double)$partage_gain_brut,
-                            'remise_in' => (double)$remise_in + (double)$partage_remise_in,
-                            'remise_out' => (double)$remise_out + (double)$partage_remise_out,
-                            'transport' => (double)$transport + (double)$partage_transport,
-                            'gain' => (double)$gain + (double)$partage_gain,
-                            'depense' => (double)$depense + (double)$partage_depense,
-                            'agent' => (double)$agent + (double)$partage_agent,
-                            'admin' => (double)$admin + (double)$partage_admin,
-                            'entreprise' => (double)$entreprise + (double)$partage_entreprise,
+                            'livree' => true,
                         ]);
 
+                // MODIFIER BENEFICIER A TRUE DE LA LIVRAISON EN COUR
+                Livraisons::where('user_id', $client->id)
+                        ->where('valide', true)
+                        ->where('livree', true)
+                        ->update([
+                            'beneficier' => true,
+                        ]);
+            } else{
+
+                return redirect()->route("viewFacture", $livraison->id);
             }
-            // SIGNALER LA LIVRAISON
-            Livraisons::findOrFail($id)
-                    ->update([
-                        'livree' => true,
-                    ]);
-            // MODIFIER BENEFICIER A TRUE
-            Livraisons::where('user_id', Auth::user()->id)
-                    ->where('beneficier', false)
-                    ->update([
-                        'beneficier' => true,
-                    ]);
 
         }
 

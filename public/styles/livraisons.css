@@ -2,6 +2,7 @@
 	width: 80%;
 	margin-left: 10%;
 	margin-top: 25vh;
+	min-height: 75vh;
 }
 .commandes{
 	display: none;

@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Models\Livraisons;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -51,6 +53,11 @@ class User extends Authenticatable
     public function numero()
     {
         return $this->belongsTo('App\Models\Numeros', 'numero_id', 'id');
+    }
+
+    public function livraisons()
+    {
+        return $this->hasMany('App\Models\Livraisons');
     }
 
     /**

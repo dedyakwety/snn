@@ -26,3 +26,10 @@
 #price{
 	font-size: 12px;
 }
+
+@media only screen and (max-width: 480px)
+{
+	#a{
+		font-size: 9px;
+	}
+}

@@ -13,11 +13,15 @@ class Boutique extends Controller
 {
     public function index()
     {
+        $numero = 1;
+        $numero_2 = 1;
         $boutiques = Boutiques::All();
 
         return view('pages.boutique.boutique_index', [
             'notification' => parent::commande(),
             'boutiques' => $boutiques,
+            'numero' => $numero,
+            'numero_2' => $numero_2,
         ]);
     }
 

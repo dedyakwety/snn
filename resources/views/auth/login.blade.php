@@ -1,35 +1,43 @@
-@extends('application')
-
-@section('connexion')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>SNN</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Colo Shop Template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{{ asset('styles/login.css') }}">
+</head>
+<body>
 
     <div class="body-connexion">
+        
         <!-- Session Status -->
         <div class="div-form">
+            <div class="logo">
+                <img src="{{ asset('images/logo/logo.jpg') }}" alt="image-logo" class="img-logo">
+            </div>
             <h3>Se conneter</h3>
             <div class="message">
                 
-                <x-auth-session-status class="mb-4" :status="session('status')" />
+                <x-auth-session-status class="mb-2" :status="session('status')" />
 
             <!-- Validation Errors -->
-                <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                <x-auth-validation-errors class="mb-2" :errors="$errors" />
             </div>
 
             <form method="POST" action="{{ route('login') }}" class="form">
                 @csrf
                 
                 <!-- Email Address -->
-                <div>
-                    <x-input id="email" class="form-control" type="email" name="email" placeholder="Adresse e-mail" :value="old('email')" required autofocus />
-                </div>
+                <input class="champ" type="email" name="email" placeholder="example@gmail.com" required autofocus />
 
                 <!-- Password -->
-                <div class="mt-4">
-                    <x-input id="password" class="form-control"
-                                    type="password"
-                                    name="password"
-                                    placeholder="Mot de passe"
-                                    required autocomplete="current-password" />
-                </div>
+                <input class="champ"
+                        type="password"
+                        name="password"
+                        placeholder="Mot de passe"
+                        required autocomplete="current-password" />
 
                 <!-- Remember Me -->
                 <!--div class="block mt-4">
@@ -46,7 +54,7 @@
                         </a>
                     @endif
 
-                    <button class="btn btn-primary" id="btn">
+                    <button class="boutton" id="btn">
                         Connexion
                     </button>
                 </div>
@@ -54,4 +62,5 @@
         </div>
     </div>
 
-@endsection
+</body>
+</html>

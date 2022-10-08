@@ -1,6 +1,6 @@
 @extends('application')
 
-@section('body-gestion-index')
+@section('gestion-index')
 <div class="gestion_index">
 	<h2>ADMINISTRATION</h2>
 	<div class="div-infos">

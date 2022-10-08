@@ -56,6 +56,12 @@ Route::get('/annulation_commande/{id}', 'App\Http\Controllers\Update_commande@an
 // LIVRAISON
 Route::resource('/Livraison', 'App\Http\Controllers\Livraison')->middleware(['auth']);
 
+// CLIENT
+Route::middleware(['auth'])->group(function() {
+    Route::get('/Clients', 'App\Http\Controllers\Client@index')->name('client_index');
+    Route::post('/Search', 'App\Http\Controllers\Client@search')->name('client_search');
+});
+
 // FACTURE ET IMPRESSION
 Route::get('/facture/{id}', 'App\Http\Controllers\Facture@viewFature')->middleware(['auth'])->name('viewFacture');
 Route::get('/telechargement/facture/{id}', 'App\Http\Controllers\Facture@telecharger_facture')->name('telechargement');
