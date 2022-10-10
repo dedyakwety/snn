@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/animate.css') }}">
 
-<link rel="shortcut icon" href="{{ asset('images/logo/LOGO-NA-NDAKU-2.png') }}">
+<link rel="shortcut icon" href="{{ asset('images/logo/logo.jpg') }}">
 
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/header.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/responsive_header.css') }}">
