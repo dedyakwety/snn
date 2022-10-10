@@ -98,7 +98,7 @@
 							@endif
 								<div class="product discount product_filter">
 									<div class="product_image">
-										<img src="{{ asset(Storage::url($article->image->path_1)) }}" alt="image-article" class="image_article">
+										<img src="{{ asset('public/'.Storage::url($article->image->path_1)) }}" alt="image-article" class="image_article">
 									</div>
 									<div class="favorite favorite_left"></div>
 									@auth
