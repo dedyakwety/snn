@@ -222,3 +222,246 @@
 			</div>
 		</div-->
 	</div>
+
+
+
+
+
+
+.div-facture{
+            background: white;
+            width: 85%;
+            top: 0%;
+            left: 7.5%;
+            display: flex;
+            flex-direction: column;
+        }
+        .div-header{
+            margin-top: 0%;
+            width: 100%;
+            height:150px;
+            top: 0%;
+        }
+        .div-centre{
+            width: 77.5%;
+        }
+        .div-logo-1{
+            float: left;
+            width: 22.5%;
+            height: 150px;
+            display: flex;
+        }
+        .div-logo-2{
+            float: right;
+            margin-top: -20.8%;
+            width: 22.5%;
+            height: 150px;
+        }
+        .logo{
+            width: 120px;
+            height: 60px;
+            margin-top: 19px;
+            margin-left: 15px;
+        }
+        h1{
+            font-family: sans-serif;
+            text-align: center;
+            font-size: 20px;
+        }
+        .p-site{
+            font-family: sans-serif;
+            text-align: center;
+            color: #1315b9;
+            margin-top: 0px;
+            font-size: 16px;
+        }
+        .p-infos{
+            font-family: sans-serif;
+            text-align: center;
+            position: ;
+            margin-top: -20px;
+        }
+        .date{
+            background: transparent;
+            border-top: 1px solid #1315b9;
+            width: 100%;
+            height: 30px;
+            bottom: 5px;
+        }
+        .p-date{
+            font-family: sans-serif;
+            margin-top: 10px;
+            text-align: right;
+        }
+        .infos{
+            width: 100%;
+            width: 90%;
+            left: 5%;
+            display: flex;
+            flex-direction: row;
+        }
+        .infos-1{
+            position: absolute;
+            width: 50%;
+            left: 0%;
+            display: flex;
+            flex-direction: column;
+        }
+        .infos-2{
+            position: absolute;
+            width: 50%;
+            right: 0%;
+            display: flex;
+            flex-direction: column;
+        }
+        .info{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+        .facture{
+            width: 100%;
+            margin-top: 150px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .h1{
+            font-family: sans-serif;
+            text-align: center;
+            font-size: 25;
+        }
+        h3{
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: -20px;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th{
+            font-family: sans-serif;
+            background-color: #1315b9;
+            color: #fff;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            height: 35px;
+            font-size: 18px;
+            border: 1px solid #1315b9;
+        }
+        td{
+            font-family: sans-serif;
+            background-color: transparent;
+            border: 1px solid #1315b9;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+        .td-designation{
+            font-family: sans-serif;
+            padding-left: 10px;
+        }    
+        .td{
+            font-family: sans-serif;
+            width: 115px;
+            text-align: center;
+        }
+        .td-n{
+            font-family: sans-serif;
+            width: 50px;
+            text-align: center;
+        }
+        #tab-2{
+            font-family: sans-serif;
+            margin-top: 20px;
+        }
+        .td-designation-2{
+            font-family: sans-serif;
+            text-align: center;
+        }    
+        .td-2{
+            font-family: sans-serif;
+            width: 115px;
+            text-align: center;
+        }
+        .droit{
+            width: 100%;
+        }
+        .div-payer{
+            position: relative;
+            width: 200px;
+            height: 100px;
+            left: 10%;
+            transform: rotate(-30deg);
+            opacity: 0.5;
+        }
+        .p-livreur{
+            font-family: sans-serif;
+            text-decoration: underline;
+            float: right;
+        }
+        .footer{
+            background-color: yellowgreen;
+            position: absolute;
+            width: 100%;
+            height: 160px;
+            bottom: 40px;
+            z-index: 0.5;
+        }
+        .cachet{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 65%;
+            bottom: 0px;
+            opacity: 0.6;
+            transform: rotate(-45deg);
+        }
+        .fond{
+            position: absolute;
+            width: 80%;
+            height: 300px;
+            left: 10%;
+            bottom: 0px;
+            opacity: 0.1;
+            top: 40%;
+            transform: rotate(-45deg);
+        }
+
+        .footer-footer{
+            background-color: teal;
+            width: 100%;
+            height: 40px;
+            margin-bottom: 0px;
+            padding-top: 5px;
+            border-top: 1px solid #051959;
+            display: flex;
+            flex-direction: row;
+        }
+        .footer-footer-1{
+            background-color: red;
+            width: 16.5%;
+            height: 40px;
+            padding-top: 5px;
+            border-top: 1px solid #051959;
+        }
+        .footer-1{
+            background-color: antiquewhite;
+            width: 100%;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-1 img{
+            width: 20px;
+            height: 20px;
+        }
+        .footer-2{
+            background-color: antiquewhite;
+            width: 100%;
+            height: 10px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }

@@ -15,77 +15,87 @@ $incrementation = 1;
 <body>
     <style type="text/css">
         body{
-            font-family: sans-serif;
+            font-family: cursive;
         }
-        .div-facture{
-            background: white;
-            width: 85%;
-            top: 0%;
-            left: 7.5%;
+        .logo-header{
+            width: 70%;
+            height: 75px;
+            margin-top: 0%;
+            margin-left: 15%;
+        }
+        .div-header{
+            width: 100%;
+            height: 75px;
+            border-bottom: 1px solid black;
+        }
+        .div-site{
+            width: 100%;
+            height: 25px;
+            font-size: 13px;
+            text-align: center;
+        }
+        .div-adresse{
+            width: 100%;
+            height: 25px;
+            font-size: 12px;
+            display: flex;
+            flex-direction: row;
+        }
+        .header{
+            width: 100%;
+            height: 50px;
+            display: block;
+        }
+        .header-1, .header-2, .header-3, .header-4, .header-5{
+            width: 20%;
+            height: 100%;
             display: flex;
             flex-direction: column;
         }
-        .div-header{
+        .header-1{
+            margin-left: 0%;
             margin-top: 0%;
+        }
+        .header-2{
+            margin-left: 20%;
+            margin-top: -50px;
+        }
+        .header-3{
+            margin-left: 40%;
+            margin-top: -50px;
+        }
+        .header-4{
+            margin-left: 60%;
+            margin-top: -50px;
+        }
+        .header-5{
+            margin-left: 80%;
+            margin-top: -50px;
+        }
+        .div-header-1{
             width: 100%;
-            height:150px;
-            top: 0%;
+            height: 50%;
         }
-        .div-centre{
-            width: 77.5%;
+        .div-header-1 img{
+            width: 15%;
+            margin-left: 42.5%;
+            height: 20px;
+            float: center;
         }
-        .div-logo-1{
-            float: left;
-            width: 22.5%;
-            height: 150px;
-            display: flex;
-        }
-        .div-logo-2{
-            float: right;
-            margin-top: -20.8%;
-            width: 22.5%;
-            height: 150px;
-        }
-        .logo{
-            width: 120px;
-            height: 60px;
-            margin-top: 19px;
-            margin-left: 15px;
-        }
-        h1{
-            font-family: sans-serif;
-            text-align: center;
-            font-size: 20px;
-        }
-        .p-site{
-            font-family: sans-serif;
-            text-align: center;
-            color: #1315b9;
-            margin-top: 0px;
-            font-size: 16px;
-        }
-        .p-infos{
-            font-family: sans-serif;
-            text-align: center;
-            position: ;
-            margin-top: -20px;
-        }
-        .date{
-            background: transparent;
-            border-top: 1px solid #1315b9;
+        .div-header-2{
             width: 100%;
-            height: 30px;
-            bottom: 5px;
+            height: 50%;
+            font-size: 11px;
+            text-align: center;
+            padding-top: 7px;
         }
-        .p-date{
-            font-family: sans-serif;
-            margin-top: 10px;
-            text-align: right;
-        }
+        /* INFOS */
+
         .infos{
             width: 100%;
             width: 90%;
             left: 5%;
+            margin-top: 25px;
             display: flex;
             flex-direction: row;
         }
@@ -105,70 +115,62 @@ $incrementation = 1;
         }
         .info{
             width: 100%;
+            font-size: 13px;
             display: flex;
             flex-direction: row;
         }
         .facture{
             width: 100%;
-            margin-top: 150px;
+            margin-top: 75px;
             padding-top: 10px;
             padding-bottom: 10px;
         }
         .h1{
-            font-family: sans-serif;
             text-align: center;
             font-size: 25;
         }
         h3{
-            font-family: sans-serif;
             text-align: center;
             margin-top: -20px;
+            text-decoration: underline;
         }
         table{
             width: 100%;
             border-collapse: collapse;
         }
         th{
-            font-family: sans-serif;
-            background-color: #1315b9;
+            background-color: #051959;
             color: #fff;
             padding-top: 7px;
             padding-bottom: 7px;
             height: 35px;
             font-size: 18px;
-            border: 1px solid #1315b9;
+            border: 1px solid #051959;
         }
         td{
-            font-family: sans-serif;
             background-color: transparent;
-            border: 1px solid #1315b9;
+            border: 1px solid #051959;
             padding-top: 7px;
             padding-bottom: 7px;
         }
         .td-designation{
-            font-family: sans-serif;
             padding-left: 10px;
         }    
         .td{
-            font-family: sans-serif;
             width: 115px;
             text-align: center;
         }
         .td-n{
-            font-family: sans-serif;
             width: 50px;
             text-align: center;
         }
         #tab-2{
-            font-family: sans-serif;
             margin-top: 20px;
         }
         .td-designation-2{
-            font-family: sans-serif;
             text-align: center;
         }    
         .td-2{
-            font-family: sans-serif;
             width: 115px;
             text-align: center;
         }
@@ -184,57 +186,73 @@ $incrementation = 1;
             opacity: 0.5;
         }
         .p-livreur{
-            font-family: sans-serif;
             text-decoration: underline;
             float: right;
         }
-        .footer{
+        .date{
+            background: transparent;
+            border-top: 1px solid #051959;
+            width: 100%;
+            height: 30px;
+            bottom: 5px;
+        }
+        .p-date{
+            font-family: cursive;
+            margin-top: 10px;
+            text-align: right;
+        }
+        .fond{
             position: absolute;
             width: 100%;
-            height: 200px;
+            height: 220px;
+            left: 0%;
             bottom: 0px;
-            z-index: 0.5;
+            top: 35%;
+            transform: rotate(-45deg);
         }
         .cachet{
             position: absolute;
             width: 200px;
             height: 200px;
             left: 65%;
-            bottom: 0px;
+            bottom: 100px;
             opacity: 0.6;
             transform: rotate(-45deg);
         }
-        .fond{
+
+
+        .footer{
             position: absolute;
-            width: 80%;
-            height: 300px;
-            left: 10%;
+            width: 100%;
+            height: 225px;
             bottom: 0px;
-            opacity: 0.1;
-            top: 40%;
-            transform: rotate(-45deg);
+            left: 0%;
+            border-top: 1px solid black;
+            text-align: right;
+        }
+        .footer-1{
+            position: absolute;
+            width: 100%;
+            height: 55px;
+            padding-top: 5px;
+            bottom: 0px;
+            left: 0%;
+            border-top: 1px solid black;
         }
     </style>
     
     <div class="contenair">
-            <img src="images/logo/logo.jpg" class="fond">
+                
+        <img src="images/logo/logo.jpg" class="logo-header">
         <div class="div-header">
-            <div class="div-logo-1">
-                <img src="images/logo/logo.jpg" class="logo">
-            </div>
-            <div class="div-centre">
-                <h1>Somba Na Ndaku en ligne</h1>
-                <p class="p-site">Site web : www.snn.com</p>
-                <p class="p-infos">Facebook : snn-officiel</p>
-                <p class="p-infos">Contact : +243 813 896 978</p>
-                <p class="p-infos">Whatsapp : +243 897 283 842</p>
-                <p class="p-infos">Twetter : @snn-ifficiel</p>
-            </div>
-            <div class="div-logo-2">
-                <img src="images/logo/logo.jpg" class="logo">
+            <div class="div-site">
+                www.sombanandaku.com<br>
+                155 Avenue de la justice, Quartier Joli parc Commune de la Gombe<br>
+                RCCM : AAB-4D-14D-45<br>
+                Id.nat : 251456
             </div>
         </div>
-
+        
         <div class="date">
             <p class="p-date">Kinshasa, le {{ $livraison->date_livraison }}
         </div>
@@ -259,7 +277,7 @@ $incrementation = 1;
             </div>
             <div class="infos-2">
                 <div class="info">
-                        <strong>Adresse Livraison</strong>
+                        <strong>Livraison</strong>
                     : {{ $livraison->adresse_livraison }}
                 </div>
                 <div class="info">
@@ -277,21 +295,21 @@ $incrementation = 1;
             </div>
         </div>
         <div class="facture">
-            <h1 class="h1">FACTURE </h1>
+            <h1 class="h1">FACTURE</h1>
             <h3>Nº SNN/{{ $client->id."/".$livraison->id."/".explode('-', $livraison->date_livraison)[2]."/".explode('-', $livraison->date_livraison)[1]."/".explode('-', $livraison->date_livraison)[0] }}</h3>
         </div>
         <div class="droit">
-            A droit à ce qui suit:
+            Doit pour ce qui suit:
         </div>
         <div class="container">
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Nº</th>
-                        <th>DESIGNATION</th>
-                        <th>Qté</th>
-                        <th>P.U$</th>
-                        <th>P.T$</th>
+                        <th><strong>Nº</strong></th>
+                        <th><strong>DESIGNATION</strong></th>
+                        <th><strong>Qté</strong></th>
+                        <th><strong>P.U($)</strong></th>
+                        <th><strong>P.T($)</strong></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -331,13 +349,63 @@ $incrementation = 1;
                 </tbody>
             </table>
         </div>
-        <div class="footer">
+        <!--div class="footer">
                 <p class="p-livreur">{{ $livreur->name." ".$livreur->postnom." ".$livreur->prenom }}<br>
                     Livreur
                 </p>
             <img src="images/cachet/CACHET.jpg" class="cachet">
+        </div-->
+        <div class="footer">
+            {{ $livreur->name." ".$livreur->postnom." ".$livreur->prenom }}
         </div>
+        <div class="footer-1">
+            <div class="header">
+                <div class="header-1">
+                    <div class="div-header-1">
+                        <img src="images/rx/contact.jpg">
+                        <img src="images/rx/whatsapp.jpg">
+                    </div>
+                    <div class="div-header-2">
+                        +243 813 896 978
+                    </div>
+                </div>
+                <div class="header-2">
+                    <div class="div-header-1">
+                        <img src="images/rx/facebook.jpg">
+                    </div>
+                    <div class="div-header-2">
+                        somba na ndaku
+                    </div>
+                </div>
+                <div class="header-3">
+                    <div class="div-header-1">
+                        <img src="images/rx/email.jpg">
+                    </div>
+                    <div class="div-header-2">
+                        somba.na.ndaku@gmail.com
+                    </div>
+                </div>
+                <div class="header-4">
+                    <div class="div-header-1">
+                        <img src="images/rx/twitter.jpg">
+                    </div>
+                    <div class="div-header-2">
+                        @SombaNaNdaku
+                    </div>
+                </div>
+                <div class="header-5">
+                    <div class="div-header-1">
+                        <img src="images/rx/instagram.jpg">
+                    </div>
+                    <div class="div-header-2">
+                        somba na ndaku
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--img src="images/logo/logo.png" class="fond"-->
         <img src="images/cachet/PAYER.jpg" class="div-payer">
+        <img src="images/cachet/CACHET.jpg" class="cachet">
     </div>
 
     <script src="styles/bootstrap4/popper.js"></script>

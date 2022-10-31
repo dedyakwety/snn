@@ -126,7 +126,7 @@ use App\Models\Articles;
 				</div>
 			@else
 				<div class="panier-vide">
-					<h2>Le parnier est vide</h2>
+					<h2>Le parnier est vide!</h2>
 				</div>
 			@endif
 			@endforelse

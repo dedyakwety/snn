@@ -15,7 +15,7 @@
         <!-- Session Status -->
         <div class="div-form">
             <div class="logo">
-                <img src="{{ asset('images/logo/logo.jpg') }}" alt="image-logo" class="img-logo">
+                <img src="{{ asset('images/logo/logo.png') }}" alt="image-logo" class="img-logo">
             </div>
             <h3>Se conneter</h3>
             <div class="message">

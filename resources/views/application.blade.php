@@ -412,6 +412,49 @@
 
 		@yield('client-index')
 
+		<div class="benefit">
+			<div class="container">
+				<div class="row benefit_row">
+					<div class="col-lg-3 benefit_col">
+						<div class="benefit_item d-flex flex-row align-items-center">
+							<div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+							<div class="benefit_content">
+								<h6>Livraison gratuit</h6>
+								<p>à domicile (na ndaku)</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 benefit_col">
+						<div class="benefit_item d-flex flex-row align-items-center">
+							<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+							<div class="benefit_content">
+								<h6>Paiement à domicile par :</h6>
+								<p>espèce, electronique(Orange money, M-pesa, Airtel money et UBA 004 525 68 85)</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 benefit_col">
+						<div class="benefit_item d-flex flex-row align-items-center">
+							<div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+							<div class="benefit_content">
+								<h6>CommandeZ chaque jour 24h/24h dans en ligne</h6>
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 benefit_col">
+						<div class="benefit_item d-flex flex-row align-items-center">
+							<div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+							<div class="benefit_content">
+								<h6>6 jours de livraison :</h6>
+								<p>du lundi au vendredi de 08h' à 15h30' et samedi de 08h' à 13h'</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		@if(!Route::is('login'))
 			@include('layouts.footer.footer')
 		@endif

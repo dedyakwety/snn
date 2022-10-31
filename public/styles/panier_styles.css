@@ -44,11 +44,16 @@ COLOR PALETTE
 *********************************/
 
 .panier-vide{
-	font-size: 15px;
+	font-size: 13px;
 	width: 100%;
+	height: 100vh;
+	margin-top: -150px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+.panier-vide h2{
+	font-size: 14px;
 }
 .image-principale{
 	width: 100%;

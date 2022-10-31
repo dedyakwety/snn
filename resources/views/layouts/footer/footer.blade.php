@@ -2,13 +2,14 @@
     <div class="footer-1">
         <div class="div-1">
         	<h3>Envoyez nous un message</h3>
-        	<form action="" method="" class="form">
+        	<form action="{{ route('store_message') }}" method="POST" class="form">
         		@csrf
         		@guest
-        		<input type="text" name="nom" class="input" placeholder="Nom">
-        		<input type="number" name="contact" class="input" placeholder="Contact">
+        		<input type="text" name="nom" class="input" placeholder="Nom" required>
+        		<input type="number" name="contact" class="input" placeholder="Contact" required>
+                <input type="email" name="email" class="input" placeholder="Email" required>
         		@endguest
-        		<textarea name="message" class="message" placeholder="Votre message"></textarea>
+        		<textarea name="message" class="message" placeholder="Votre message" required></textarea>
         		<button type="submit" class="boutton-footer">Envoyez</button>
         	</form>
         </div>

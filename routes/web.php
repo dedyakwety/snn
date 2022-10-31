@@ -81,6 +81,9 @@ Route::get('/Boutique/{id}', 'App\Http\Controllers\Boutique@articles')->name('bo
 Route::get('/Reset_password_user/{id}', 'App\Http\Controllers\Reset_password@index')->middleware(['auth'])->name('reset_password_user_index');
 Route::post('/Reset_password/{id}', 'App\Http\Controllers\Reset_password@reset')->middleware(['auth'])->name('reset');
 
+// MESSAEGES
+Route::post('/Store_message', 'App\Http\Controllers\Message@store')->name('store_message');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

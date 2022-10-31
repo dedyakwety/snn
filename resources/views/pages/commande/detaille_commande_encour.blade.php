@@ -7,7 +7,7 @@ use App\Models\Articles;
 	<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
 		
 		<div class="div-h2">
-			<a href="{{ route('annulation_commande', ['id' => $livraison->id]) }}" class="btn btn-primary">Annuler la commande</a>
+			<a href="{{ route('annulation_commande', ['id' => $livraison->id]) }}" class="btn btn-primary" id="btn-annuler">Annuler la commande</a>
 		</div>
 		@if(Session::has('succes'))
 			<div class="message">

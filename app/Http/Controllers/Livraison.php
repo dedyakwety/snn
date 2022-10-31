@@ -191,6 +191,10 @@ class Livraison extends Controller
         
         if((!$livraison->livreur_id) && (Auth::user()->role_id == 1))
         {
+            if($request->livreur == "null")
+            {
+                return redirect()->route("viewFacture", $livraison->id);
+            }
             $request->validate([
                 'livreur' => ['required'],
             ]);
