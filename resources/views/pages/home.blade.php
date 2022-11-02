@@ -4,10 +4,59 @@
 
 <!-- Slider -->
 
-	<div class="main_slider" style="background-image:url(images/slider_1.jpg)">
+	<div class="main_slider">
+		<div id="demo" class="carousel slide" data-ride="carousel">
+
+		  	<!-- Indicators -->
+		  	<ul class="carousel-indicators">
+		    	<li data-target="#demo" data-slide-to="0" class="active"></li>
+		    	<li data-target="#demo" data-slide-to="1"></li>
+		    	<li data-target="#demo" data-slide-to="2"></li>
+		  	</ul>
+
+		  	<!-- The slideshow -->
+		  	<div class="carousel-inner" id="carousel">
+		    	<div class="carousel-item active">
+		      		<img src="{{ asset('images/caroussel/affiche-pc.jpg') }}" class="img-carousel-pc" alt="Los Angeles">
+		      		<img src="{{ asset('images/caroussel/affiche-phone.jpg') }}" class="img-carousel-phone" alt="Los Angeles">
+		    	</div>
+			    <div class="carousel-item">
+			      	<img src="{{ asset('images/caroussel/affiche-pc.jpg') }}" class="img-carousel-pc" alt="Chicago">
+			      	<img src="{{ asset('images/caroussel/affiche-phone.jpg') }}" class="img-carousel-phone" alt="Chicago">
+			    </div>
+			    <div class="carousel-item">
+			      	<img src="{{ asset('images/caroussel/affiche-pc.jpg') }}" class="img-carousel-pc" alt="New York">
+			      	<img src="{{ asset('images/caroussel/affiche-phone.jpg') }}" class="img-carousel-phone" alt="New York">
+			    </div>
+		  	</div>
+
+		  	<!-- Left and right controls -->
+		  	<a class="carousel-control-prev" href="#demo" data-slide="prev">
+		    	<span class="carousel-control-prev-icon"></span>
+		  	</a>
+		  	<a class="carousel-control-next" href="#demo" data-slide="next">
+		    	<span class="carousel-control-next-icon"></span>
+		  	</a>
+		</div>
+	</div>
+
+	<div class="main_slider-1"></div>
+
+	<div class="main_slider-2">
 		<div class="container fill_height">
 			<div class="row align-items-center fill_height">
 				<div class="col">
+					<div class="informer">
+						@guest
+							Nous vous livrons les articles de qualités à domicile partout à Kinshasa, et vous offre une remise de 3% sur la totalité de vos 5 achats au 5ème achat en créant votre compte pour passer vos commandes en toutes sécurité enfin de bénéficier de remises en boucle. Exemple :<br>
+							Achat 1 = 100$ payer 100$<br>
+							Achat 2 = 100$ payer 100$<br>
+							Achat 3 = 100$ payer 100$<br>
+							Achat 4 = 100$ payer 100$<br>
+							Achat 5 = 100$ - (500$/100) * 3 font 15$ payer 85$<br>
+							<strong>NB: En boucle</strong>
+						@endguest
+					</div>
 					@auth
 						@if(Auth::user()->role_id == 1)
 						<div class="main_slider_content">
@@ -23,6 +72,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	<!-- Banner -->
 

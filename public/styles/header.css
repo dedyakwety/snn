@@ -821,11 +821,18 @@ section
 /*********************************
 3.6 Logo
 *********************************/
-
+.img-logo{
+	position: absolute;
+	top: 25px;
+	width: 200px;
+	height: 40px;
+}
 .logo_container
 {
 	position: absolute;
 	top: 50%;
+	width: 200px;
+	height: 40px;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);

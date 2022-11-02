@@ -233,17 +233,12 @@
 			<div class="main_nav_container">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-12 text-right">
-							<!--div class="logo_contenair">
+						<div class="col-lg-12">
+							<div class="logo_container">
 								<a href="{{ route('index') }}">
 									<img src="{{ asset('images/logo/logo.jpg') }}" alt="image-logo">
 								</a>
 							</div>
-							<div class="logo">
-								<a href="{{ route('index') }}">
-									<img src="{{ asset('images/logo/logo.jpg') }}" alt="image-logo" class="img-logo">
-								</a>
-							</div-->
 							<nav class="navbar">
 								<ul class="navbar_menu">
 									<li><a href="{{ route('index') }}">Accueil</a></li>
@@ -253,8 +248,7 @@
 									<li><a href="#">apropos</a></li>
 								</ul>
 								<ul class="navbar_user">
-
-									<!--li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li-->
+								
 									@auth
 										<li><a href="{{ route('Profil.index') }}"><i class="fa fa-user" aria-hidden="true"></i></a></li>
 									
@@ -284,6 +278,7 @@
 										</li>
 									@endauth
 								</ul>
+
 								<div class="hamburger_container">
 									<i class="fa fa-bars" aria-hidden="true"></i>
 								</div>
@@ -300,6 +295,7 @@
 			<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
 			<div class="hamburger_menu_content text-right">
 				<ul class="menu_top_nav">
+
 					<!--li class="menu_item has-children">
 						<a href="#">
 							usd
@@ -362,7 +358,7 @@
 					@endauth
 					<li class="menu_item"><a href="{{ route('categorie', ['id' => 'homme']) }}">Hommes</a></li>
 					<li class="menu_item"><a href="{{ route('categorie', ['id' => 'femme']) }}">Femmes</a></li>
-					<li class="menu_item"><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfants</a></li>
+					<li class="menu_item"><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfantsss</a></li>
 					<li class="menu_item"><a href="#">A propos</a></li>
 				</ul>
 			</div>
