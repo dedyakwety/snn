@@ -117,8 +117,6 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/boutique_index.css') }}">
 @endif
 
-@vite(['resources/css/app.css', 'resources/js/app.js'])
-
 </head>
 
 <body>
