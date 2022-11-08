@@ -132,7 +132,7 @@ use App\Models\Articles;
 			@endforelse
 			@if(count($commandes))
 				<div class="div-infos-commande">
-					<form action="{{ route('Livraison.store') }}" method="POST">
+					<form action="{{ route('Livraison.store') }}" method="POST" class="form">
 						@csrf
 						<h2 class="h2-info">Informations pour la livraison</h2>
 						<div class="infos-liv">
@@ -140,11 +140,8 @@ use App\Models\Articles;
 								Date et heure
 							</div>
 							<div class="infos-liv-2">
-								<div class="div-input">
-									<input type="date" name="date_livraison" class="input-form" required>
-								</div>
-								<div class="div-input">
-									<select name="heure_livraison" class="input-form" required>
+								<input type="date" name="date_livraison" class="input-form" required>
+								<select name="heure_livraison" class="input-form" required>
 									<option>HEURE</option>
 									<option value="08H00 à 08H30">08H00 à 08H30</option>
 									<option value="08H30 à 09H00">08H30 à 09H00</option>
@@ -164,14 +161,18 @@ use App\Models\Articles;
 									<option value="15H30 à 16H00">15H30 à 16H00</option>
 									<option value="16H00 à 16H30">16H00 à 16H30</option>
 								</select>
-								</div>
 							</div>
 						</div>
 						<div class="commentaire">
-							<textarea name="adresse_livraison" class="text" min="50" max="200" placeholder="Adresse" required></textarea>
+							<div class="commentaire-texte">
+								Adressee livraison
+							</div>
+							<div class="com">
+								<textarea name="adresse_livraison" class="text" min="50" max="200" placeholder="Adresse" required id="commentaire"></textarea>
+							</div>
 						</div>
 						<div class="infos-button">
-								<button type="submit" class="btn btn-primary">Valider la Commande</button>
+							<button type="submit" class="boutton" id="boutton">Valider la Commande</button>
 						</div>
 					</form>
 				</div>

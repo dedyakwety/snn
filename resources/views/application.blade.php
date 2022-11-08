@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>SNN</title>
+<title>somba na ndaku</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Colo Shop Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--meta http-equiv="refresh" content="15" /-->
+
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap4/bootstrap.min.css') }}">
 <link href="{{ asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
@@ -190,6 +193,10 @@
 													<li><a href="{{ route('Agents.index') }}">Agents</a></li>
 													<li><a href="{{ route('Gestion.index') }}">Gestion</a></li>
 													<li><a href="{{ route('boutique_index') }}">Boutique</a></li>
+													<li><a href="{{ route('boutique_index') }}">
+													<i class="entypo-eye"></i>
+													Vu
+													</a></li>
 													@endif
 													<li><a href="{{ route('client_index') }}">Clients</a></li>
 												</ul>
@@ -461,6 +468,8 @@
 	<script src="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
 	<script src="{{ asset('js/categories_custom.js') }}"></script>
 @endif
+
+	<script src="{{ asset('js/refresh_page.js') }}"></script>
 
 	<script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
 	<script src="{{ asset('styles/bootstrap4/popper.js') }}"></script>

@@ -96,12 +96,12 @@ class Article extends Controller
             $path_1 = $request->image_1->storeAs(
                 'images/user/article'.$id_article,
                 'image_1'.".".$request->image_1->getClientOriginalExtension(),
-                'public',
+                's3',
             );
             // Si la taille d'image est superieur 1.5mb Suprimer Envoi exception 
             if((((double)Storage::size("public/".$path_1) / 1024) / 1024) > 2.5)
             {
-                Storage::disk('public')->delete("public/".$path_1);
+                Storage::disk('s3')->delete("public/".$path_1);
                 // RETOUR AVEC MESSAGE
                 Session::put('erreur', 'La photo est trop lourde doit avoir au max 2.5MB');
                 return redirect()->route('index');
@@ -110,12 +110,12 @@ class Article extends Controller
             $path_2 = $request->image_2->storeAs(
                 'images/user/article'.$id_article,
                 'image_2'.".".$request->image_2->getClientOriginalExtension(),
-                'public',
+                's3',
             );
             // Si la taille d'image est superieur 2.5mb Suprimer Envoi exception 
             if((((double)Storage::size("public/".$path_2) / 1024) / 1024) > 2.5)
             {
-                Storage::disk('public')->delete("public/".$path_2);
+                Storage::disk('s3')->delete("public/".$path_2);
                 // RETOUR AVEC MESSAGE
                 Session::put('erreur', 'La photo est trop lourde doit avoir au max 2.5MB');
                 return redirect()->route('index');
@@ -124,12 +124,12 @@ class Article extends Controller
             $path_3 = $request->image_3->storeAs(
                 'images/user/article'.$id_article,
                 'image_3'.".".$request->image_3->getClientOriginalExtension(),
-                'public',
+                's3',
             );
             // Si la taille d'image est superieur 2.5mb Suprimer Envoi exception 
             if((((double)Storage::size("public/".$path_3) / 1024) / 1024) > 2.5)
             {
-                Storage::disk('public')->delete("public/".$path_3);
+                Storage::disk('s3')->delete("public/".$path_3);
                 // RETOUR AVEC MESSAGE
                 Session::put('erreur', 'La photo est trop lourde doit avoir au max 2.5MB');
                 return redirect()->route('index');
@@ -138,12 +138,12 @@ class Article extends Controller
             $path_4 = $request->image_4->storeAs(
                 'images/user/article'.$id_article,
                 'image_4'.".".$request->image_4->getClientOriginalExtension(),
-                'public',
+                's3',
             );
             // Si la taille d'image est superieur 2.5mb Suprimer Envoi exception 
             if((((double)Storage::size("public/".$path_4) / 1024) / 1024) > 2.5)
             {
-                Storage::disk('public')->delete("public/".$path_4);
+                Storage::disk('s3')->delete("public/".$path_4);
                 // RETOUR AVEC MESSAGE
                 Session::put('erreur', 'La photo est trop lourde doit avoir au max 2.5MB');
                 return redirect()->route('index');

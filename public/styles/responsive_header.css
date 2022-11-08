@@ -92,16 +92,24 @@
 
 @media only screen and (max-width: 480px)
 {
-	.logo{
-		position: absolute;
-		width: 50px;
-		height: 25px;
-		top: 20px;
-		right: 75%;
-	}
 	.img-logo{
+		position: absolute;
+		top: 25px;
 		width: 50px;
-		height: 25px;
+		height: 40px;
+	}
+	.logo_container
+	{
+		position: absolute;
+		top: 50%;
+		width: 50px;
+		height: 40px;
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+		transform: translateY(-50%);
+		left: 15px;
 	}
 	.logo_container a
 	{
