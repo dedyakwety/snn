@@ -98,6 +98,8 @@ class Article extends Controller
                 'image_1'.".".$request->image_1->getClientOriginalExtension(),
                 's3',
             );
+            dd("Images bien enregistrer");
+            /*
             // Si la taille d'image est superieur 1.5mb Suprimer Envoi exception 
             if((((double)Storage::size("public/".$path_1) / 1024) / 1024) > 2.5)
             {
@@ -158,7 +160,7 @@ class Article extends Controller
             ]);
             // RETOUR AVEC MESSAGE
             Session::put('succes', 'Article ajouter avec sussès');
-            return redirect()->route('index');
+            return redirect()->route('index');*/
 
         } catch (Exception $e) {
             return redirect()->route('404');
