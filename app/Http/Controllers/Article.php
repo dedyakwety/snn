@@ -97,7 +97,7 @@ class Article extends Controller
                 'images/user/article'.$id_article,
                 'image_1'.".".$request->image_1->getClientOriginalExtension(),
             );
-            dd("Images bien enregistrer");
+            dd("Images bien enregistrer dans la bdd");
             /*
             // Si la taille d'image est superieur 1.5mb Suprimer Envoi exception 
             if((((double)Storage::size("public/".$path_1) / 1024) / 1024) > 2.5)
