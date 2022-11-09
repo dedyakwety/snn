@@ -10,7 +10,7 @@
 	@endif
 		<div class="product discount product_filter">
 			<div class="product_image">
-				
+				<img src="{{ asset('s3://stockage-sombanandaku/images/user/article14/image_1.jpg') }}" alt="image-article">
 			</div>
 			<div class="favorite favorite_left"></div>
 			@auth
