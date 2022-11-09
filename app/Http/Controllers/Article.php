@@ -96,7 +96,6 @@ class Article extends Controller
             $path_1 = $request->image_1->storeAs(
                 'images/user/article'.$id_article,
                 'image_1'.".".$request->image_1->getClientOriginalExtension(),
-                's3',
             );
             dd("Images bien enregistrer");
             /*
