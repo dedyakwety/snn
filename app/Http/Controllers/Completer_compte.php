@@ -59,12 +59,15 @@ class Completer_compte extends Controller
                 'entreprise' => ['required'],
             ]);
 
+            
             // ENREGISTREMENT DE LA PHOTO DE PROFIL
             $path = $request->photo_profil->storeAs(
-                'images/user/profil'.$request->id,
+                'images/user/profil/',
                 Auth::user()->id.".".$request->photo_profil->getClientOriginalExtension(),
-                'public',
+                's3',
             );
+            
+            /*
             // Si la taille d'image est superieur 1.5mb Suprimer Envoi exception 
             if((((double)Storage::size("public/".$path) / 1024) / 1024) > 1.5)
             {
@@ -72,7 +75,7 @@ class Completer_compte extends Controller
                 // RETOUR AVEC MESSAGE
                 Session::put('erreur', 'La photo est trop lourde doit avoir au max 1.5MB');
                 return redirect()->route('Completion_compte.index');
-            }
+            }*/
             Images::create([
                 'user_id' => Auth::user()->id,
                 'profil' => $path,

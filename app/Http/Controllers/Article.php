@@ -100,6 +100,7 @@ class Article extends Controller
                 'image_1'.".".$request->image_1->getClientOriginalExtension(),
                 's3',
             );
+            
             /*
             // Si la taille d'image est superieur 1.5mb Suprimer Envoi exception 
             if((((double)Storage::size("public/".$path_1) / 1024) / 1024) > 2.5)
