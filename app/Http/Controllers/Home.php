@@ -20,12 +20,10 @@ class Home extends Controller
     {
 
         //visits(Articles::All())->increment();
-        if(count($articles) > 0)
-        {
-            $articles = Articles::where('valide', true)
-                                ->orderBy('created_at', 'desc')
-                                ->paginate(60);
-        }
+        
+        $articles = Articles::where('valide', true)
+                            ->orderBy('created_at', 'desc')
+                            ->paginate(60);
         
         //visits(articles::findOrFail(1))->increment();
 
