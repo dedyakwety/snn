@@ -60,7 +60,7 @@
 					@auth
 						@if(Auth::user()->role_id == 1)
 						<div class="main_slider_content">
-							<h6 class="h6">Vos avantages</h6>
+							<h6 class="h6">Ajoutez un article</h6>
 							<!--h1>Livraison gratuit à domocile</h1><br><br>
 							<h1>Obtenez jusqu'à 10% de réduction de 5ème achat</h1-->
 							@include('layouts.article.form_ajout')

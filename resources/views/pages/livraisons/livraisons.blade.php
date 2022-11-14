@@ -5,7 +5,7 @@ use App\Models\User;
 
 @section('livraison-index')
 	<div class="div-livraisons">
-		@if($commandes)
+		@if(count($commandes) > 0)
 		  	<h2>Commandes
 		  		@if(Auth::user()->role_id == 1 OR Auth::user()->role_id == 4)
 		  			{{ $encour."/".$livree }}
@@ -108,16 +108,13 @@ use App\Models\User;
 				  	</div>
 			  	@empty
 			  		<div class="no-commande">
-			  			Aucun commande pour l'instant!
+			  			Aucune commande pour l'instant!
 			  		</div>
 			  	@endforelse
 		  	</div>
 	  	@else
 		  	<div class="div-vide">
-	  			<h3>Pas de commande pour l'instant</h3>	
-	  			<div class="div-a">	  		
-	  				<a href="{{ route('index') }}" class="btn btn-primary" id="a-accueil">Accueil</a>
-	  			</div>
+	  			Pas de commande pour l'instant
 	  		</div>
 	  	@endif
 	  	<div class="div-paginate">

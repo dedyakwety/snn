@@ -1,11 +1,19 @@
 /*********************************
 3.7 Main Slider
 *********************************/
+
+
+
 .div-recherche{
 	width: 100%;
 	margin-top: 25px;
 	display: flex;
 	flex-direction: row-reverse;
+}
+.message-article{
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
 }
 .section_title
 {
@@ -70,9 +78,9 @@
 {
 	width: 100%;
 	height: 100vh;
-	background-color: #000;
+	background-color: #d4d4d4;
 	margin-top: -100vh;
-	opacity: 0.7;
+	opacity: 0.5;
 }
 .main_slider-2
 {
@@ -93,8 +101,65 @@
 
 .main_slider_content
 {
-	width: 60%;
+	width: 100%;
+	margin-top: -100px;
 }
+.h6{
+	color: #000;
+	text-align: center;
+}
+.div-ajout-article{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+.div-form{
+	width: 25%;
+	height: 50px;
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+input, select{
+	background: #fff;
+	width: 90%;
+	height: 70%;
+	padding: 5px;
+	border: 1px solid #d4d4d4;
+	border-radius: 10px;
+}
+.div-comment{
+	width: 50%;
+	height: 50px;
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.commentaire-article{
+	background-color: #fff;
+	width: 95%;
+	max-width: 95%;
+	min-width: 95%;
+	height: 100%;
+	max-height: 100%;
+	min-height: 100%;
+	padding: 5px;
+	border: 1px solid #d4d4d4;
+	border-radius: 10px;
+}
+.but{
+	padding: 7px;
+	font-size: 14px;
+	border: 1px solid #d4d4d4;
+	border-radius: 10px;
+}
+
+
+
+
+
 .main_slider_content h6
 {
 	font-weight: 500;

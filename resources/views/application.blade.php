@@ -356,7 +356,7 @@
 									<li><a href="{{ route('Gestion.index') }}">Gestion</a></li>
 									<li><a href="{{ route('boutique_index') }}">Boutique</a></li>
 									@endif
-									<li><a href="#">Clients</a></li>
+									<li><a href="{{ route('client_index') }}">Clients</a></li>
 								@elseif(Auth::user()->role_id == 5)
 									<li><a href="{{ route('Livraison.index') }}">Commandes</a></li>
 								@endif
@@ -365,7 +365,7 @@
 					@endauth
 					<li class="menu_item"><a href="{{ route('categorie', ['id' => 'homme']) }}">Hommes</a></li>
 					<li class="menu_item"><a href="{{ route('categorie', ['id' => 'femme']) }}">Femmes</a></li>
-					<li class="menu_item"><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfantsss</a></li>
+					<li class="menu_item"><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfant</a></li>
 					<li class="menu_item"><a href="#">A propos</a></li>
 				</ul>
 			</div>

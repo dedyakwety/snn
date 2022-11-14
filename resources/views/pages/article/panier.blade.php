@@ -5,19 +5,21 @@
 use App\Models\Articles;
 ?>
 	<div class="container single_product_container">
-		<div class="row">
-			<div class="col">
+		@if(count($commandes))
+			<div class="row">
+				<div class="col">
 
-				<!-- Breadcrumbs -->
+					<!-- Breadcrumbs -->
 
-				<div class="breadcrumbs d-flex flex-row align-items-center">
-					<ul>
-						<li><a href="">Nombre article dans le panier : {{ count($commandes) }}</a></li>
-					</ul>
+					<div class="breadcrumbs d-flex flex-row align-items-center">
+						<ul>
+							<li><a href="">Nombre article dans le panier : {{ count($commandes) }}</a></li>
+						</ul>
+					</div>
+
 				</div>
-
 			</div>
-		</div>
+		@endif
 
 		<div class="row">
 			@forelse($commandes as $commande)
@@ -120,15 +122,14 @@ use App\Models\Articles;
 				</div>
 
 			@empty
-			@if(Session::has('succes'))
-				<div class="panier-vide">
-					{{ Session::get('succes') }}
-				</div>
-			@else
+				@if(Session::has('succes'))
+					<div class="panier-vide">
+						{{ Session::get('succes') }}
+					</div>
+				@endif
 				<div class="panier-vide">
 					<h2>Le parnier est vide!</h2>
 				</div>
-			@endif
 			@endforelse
 			@if(count($commandes))
 				<div class="div-infos-commande">

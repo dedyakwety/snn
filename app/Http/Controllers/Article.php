@@ -93,14 +93,12 @@ class Article extends Controller
 
             // ENREGISTREMENT DES IMAGES ARTICLES
                 // IMAGES 1
-            //$path = $request->file('image_1')->store('images', 's3');
             
             $path_1 = $request->image_1->storeAs(
-                'images/user/article'.$id_article,
+                'images/articles/article'.$id_article,
                 'image_1'.".".$request->image_1->getClientOriginalExtension(),
                 's3',
             );
-            
             /*
             // Si la taille d'image est superieur 1.5mb Suprimer Envoi exception 
             if((((double)Storage::size("public/".$path_1) / 1024) / 1024) > 2.5)
@@ -112,7 +110,7 @@ class Article extends Controller
             }*/
                 // IMAGES 2
             $path_2 = $request->image_2->storeAs(
-                'images/user/article'.$id_article,
+                'images/articles/article'.$id_article,
                 'image_2'.".".$request->image_2->getClientOriginalExtension(),
                 's3',
             );
@@ -128,7 +126,7 @@ class Article extends Controller
             */
             // IMAGES 3
             $path_3 = $request->image_3->storeAs(
-                'images/user/article'.$id_article,
+                'images/articles/article'.$id_article,
                 'image_3'.".".$request->image_3->getClientOriginalExtension(),
                 's3',
             );
@@ -144,10 +142,14 @@ class Article extends Controller
             */
             // IMAGES 4
             $path_4 = $request->image_4->storeAs(
-                'images/user/article'.$id_article,
+                'images/articles/article'.$id_article,
                 'image_4'.".".$request->image_4->getClientOriginalExtension(),
                 's3',
             );
+            Storage::disk('s3')->setVisibility($path_1, 'public');
+            Storage::disk('s3')->setVisibility($path_2, 'public');
+            Storage::disk('s3')->setVisibility($path_3, 'public');
+            Storage::disk('s3')->setVisibility($path_4, 'public');
             /*
             // Si la taille d'image est superieur 2.5mb Suprimer Envoi exception 
             if((((double)Storage::size("public/".$path_4) / 1024) / 1024) > 2.5)

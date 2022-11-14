@@ -113,7 +113,7 @@ class Controller extends BaseController
         $modeles = [
             'veste' => 'veste',
             'chemise' => 'chemise',
-            'pantallon' => 'pantallon',
+            'pantalon' => 'pantalon',
             'culotte' => 'culotte',
             'lacoste' => 'lacoste',
             't-short' => 't-short',

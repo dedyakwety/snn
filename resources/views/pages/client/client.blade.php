@@ -2,7 +2,13 @@
 
 @section('client-index')
 	<div class="div-client">
-		<h2>Clients</h2>
+		<h2>
+			{{ $nombre_client.' ' }}
+				Client
+			@if($nombre_client > 1)
+				s
+			@endif
+		</h2>
 		<div class="form-recherche">
 			<form action="{{ route('client_search') }}">
 				@csrf

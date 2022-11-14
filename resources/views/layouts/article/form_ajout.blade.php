@@ -1,16 +1,15 @@
 <form action="{{ route('Articles.store') }}" method="POST" class="div-ajout-article" enctype="multipart/form-data">
 	@csrf
-	@if(Session::has('succes'))
-		<p>{{ Session::get('succes') }}</p>
-	@endif
-	@if(Session::has('erreur'))
-		<p>{{ Session::get('erreur') }}</p>
-	@endif
-	<div class="div-form">
-		<h4 class="h4">Ajouter un article</h4>
+	<div class="message-article">
+		@if(Session::has('succes'))
+			{{ Session::get('succes') }}
+		@endif
+		@if(Session::has('erreur'))
+			{{ Session::get('erreur') }}
+		@endif
 	</div>
 	<div class="div-form">
-		<select name="boutique" id="categorie">
+		<select name="boutique">
 			<option>Boutique</option>
 			@foreach($boutiques as $boutique)
 			<option value="{{ $boutique->id }}" class="option">{{ $boutique->nom }}</option>
@@ -18,7 +17,7 @@
 		</select>
 	</div>
 	<div class="div-form">
-		<select name="pour" id="categorie">
+		<select name="pour">
 			<option>Pour</option>
 			@foreach($pours as $pour)
 				<option value="{{ $pour->id }}" class="option">{{ $pour->pour }}</option>
@@ -26,7 +25,7 @@
 		</select>
 	</div>
 	<div class="div-form">
-		<select name="categorie" id="categorie">
+		<select name="categorie">
 			<option>Catégorie 1</option>
 			@foreach($categories as $categorie)
 				<option value="{{ $categorie->id }}" class="option">{{ $categorie->categorie }}</option>
@@ -34,7 +33,7 @@
 		</select>
 	</div>
 	<div class="div-form">
-		<select name="modele" id="categorie">
+		<select name="modele">
 			<option>Catégorie 2</option>
 			@foreach($modeles as $modele)
 				<option value="{{ $modele->id }}" class="option">{{ $modele->modele }}</option>
@@ -42,22 +41,24 @@
 		</select>
 	</div>
 	<div class="div-form">
-		<input type="file" name="image_1" id="image" class="file">
+		<input type="file" name="image_1" id="image">
 	</div>
 	<div class="div-form">
-		<input type="file" name="image_2" id="image" class="file">
+		<input type="file" name="image_2" id="image">
 	</div>
 	<div class="div-form">
-		<input type="file" name="image_3" id="image" class="file">
+		<input type="file" name="image_3" id="image">
 	</div>
 	<div class="div-form">
-		<input type="file" name="image_4" id="image" class="file">
+		<input type="file" name="image_4" id="image">
+	</div>
+	<div class="div-form" id="prix">
+		<input type="number" name="prix" step="0.01" placeholder="Prix d'article" />
+	</div>
+	<div class="div-comment">
+		<textarea name="commentaire" placeholder="Commentaire" class="commentaire-article"></textarea>
 	</div>
 	<div class="div-form">
-		<input type="number" name="prix" id="prix" step="0.01" placeholder="Prix d'article" />
+		<button class="but" type="submit">Ajoutez</button>
 	</div>
-	<div class="div-form">
-		<textarea name="commentaire" placeholder="Commentaire" class="form-control commentaire"></textarea>
-	</div>
-	<button class="red_button shop_now_button btn btn-primary" type="submit">Ajoutez</button>
 </form>

@@ -14,6 +14,7 @@ class Client extends Controller
         $clients = User::where('role_id', 5)
                         ->orderBy('prenom', 'desc')
                         ->paginate(50);
+        $nombre_client = User::where('role_id', 5)->count();
 
         // LES COMMANDES LIVREES
         $livraisons = Livraisons::All()
@@ -22,6 +23,7 @@ class Client extends Controller
 
         return view('pages.client.client', [
             'notification' => parent::commande(),
+            'nombre_client' => $nombre_client,
             'clients' => $clients,
             'numero' => $numero,
             'livraisons' => $livraisons,
