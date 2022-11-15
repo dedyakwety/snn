@@ -14,6 +14,7 @@
         	</form>
         </div>
         <div class="div-2">
+            <h3>Joignez nous par:</h3>
             <div class="div-2-2">
                 <div class="rx">
                     <div class="rx-1">

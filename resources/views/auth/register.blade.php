@@ -7,18 +7,18 @@
             <p class="titre">Formulaire d'inscription</p>
             <!-- Name -->
             
-            <input type="text" name="name" placeholder="Nom" required autofocus />
+            <input type="text" name="name" placeholder="Nom" class="input-inscrit" required autofocus />
             
             @if(count($users) == 0)
             <!-- Post nom -->
-                <input type="text" name="postnom" placeholder="Postnom" required autofocus />
+                <input type="text" name="postnom" placeholder="Postnom" class="input-inscrit" required autofocus />
             @endif
 
             <!-- Prénom -->
-            <input type="text" name="prenom" placeholder="Prénom" required autofocus />
+            <input type="text" name="prenom" placeholder="Prénom" class="input-inscrit" required autofocus />
 
             <!-- Sexe -->
-            <select type="text" name="sexe" required autofocus />
+            <select type="text" name="sexe" class="input-inscrit" required autofocus />
                 <option>Sexe</option>
                 <option value="homme">Homme</option>
                 <option value="femme">Femme</option>
@@ -26,7 +26,7 @@
 
             @if(count($users) == 0)
             <!-- Etat civil -->
-                <select type="text" name="etat_civil" required autofocus />
+                <select type="text" name="etat_civil" class="input-inscrit" required autofocus />
                     <option>Etat civil</option>
                     <option value="célibataire">Célibataire</option>
                     <option value="marié(e)">Marié(e)</option>
@@ -36,26 +36,25 @@
             @endif
 
             <!-- Contact 1 -->
-            <input id="name" type="number" name="contact_whatsapp" placeholder="Contact Whatsapp" required autofocus />
+            <input id="name" type="number" name="contact_whatsapp" class="input-inscrit" placeholder="Contact Whatsapp" required autofocus />
 
             @if(count($users) == 0)
             <!-- Contact 2 -->
-                <input type="number" name="contact" placeholder="Contact 2" required autofocus />
+                <input type="number" name="contact" placeholder="Contact 2" class="input-inscrit" required autofocus />
             @endif
 
             @if(count($users) == 0)
             <!-- Numéro -->
-                <input type="number" name="numero" placeholder="numero domicile" required autofocus />
+                <input type="number" name="numero" placeholder="numero domicile" class="input-inscrit" required autofocus />
 
             <!-- Avenue -->
-            <input type="text" name="avenue" placeholder="Avenue domicile" required autofocus />
+            <input type="text" name="avenue" placeholder="Avenue domicile" class="input-inscrit" required autofocus />
 
             <!-- Quartier -->
-                <input type="text" name="quartier" placeholder="Quartier domicile" required autofocus />
-            </div>
+                <input type="text" name="quartier" placeholder="Quartier domicile" class="input-inscrit" required autofocus />
 
             <!-- Commune -->
-                <select type="text" name="commune" required autofocus />
+                <select type="text" name="commune" class="input-inscrit" required autofocus />
                     <option desable>Commune</option>
                     @foreach($communes as $commune)
                     <option value="{{ $commune }}">{{ $commune }}</option>
@@ -63,18 +62,20 @@
                 <select>
             @endif
             <!-- Email Address -->
-            <input type="email" name="email" placeholder="Adresse email" required />
+            <input type="email" name="email" placeholder="Adresse email" class="input-inscrit" required />
 
             <!-- Password -->
-                <input id="password" type="password"
-                                name="password"
-                                placeholder="Mot de passe" 
-                                required autocomplete="new-password" />
+            <input id="password" type="password"
+                            name="password"
+                            placeholder="Mot de passe" 
+                            class="input-inscrit" 
+                            required autocomplete="new-password" />
 
             <!-- Confirm Password -->
-                <input id="password_confirmation" type="password"
-                                placeholder="Confirmer mot de passe" 
-                                name="password_confirmation" required />
+            <input id="password_confirmation" type="password"
+                            placeholder="Confirmer mot de passe" 
+                            class="input-inscrit" 
+                            name="password_confirmation" required />
 
             <div class="bouttons">
                 <a class="boutton-1" href="{{ route('login') }}" id="btn">

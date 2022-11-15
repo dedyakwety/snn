@@ -423,7 +423,7 @@
 							<div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
 							<div class="benefit_content">
 								<h6>Livraison gratuit</h6>
-								<p>à domicile (na ndaku)</p>
+								<p>à domicile, bureau etc...)</p>
 							</div>
 						</div>
 					</div>
@@ -432,7 +432,7 @@
 							<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
 							<div class="benefit_content">
 								<h6>Paiement à domicile par :</h6>
-								<p>espèce, electronique(Orange money, M-pesa, Airtel money et UBA 004 525 68 85)</p>
+								<p>espèce, range money, M-pesa, Airtel money</p>
 							</div>
 						</div>
 					</div>
@@ -458,11 +458,11 @@
 			</div>
 		</div>
 
-		@if(!Route::is('login'))
-			@include('layouts.footer.footer')
-		@endif
-
 	</div>
+
+	@if(!Route::is('login'))
+		@include('layouts.footer.footer')
+	@endif
 
 @if(Route::is('categorie') OR Route::is('article.search'))
 	<script src="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
