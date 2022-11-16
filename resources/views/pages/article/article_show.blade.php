@@ -37,7 +37,7 @@
 						<div class="col-lg-9 image_col order-lg-2 order-1">
 							<div class="single_product_image">
 								<div class="single_product_image_background">
-									<img src="{{ asset(Storage::url($article->image->path_1)) }}" alt="image-pricipale" class="image-principale">
+									<img src="https://stockage-sombanandaku.s3.us-east-2.amazonaws.com/images/articles/article3/image_1.jpeg" alt="image-pricipale" class="image-principale">
 								</div>
 							</div>
 						</div>
