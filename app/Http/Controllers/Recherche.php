@@ -12,6 +12,8 @@ class Recherche extends Controller
 {
     public function search(Request $request)
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
 
         $q = request()->input('q');
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Adresses;
+use App\Models\Gestions;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -18,6 +19,9 @@ class Profil extends Controller
      */
     public function index()
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
+
         try {
 
             $user = User::findOrFail(Auth::user()->id);
@@ -109,6 +113,9 @@ class Profil extends Controller
      */
     public function show($id)
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
+
         try {
 
             $user = User::findOrFail($id);
@@ -133,6 +140,9 @@ class Profil extends Controller
      */
     public function edit($id)
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
+        
         try {
 
             $user = User::findOrFail(Auth::user()->id);

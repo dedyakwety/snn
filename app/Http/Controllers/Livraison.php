@@ -22,6 +22,10 @@ class Livraison extends Controller
      */
     public function index()
     {
+
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
+
         $numero = 1;
         $numero_1 = 1;
         
@@ -158,7 +162,8 @@ class Livraison extends Controller
      */
     public function show($id)
     {
-        
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
         
         return view('pages.commande.commandes', [
             'notification' => parent::commande(),
@@ -185,6 +190,8 @@ class Livraison extends Controller
      */
     public function update(Request $request, $id)
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
 
         $gestion = Gestions::findOrFail(1);
         $livraison = Livraisons::findOrFail($id);

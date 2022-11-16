@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Gestions;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
@@ -12,6 +13,9 @@ class Reset_password extends Controller
 {
     public function index($id)
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
+
         if(Auth::user()->role_id == 1)
         {
             $agent = User::findOrFail($id);
@@ -32,6 +36,9 @@ class Reset_password extends Controller
 
     public function reset(Request $request, $id)
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
+        
         if(Auth::user()->role_id == 1)
         {
             $agent = User::findOrFail($id);

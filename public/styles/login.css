@@ -8,14 +8,14 @@
 	justify-content: center;
 }
 .logo{
-	width: 70%;
+	width: 100%;
 	height: 60px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 .img-logo{
-	width: 80%;
+	width: 180px;
 	height: 50px;
 }
 .div-form{
@@ -97,8 +97,8 @@ h3{
 		justify-content: center;
 	}
 	.img-logo{
-		width: 85%;
-		height: 45px;
+		width: 100px;
+		height: 40px;
 	}
 	.form{
 		width: 100%;
@@ -132,8 +132,9 @@ h3{
 		font-size: 10px;
 	}
 	h3{
+		margin-top: 10px;
 		text-align: center;
-		font-size: 16px;
+		font-size: 10px;
 		text-transform: uppercase;
 		font-family: sans-serif;
 	}

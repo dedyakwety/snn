@@ -15,6 +15,9 @@ class Update_commande extends Controller
 {
     public function index($id)
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
+
         $livraion = Livraisons::findOrFail($id);
         $commandes = Commandes::where('user_id', Auth::user()->id)
                                 ->where('livraison_id', $livraion->id)
@@ -30,6 +33,9 @@ class Update_commande extends Controller
 
     public function update_quantite(Request $request, $id)
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
+
         $commande = Commandes::findOrFail($id);
         $article = Articles::findOrFail($commande->article_id);
         $livraison = Livraisons::findOrFail($commande->livraison_id);
@@ -124,6 +130,9 @@ class Update_commande extends Controller
 
     public function annulation($id)
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
+        
         $commandes = Commandes::where('user_id', Auth::user()->id)
                             ->where('livraison_id', $id)
                             ->get();

@@ -9,11 +9,15 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Roles;
 use App\Models\Numeros;
+use App\Models\Gestions;
 
 class Valider_agent extends Controller
 {
     public function validation_agent(Request $request)
     {
+
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
 
         try {
 

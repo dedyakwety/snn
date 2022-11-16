@@ -92,17 +92,11 @@
 
 @media only screen and (max-width: 480px)
 {
-	.img-logo{
-		position: absolute;
-		top: 25px;
-		width: 50px;
-		height: 40px;
-	}
 	.logo_container
 	{
 		position: absolute;
-		top: 50%;
-		width: 50px;
+		top: 30%;
+		width: 100px;
 		height: 40px;
 		-webkit-transform: translateY(-50%);
 		-moz-transform: translateY(-50%);
@@ -111,9 +105,25 @@
 		transform: translateY(-50%);
 		left: 15px;
 	}
+	.logo_container img
+	{
+		width: 50%;
+		height: 40px;
+		font-size: 20px;
+		color: #000;
+		font-weight: 100;
+		text-transform: uppercase;
+	}
 	.logo_container a
 	{
-		font-size: 12px;
+		font-size: 20px;
+		color: #000;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	.logo_container a span
+	{
+		color: #1315b9;
 	}
 	#caroussel-1{
 		display: none;

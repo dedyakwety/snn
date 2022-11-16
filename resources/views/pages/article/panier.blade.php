@@ -126,10 +126,11 @@ use App\Models\Articles;
 					<div class="panier-vide">
 						{{ Session::get('succes') }}
 					</div>
+				@else
+					<div class="panier-vide">
+						<h2>Le parnier est vide!</h2>
+					</div>
 				@endif
-				<div class="panier-vide">
-					<h2>Le parnier est vide!</h2>
-				</div>
 			@endforelse
 			@if(count($commandes))
 				<div class="div-infos-commande">

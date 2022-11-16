@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use App\Models\Gestions;
 
 class Mot_de_passe extends Controller
 {
@@ -18,6 +19,9 @@ class Mot_de_passe extends Controller
      */
     public function index()
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
+
         return view('pages.user.password_edit', [
             'notification' => parent::commande(),
         ]);

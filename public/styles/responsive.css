@@ -483,11 +483,12 @@
 	3.6 Logo
 	*********************************/
 
+
 	.main_slider_content
 	{
 		width: 100%;
 		padding: 0px;
-		margin-top: 0px;
+		margin-top: -50px;
 	}
 	.h6{
 		color: #000;
@@ -512,10 +513,10 @@
 	}
 	input, select{
 		background: #fff;
-		width: 97%;
-		height: 60%;
+		width: 98%;
+		height: 90%;
 		font-size: 11px;
-		padding: 4px;
+		padding: 3px;
 		border: 1px solid #d4d4d4;
 		border-radius: 10px;
 	}

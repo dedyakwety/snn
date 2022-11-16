@@ -10,10 +10,24 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Commandes;
 use App\Models\Livraisons;
+use App\Models\Gestions;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function completer_compte()
+    {
+        if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
+        {
+            return redirect()->route('Completion_compte.index');
+
+        } elseif(((Auth::user()->role_id == 5) === false) && Auth::user()->adresse_id === null){
+
+            return redirect()->route('Completion_compte.index');
+
+        }
+    }
 
     public function commande()
     {

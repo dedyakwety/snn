@@ -20,6 +20,10 @@ class Panier extends Controller
      */
     public function index()
     {
+
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
+
         try {
 
             if(auth()->check())
@@ -188,6 +192,8 @@ class Panier extends Controller
      */
     public function edit($id)
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
         
         try {
 
@@ -218,6 +224,9 @@ class Panier extends Controller
      */
     public function update(Request $request, $id)
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
+        
         $request->validate([
             'taille' => ['required'],
             'quantite' => ['required'],

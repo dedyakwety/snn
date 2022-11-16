@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Roles;
 use App\Models\User;
+use App\Models\Gestions;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -18,6 +19,9 @@ class Users extends Controller
      */
     public function index()
     {
+        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+        parent::completer_compte();
+
         $agents = User::where('role_id', '4')
                         ->orderBy('prenom', 'asc')
                         ->take(50)
