@@ -18,7 +18,7 @@ class Home extends Controller
 {
     public function index()
     {
-
+        
         //visits(Articles::All())->increment();
         
         $articles = Articles::where('valide', true)

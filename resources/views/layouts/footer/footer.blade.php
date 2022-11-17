@@ -1,17 +1,35 @@
+<?php
+use Illuminate\Support\Facades\Session;
+Session::put('chemin', url()->current());
+?>
 <footer class="footer">
     <div class="footer-1">
         <div class="div-1">
+
         	<h3>Envoyez nous un message</h3>
+
+                @if(Session::has('succes'))
+                    <div class="message-footer">
+                        {{ Session::get('succes') }}
+                    </div>
+                @endif
+                @if(Session::has('erreur'))
+                    <div class="message-footer">
+                        {{ Session::get('erreur') }}
+                    </div>
+                @endif
+
         	<form action="{{ route('store_message') }}" method="POST" class="form">
         		@csrf
         		@guest
-        		<input type="text" name="nom" class="input" placeholder="Nom" required>
-        		<input type="number" name="contact" class="input" placeholder="Contact" required>
-                <input type="email" name="email" class="input" placeholder="Email" required>
+        		    <input type="text" name="nom" class="input" placeholder="Nom" required>
+        		    <input type="number" name="contact" class="input" placeholder="Contact" required>
+                    <input type="email" name="email" class="input" placeholder="Email" required>
         		@endguest
         		<textarea name="message" class="message" placeholder="Votre message" required></textarea>
         		<button type="submit" class="boutton-footer">Envoyez</button>
         	</form>
+
         </div>
         <div class="div-2">
             <h3>Joignez nous par:</h3>

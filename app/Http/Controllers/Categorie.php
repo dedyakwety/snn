@@ -13,6 +13,7 @@ class Categorie extends Controller
 {
     public function index($id)
     {
+        
         try {
             
             $gestion = Gestions::find(1);

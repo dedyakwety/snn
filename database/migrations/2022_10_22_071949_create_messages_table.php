@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->string('nom')->nullable();
             $table->integer('contact')->nullable();
             $table->string('email')->nullable();

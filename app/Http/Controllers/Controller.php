@@ -18,14 +18,17 @@ class Controller extends BaseController
 
     public function completer_compte()
     {
-        if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
+        if(auth()->check())
         {
-            return redirect()->route('Completion_compte.index');
+            if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
+            {
+                return redirect()->route('Completion_compte.index');
 
-        } elseif(((Auth::user()->role_id == 5) === false) && Auth::user()->adresse_id === null){
+            } elseif(((Auth::user()->role_id == 5) === false) && Auth::user()->adresse_id === null){
 
-            return redirect()->route('Completion_compte.index');
+                return redirect()->route('Completion_compte.index');
 
+            }
         }
     }
 
