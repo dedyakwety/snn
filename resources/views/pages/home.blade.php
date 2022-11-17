@@ -87,13 +87,15 @@
 
 	<div class="new_arrivals">
 		<div class="container">
-			<div class="row">
-				<div class="col text-center">
-					<div class="section_title new_arrivals_title">
-						<h2>Les produits dans la boutique</h2>
+			@if(Route::is('index'))
+				<div class="row">
+					<div class="col text-center">
+						<div class="section_title new_arrivals_title">
+							<h2>Les produits dans la boutique</h2>
+						</div>
 					</div>
 				</div>
-			</div>
+			@endif
 			<!--div class="row align-items-center">
 				<div class="col text-center">
 					<div class="new_arrivals_sorting">

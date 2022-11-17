@@ -20,13 +20,22 @@ class Recherche extends Controller
 
         $gestion = Gestions::find(1);
 
-        $articles = Articles::where('commentaire', 'like', "%$q%")
+        $modeles = Modeles::All();
+
+        /*$articles = Articles::where('commentaire', 'like', "%$q%")
+                            ->orderBy('created_at', 'desc')
+                            ->paginate(120);*/
+                            
+        $id_modele = Modeles::select('id')->where('modele', $q)->first()->id;
+        
+        $articles = Articles::where('modele_id', $id_modele)
                             ->orderBy('created_at', 'desc')
                             ->paginate(120);
 
         return view('pages.article.search', [
             'notification' => parent::commande(),
             'gestion' => $gestion,
+            'modeles' => $modeles,
             'articles' => $articles,
             'search' => $q,
         ]);

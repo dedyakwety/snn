@@ -31,7 +31,7 @@
 	color: #000;
 	width: 100%;
 	height: 100%;
-	font-size: 12px;
+	font-size: 13px;
 	padding-top: 10px;
 }
 .form-recherche{
@@ -49,6 +49,16 @@
 .no-article{
 	width: 100%;
 	height: 50vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.aucun-resultat{
+	width: 100%;
+	height: 50vh;
+	padding: 20px;
+	color: #000;
+	font-size: 13px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -272,6 +282,7 @@ input, select{
 .new_arrivals
 {
 	width: 100%;
+	min-height: 100vh;
 }
 .new_arrivals_title
 {
