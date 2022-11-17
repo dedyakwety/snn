@@ -104,7 +104,7 @@
 							</a>
 						@empty
 							<div class="aucun-resultat">
-								{{ "Pour l'instant 0 resultat pour ".$search."n'est pas encore disponible, veuillez réessayer plus tard!" }}
+								{{ $search." 0 resultat pour l'instant, veuillez réessayer plus tard!" }}
 							</div>
 						@endforelse
 

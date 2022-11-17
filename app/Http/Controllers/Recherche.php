@@ -25,7 +25,7 @@ class Recherche extends Controller
         /*$articles = Articles::where('commentaire', 'like', "%$q%")
                             ->orderBy('created_at', 'desc')
                             ->paginate(120);*/
-                            
+                     
         $id_modele = Modeles::select('id')->where('modele', $q)->first()->id;
         
         $articles = Articles::where('modele_id', $id_modele)

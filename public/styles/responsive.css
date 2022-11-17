@@ -564,13 +564,15 @@
 		display: none;
 	}
 	.informer{
-		width: 90%;
+		width: 95%;
 		height: 60%;
-		margin-top: 26%;
-		margin-left: 5%;
+		padding: 3px;
+		border-radius: 7px;
+		margin-top: 50px;
+		margin-left: 2.5%;
 		color: #000;
 		text-align: justify;
-		font-size: 12px;
+		font-size: 10px;
 	}
 	.logo_container
 	{

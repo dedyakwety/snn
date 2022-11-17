@@ -16,7 +16,7 @@
 					@csrf
 					<select name="q" class="form-control mr-2" id="champ-recherche">
 						@foreach($modeles as $modele)
-							<option>{{ $modele->modele }}</option>
+							<option value="{{ $modele->id }}">{{ $modele->modele }}</option>
 						@endforeach
 					</select>
 					<button class="btn btn-primary pt-2" id="btn">

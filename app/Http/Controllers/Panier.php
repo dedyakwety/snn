@@ -33,6 +33,7 @@ class Panier extends Controller
                 if(Auth::user()->role_id == 1)
                 {
                     $commandes = [];
+
                 } elseif(Auth::user()->role_id == 5)
                 {
                     $commandes = Commandes::where('user_id', Auth::user()->id)
@@ -40,12 +41,15 @@ class Panier extends Controller
                                             ->orderBy('created_at', 'desc')
                                             ->take(50)
                                             ->get();
+                                            
+                    $prix_total = $commandes->sum('prix_total');
                 }
 
                 return view('pages.article.panier', [
                     'gestion' => $gestion,
                     'commandes' => $commandes,
                     'notification' => parent::commande(),
+                    'prix_total' => $prix_total,
                 ]);
                 
             } else{

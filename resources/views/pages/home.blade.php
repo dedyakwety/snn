@@ -48,7 +48,7 @@
 				<div class="col">
 					<div class="informer">
 						@guest
-							Nnous vous livrons les articles de qualités à domicile partout à Kinshasa, et vous offre une remise de 3% sur la totalité de vos 5 achats au 5ème achat en créant votre compte pour passer vos commandes en toutes sécurité enfin de bénéficier de remises en boucle. Exemple :<br>
+							Nous vous livrons les articles de qualités à domicile partout à Kinshasa, et vous offre une remise de 3% sur la totalité de vos 5 achats au 5ème achat en créant votre compte pour passer vos commandes en toutes sécurité enfin de bénéficier de remises en boucle. Exemple :<br>
 							Achat 1 = 100$ payer 100$<br>
 							Achat 2 = 100$ payer 100$<br>
 							Achat 3 = 100$ payer 100$<br>
@@ -56,6 +56,19 @@
 							Achat 5 = 100$ - (500$/100) * 3 font 15$ payer 85$<br>
 							<strong>NB: En boucle</strong>
 						@endguest
+
+						@auth
+							@if((Auth::user()->role_id == 1) OR (Auth::user()->role_id == 2))
+							@else
+								Nous vous livrons les articles de qualités à domicile partout à Kinshasa, et vous offre une remise de 3% sur la totalité de vos 5 achats au 5ème achat en créant votre compte pour passer vos commandes en toutes sécurité enfin de bénéficier de remises en boucle. Exemple :<br>
+								Achat 1 = 100$ payer 100$<br>
+								Achat 2 = 100$ payer 100$<br>
+								Achat 3 = 100$ payer 100$<br>
+								Achat 4 = 100$ payer 100$<br>
+								Achat 5 = 100$ - (500$/100) * 3 font 15$ payer 85$<br>
+								<strong>NB: En boucle</strong>
+							@endif
+						@endauth
 					</div>
 					@auth
 						@if(Auth::user()->role_id == 1)

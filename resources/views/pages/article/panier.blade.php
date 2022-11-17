@@ -13,7 +13,9 @@ use App\Models\Articles;
 
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
-							<li><a href="">Nombre article dans le panier : {{ count($commandes) }}</a></li>
+							<li>
+								<a href="">Panier {{ " ".count($commandes).", " }} quantité {{ " ".$commandes->sum('quantite') }}, total : ${{ number_format($prix_total, 2, '.', ' ') }}</a>
+							</li>
 						</ul>
 					</div>
 
