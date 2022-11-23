@@ -32,7 +32,7 @@ use App\Models\Articles;
 							<div class="col-lg-3 thumbnails_col order-lg-1 order-2">
 								<div class="single_product_thumbnails">
 									<ul>
-										<li><img src="{{ asset(Storage::url(articles::find($commande->article->id)->image->path_2)) }}" alt="" data-image="images/single_1.jpg"></li>
+										<li><img src="https://stockage-sombanandaku.s3.us-east-2.amazonaws.com/images/articles/article3/image_2.jpeg" alt="" data-image="images/single_1.jpg"></li>
 										<li class="active"><img src="{{ asset(Storage::url(articles::find($commande->article->id)->image->path_3)) }}" alt="" data-image="images/single_2.jpg"></li>
 										<li><img src="{{ asset(Storage::url(articles::find($commande->article->id)->image->path_4)) }}" alt="" data-image="images/single_3.jpg"></li>
 									</ul>
@@ -41,7 +41,8 @@ use App\Models\Articles;
 							<div class="col-lg-9 image_col order-lg-2 order-1" id="ordre-2">
 								<div class="single_product_image">
 									<div class="single_product_image_background">
-										<img src="{{ asset(Storage::url(articles::find($commande->article->id)->image->path_1)) }}" alt="image-pricipale" class="image-principale">
+										<!--img src="{{ asset(Storage::url(articles::find($commande->article->id)->image->path_1)) }}" alt="image-pricipale" class="image-principale"-->
+										<img src="https://stockage-sombanandaku.s3.us-east-2.amazonaws.com/images/articles/article3/image_2.jpeg" class="image-principale">
 									</div>
 								</div>
 							</div>
