@@ -859,7 +859,7 @@
 	.single_product_image
 	{
 		width: 100%;
-		height: 300px;
+		height: 150px;
 	}
 	.image-principale{
 		width: 100%;
@@ -1024,6 +1024,7 @@
 		margin-bottom: 25px;
 	}
 	.h2{
+		color: green;
 		font-size: 25px;
 		text-align: center;
 		margin-bottom: 25px;
@@ -1325,7 +1326,7 @@
 	.single_product_image
 	{
 		width: 100%;
-		height: 250px;
+		height: 150px;
 	}
 	.image-principale{
 		width: 100%;
