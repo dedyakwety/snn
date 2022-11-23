@@ -859,7 +859,7 @@
 	.single_product_image
 	{
 		width: 100%;
-		height: 350px;
+		height: 300px;
 	}
 	.image-principale{
 		width: 100%;
@@ -867,7 +867,7 @@
 	}
 	.single_product_thumbnails ul li
 	{
-		height: 73px;
+		height: 60px;
 		width: 25%;
 		cursor: pointer;
 	}
