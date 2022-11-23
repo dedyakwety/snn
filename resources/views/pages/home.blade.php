@@ -46,8 +46,8 @@
 		<div class="container fill_height">
 			<div class="row align-items-center fill_height">
 				<div class="col">
-					<div class="informer">
 						@guest
+					<div class="informer">
 							Nous vous livrons les articles de qualités à domicile partout à Kinshasa, et vous offre une remise de 3% sur la totalité de vos 5 achats au 5ème achat en créant votre compte pour passer vos commandes en toutes sécurité enfin de bénéficier de remises en boucle. Exemple :<br>
 							Achat 1 = 100$ payer 100$<br>
 							Achat 2 = 100$ payer 100$<br>
@@ -60,25 +60,24 @@
 						@auth
 							@if((Auth::user()->role_id == 1) OR (Auth::user()->role_id == 2))
 							@else
-								Nous vous livrons les articles de qualités à domicile partout à Kinshasa, et vous offre une remise de 3% sur la totalité de vos 5 achats au 5ème achat en créant votre compte pour passer vos commandes en toutes sécurité enfin de bénéficier de remises en boucle. Exemple :<br>
-								Achat 1 = 100$ payer 100$<br>
-								Achat 2 = 100$ payer 100$<br>
-								Achat 3 = 100$ payer 100$<br>
-								Achat 4 = 100$ payer 100$<br>
-								Achat 5 = 100$ - (500$/100) * 3 font 15$ payer 85$<br>
-								<strong>NB: En boucle</strong>
+								<div class="informer">
+									Nous vous livrons les articles de qualités à domicile partout à Kinshasa, et vous offre une remise de 3% sur la totalité de vos 5 achats au 5ème achat en créant votre compte pour passer vos commandes en toutes sécurité enfin de bénéficier de remises en boucle. Exemple :<br>
+									Achat 1 = 100$ payer 100$<br>
+									Achat 2 = 100$ payer 100$<br>
+									Achat 3 = 100$ payer 100$<br>
+									Achat 4 = 100$ payer 100$<br>
+									Achat 5 = 100$ - (500$/100) * 3 font 15$ payer 85$<br>
+									<strong>NB: En boucle</strong>
+								</div>
 							@endif
-						@endauth
-					</div>
-					@auth
-						@if(Auth::user()->role_id == 1)
-						<div class="main_slider_content">
-							<h6 class="h6">Ajoutez un article</h6>
-							<!--h1>Livraison gratuit à domocile</h1><br><br>
-							<h1>Obtenez jusqu'à 10% de réduction de 5ème achat</h1-->
-							@include('layouts.article.form_ajout')
-							
-						</div>
+							@if(Auth::user()->role_id == 1)
+							<div class="main_slider_content">
+								<h6 class="h6">Ajoutez un article</h6>
+								<!--h1>Livraison gratuit à domocile</h1><br><br>
+								<h1>Obtenez jusqu'à 10% de réduction de 5ème achat</h1-->
+								@include('layouts.article.form_ajout')
+								
+							</div>
 						@endif
 					@endauth
 				</div>

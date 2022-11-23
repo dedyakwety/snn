@@ -72,7 +72,11 @@ use App\Models\Articles;
 						@if((Articles::findOrFail($article->article->id)->categorie->id == 1) OR (Articles::findOrFail($article->article->id)->categorie->id == 2))
 						<div class="infos">
 							<div class="infos-1">
-								Taille
+								@if($article->categorie->categorie == "chaussure")
+									Pointure
+								@else
+									Taille
+								@endif
 							</div>
 							<div class="infos-2">
 								<select name="taille" id="heure_livraison" class="date_heure" required>

@@ -114,7 +114,11 @@
 								@if(($article->categorie->id == 1) OR ($article->categorie->id == 2))
 									<div class="infos">
 										<div class="infos-1">
-											Taille
+											@if($article->categorie->categorie == "chaussure")
+												Pointure
+											@else
+												Taille
+											@endif
 										</div>
 										<div class="infos-2">
 											<select name="taille" id="heure_livraison" class="form-control" required>
