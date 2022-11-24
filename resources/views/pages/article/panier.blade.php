@@ -109,12 +109,12 @@ use App\Models\Articles;
 						<div class="div-infos">
 							<div class="infos-boutton">
 									<a href="{{ route('Panier.edit', $commande->id) }}">
-										<button type="submit" class="btn btn-primary">Modifier</button>
+										<button type="submit" class="btn btn-primary" id="btn-liv">Modifier</button>
 									</a>
 									<form action="{{ route('Panier.destroy', $commande->id) }}" method="POST">
 										@csrf
 										@method('DELETE')
-											<button type="submit" class="btn btn-danger">Suprimer
+											<button type="submit" class="btn btn-danger" id="btn-liv">Suprimer
 											</button>
 									</form>
 							</div>
