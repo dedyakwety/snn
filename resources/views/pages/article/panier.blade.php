@@ -145,7 +145,7 @@ use App\Models\Articles;
 							</div>
 							<div class="infos-liv-2">
 								<input type="date" name="date_livraison" class="input-form" required>
-								<select name="heure_livraison" class="input-form" required>
+								<select name="heure_livraison" class="input-form" placeholder="date" required>
 									<option>HEURE</option>
 									<option value="08H00 à 08H30">08H00 à 08H30</option>
 									<option value="08H30 à 09H00">08H30 à 09H00</option>
