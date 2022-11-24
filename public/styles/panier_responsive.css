@@ -1017,6 +1017,7 @@
 
 	/* DIV INFOS */
 	.div-infos-commande{
+		background-color: green;
 		width: 80%;
 		height: 300px;
 		margin-left: 10%;
