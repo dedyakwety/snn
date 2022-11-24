@@ -25,8 +25,11 @@ Session::put('chemin', url()->current());
         		    <input type="text" name="nom" class="input" placeholder="Nom" required>
         		    <input type="number" name="contact" class="input" placeholder="Contact" required>
                     <input type="email" name="email" class="input" placeholder="Email" required>
+                    <textarea name="message" class="message" placeholder="Votre message" required></textarea>
         		@endguest
-        		<textarea name="message" class="message" placeholder="Votre message" required></textarea>
+                @auth
+        		<textarea name="message" class="message_auth" placeholder="Votre message" required></textarea>
+                @endauth
         		<button type="submit" class="boutton-footer">Envoyez</button>
         	</form>
 
