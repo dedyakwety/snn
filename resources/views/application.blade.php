@@ -252,6 +252,11 @@
 									<li><a href="{{ route('categorie', ['id' => 'homme']) }}">Hommes</a></li>
 									<li><a href="{{ route('categorie', ['id' => 'femme']) }}">Femmes</a></li>
 									<li><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfants</a></li>
+									@auth
+										@if((Auth()->user()->role_id == 1) OR (Auth()->user()->role_id == 2))
+											<li><a href="{{ route('index_message') }}">messages</a></li>
+										@endif
+									@endauth
 									<li><a href="#">apropos</a></li>
 								</ul>
 								<ul class="navbar_user">

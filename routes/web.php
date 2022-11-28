@@ -82,6 +82,7 @@ Route::get('/Reset_password_user/{id}', 'App\Http\Controllers\Reset_password@ind
 Route::post('/Reset_password/{id}', 'App\Http\Controllers\Reset_password@reset')->middleware(['auth'])->name('reset');
 
 // MESSAEGES
+Route::post('/Index_message', 'App\Http\Controllers\Message@index')->name('index_message');
 Route::post('/Store_message', 'App\Http\Controllers\Message@store')->name('store_message');
 
 Route::get('/dashboard', function () {

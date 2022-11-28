@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Session;
 
 class Message extends Controller
 {
+    public function index()
+    {
+        return view('pages.messages', [
+            'notification' => parent::commande(),
+        ]);
+    }
+
     public function store(Request $request)
     {
         
