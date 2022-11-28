@@ -389,6 +389,7 @@ input, select{
 }
 .product_image
 {
+	margin-top: 30px;
 	width: 100%;
 }
 .product_image img

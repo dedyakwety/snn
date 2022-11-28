@@ -47,17 +47,23 @@
                     </label>
                 </div-->
 
+                
                 <div class="bouttons">
-                    @if (Route::has('password.request'))
-                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                            Mot de passe oublier?
-                        </a>
-                    @endif
-
                     <button class="boutton" id="btn">
                         Connexion
                     </button>
                 </div>
+                @if(Route::has('password.request'))
+                    <div class="bouttons">
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                            Mot de passe oublier?
+                        </a>
+
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                            J'ai un compte
+                        </a>
+                    </div>
+                @endif
             </form>
         </div>
     </div>

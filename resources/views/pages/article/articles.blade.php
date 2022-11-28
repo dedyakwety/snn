@@ -10,7 +10,7 @@
 	@endif
 		<div class="product discount product_filter">
 			<div class="product_image">
-				<img src="{{ asset(Storage::url($article->image->path_1)) }}" alt="image-article">
+				<img src="https://stockage-sombanandaku.s3.us-east-2.amazonaws.com/images/articles/article3/image_1.jpeg" alt="image-article">
 			</div>
 			<div class="favorite favorite_left"></div>
 			@auth
