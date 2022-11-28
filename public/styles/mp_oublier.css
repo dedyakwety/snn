@@ -1,0 +1,51 @@
+body{
+	font-family: sans-serif;
+}
+.body-mp-oublier{
+	position: absolute;
+	width: 90%;
+	height: 90vh;
+	top: 5%;
+	left: 5%;
+	min-height: 75vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.form{
+	width: 400px;
+	height: 300px;
+}
+p{
+	color: #041e7f;
+	font-size: 18px;
+	text-align: center;
+	margin-top: 50px;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+.inputs{
+	width: 90%;
+	height: 50%;
+	margin-left: 5%;
+	margin-top: 25px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.input{
+	width: 90.7%;
+	padding: 15px;
+	border: 1px solid #041e7f;
+}
+.input:hover{
+	width: 90.5%;
+	padding: 15px;
+	border: 1px solid #d4d4d4;
+}
+.boutton{
+	color: #fff;
+	background-color: #041e7f;
+	padding: 15px;
+	border: 1px solid #041e7f;
+}
