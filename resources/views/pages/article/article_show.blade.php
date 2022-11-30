@@ -121,8 +121,14 @@
 											@endif
 										</div>
 										<div class="infos-2">
-											<select name="taille" id="heure_livraison" class="form-control" required>
-												<option>Taille</option>
+											<select name="taille" id="heure_livraison"  required>
+												<option>
+													@if($article->categorie->categorie == "chaussure")
+														Pointure
+													@else
+														Taille
+													@endif
+												</option>
 												@if(($article->categorie->id == 1) && ((($article->modele->modele == "veste") === false) && (($article->modele->modele == "pantalon") === false)))
 													@foreach($tailles_1 as $taille)
 														<option value="{{ $taille }}">{{ $taille }}</option>
@@ -142,12 +148,12 @@
 									</div>
 										<input type="text" name="id_article" value="{{ $article->id }}" class="id_article" required>
 									<div class="infos-2">
-										<input type="number" name="quantite" class="form-control" id="input" min="1" value="1" required>
+										<input type="number" name="quantite" id="input" min="1" value="1" required>
 									</div>
 								</div>
 							@elseif(Auth::user()->role_id == 1)
 
-								<select name="pour" class="form-control" id="heure_livraison" required>
+								<select name="pour" id="heure_livraison" required>
 									<option value="{{ $article->pour->id }}">{{ $article->pour->pour }}</option>
 									@foreach($pours as $pour)
 										@if($article->pour->pour == $pour->pour)
@@ -157,7 +163,7 @@
 									@endforeach
 								</select>
 
-								<select name="categorie" class="form-control" id="heure_livraison" required>
+								<select name="categorie" id="heure_livraison" required>
 									<option value="{{ $article->categorie->id }}">{{ $article->categorie->categorie }}</option>
 									@foreach($categories as $categorie)
 										@if($article->categorie->categorie == $categorie->categorie)
@@ -167,7 +173,7 @@
 									@endforeach
 								</select>
 
-								<select name="modele" class="form-control" id="heure_livraison" required>
+								<select name="modele" id="heure_livraison" required>
 									<option value="{{ $article->modele->id }}">{{ $article->modele->modele }}</option>
 									@foreach($modeles as $modele)
 										@if($article->modele->modele == $modele->modele)
@@ -176,7 +182,7 @@
 										@endif
 									@endforeach
 								</select>
-								<input type="number" name="prix" class="form-control" id="input" value="{{ $article->prix }}" required>
+								<input type="number" name="prix" id="input" value="{{ $article->prix }}" required>
 								<textarea name="commentaire" class="form-control com" required>{{ $article->commentaire }}</textarea>
 								<input type="password" name="password" class="form-control" placeholder="Mot de passe" required>
 
@@ -189,16 +195,26 @@
 								Quantité
 							</div>
 							<div class="infos-2">
-								<input type="number" name="quantite" id="input" value="1" min="1" class="form-control" required>
+								<input type="number" name="quantite" id="input" value="1" min="1" required>
 							</div>
 						</div>
 						<div class="infos">
 							<div class="infos-1">
-								Taille
+								@if($article->categorie->categorie == "chaussure")
+									Pointure
+								@else
+									Taille
+								@endif
 							</div>
 							<div class="infos-2">
-								<select name="taille" id="heure_livraison" class="form-control" required>
-									<option>Taille</option>
+								<select name="taille" id="heure_livraison" required>
+									<option>
+										@if($article->categorie->categorie == "chaussure")
+											Pointure
+										@else
+											Taille
+										@endif
+									</option>
 									@if(($article->categorie->id == 1) && (($article->modele->modele == "veste") === false))
 										@foreach($tailles_1 as $taille)
 											<option value="{{ $taille }}">{{ $taille }}</option>
@@ -216,8 +232,8 @@
 								Date et heure
 							</div>
 							<div class="infos-2">
-								<input type="date" name="date_livraison" id="date_livraison" class="date_heure form-control">
-								<select name="heure_livraison" id="heure_livraison" class="date_heure form-control" required>
+								<input type="date" name="date_livraison" id="date_livraison" class="date_heure">
+								<select name="heure_livraison" id="heure_livraison" class="date_heure" required>
 									<option>HEURE</option>
 									<option value="08H00 à 08H30">08H00 à 08H30</option>
 									<option value="08H30 à 09H00">08H30 à 09H00</option>
@@ -244,7 +260,7 @@
 								Télephone 
 							</div>
 							<div class="infos-2">
-								<input type="tel" name="contact" class="form-control" id="input" placeholder="0813896978" required>
+								<input type="tel" name="contact" id="input" placeholder="0813896978" required>
 							</div>
 						</div>
 						<div class="infos">
@@ -252,7 +268,7 @@
 								Email
 							</div>
 							<div class="infos-2">
-								<input type="email" name="email" id="input" class="form-control" placeholder="email facultatif">
+								<input type="email" name="email" id="input" placeholder="email facultatif">
 							</div>
 						</div>
 						<div class="comment">

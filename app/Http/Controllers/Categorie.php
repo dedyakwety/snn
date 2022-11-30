@@ -21,7 +21,7 @@ class Categorie extends Controller
 
             $articles = Articles::where('pour_id', $pour)
                                 ->orderBy('created_at', 'desc')
-                                ->paginate(5);
+                                ->paginate(80);
             $modeles = Modeles::All();
 
             return view('pages.article.categorie', [

@@ -6,7 +6,7 @@ use App\Models\Articles;
 ?>
 	<div class="container single_product_container">
 		@if(count($commandes))
-			<div class="row">
+			<div class="row pt-3 pb-3">
 				<div class="col">
 
 					<!-- Breadcrumbs -->
@@ -14,7 +14,7 @@ use App\Models\Articles;
 					<div class="breadcrumbs d-flex flex-row align-items-center">
 						<ul>
 							<li>
-								<a href="">Panier {{ " ".count($commandes).", " }} quantité {{ " ".$commandes->sum('quantite') }}, total : ${{ number_format($prix_total, 2, '.', ' ') }}</a>
+								<p class="p_total">Panier {{ " ".count($commandes).", " }} quantité {{ " ".$commandes->sum('quantite') }}, total : ${{ number_format($prix_total, 2, '.', ' ') }}</p>
 							</li>
 						</ul>
 					</div>
@@ -109,12 +109,12 @@ use App\Models\Articles;
 						<div class="div-infos">
 							<div class="infos-boutton">
 									<a href="{{ route('Panier.edit', $commande->id) }}">
-										<button type="submit" class="btn btn-primary" id="btn-liv">Modifier</button>
+										<button type="submit" class="btn_panier" id="btn-liv">Modifier</button>
 									</a>
 									<form action="{{ route('Panier.destroy', $commande->id) }}" method="POST">
 										@csrf
 										@method('DELETE')
-											<button type="submit" class="btn btn-danger" id="btn-liv">Suprimer
+											<button type="submit" class="btn_panier_2" id="btn-liv">Suprimer
 											</button>
 									</form>
 							</div>

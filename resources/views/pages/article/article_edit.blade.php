@@ -72,7 +72,7 @@ use App\Models\Articles;
 						@if((Articles::findOrFail($article->article->id)->categorie->id == 1) OR (Articles::findOrFail($article->article->id)->categorie->id == 2))
 						<div class="infos">
 							<div class="infos-1">
-								@if($article->categorie->categorie == "chaussure")
+								@if(Articles::findOrFail($article->article->id)->categorie->categorie == "chaussure")
 									Pointure
 								@else
 									Taille

@@ -418,6 +418,10 @@
 
 		@yield('reset_password')
 
+		@yield('body-password-edit')
+
+		@yield('body-profil-edit')
+
 		@yield('client-index')
 
 		<div class="benefit">

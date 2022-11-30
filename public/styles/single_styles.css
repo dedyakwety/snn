@@ -139,6 +139,9 @@ input{
 	color: #000;
 }
 .btn{
+	width: 100%;
+	height: 40px;
+	padding: 7px;
 	color: #fff;
 	background-color: #1315b9;
 }
@@ -180,6 +183,11 @@ textarea{
 }
 .id_article{
 	display: none;
+}
+select, input{
+	width: 100%;
+	height: 40px;
+	padding: 7px;
 }
 
 
@@ -877,50 +885,3 @@ h2{
 
 .buttons2 {padding:10px 10px 0 0; text-align:right}
 .buttons2 a {margin-left:35px}
-		
-/****************************footer************************/
-footer {
-	width:80%;
-	margin-left: 10%; 
-	height:395px;
-	color:#999;
-	margin-bottom: 30px;
-	position:relative;
-	z-index:9;
-	overflow:hidden;
-}
-footer .padding {padding:35px 0 0}
-footer h4 {
-	color: #000;
-	margin-bottom:18px;
-	text-align: center;
-}
-	.list-services li {
-		background-color: teal;
-		font-size:12px;
-		line-height:35px;
-		text-transform:uppercase;
-		padding-bottom:9px;
-	}
-	.list-services a {
-		display:inline-block;
-		text-decoration:none;
-		color:#999;
-		padding-left:54px;
-		background:url(../images/social-icons.png) 0 0px no-repeat;
-	}
-	.list-services a.item-1 {background-position:0 -44px}
-	.list-services a.item-2 {background-position:0 -88px}
-	.list-services a.item-3 {background-position:0 -132px}
-	
-/*********extra***********/
-.block {height:395px}
-.extra {
-	min-height:100%; 
-	height:auto !important; 
-	height:100%; 
-	margin: 0 auto -395px; 
-	position:relative;
-	overflow:hidden;
-} 
-html, body {height:100%}

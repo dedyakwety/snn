@@ -140,7 +140,7 @@
 					@method('PUT')
 					<input type="text" name="id" value="{{ $user->id }}" class="id" required>
 					<input type="password" name="password" placeholder="Mot de passe" class="form-control" required>
-					<button type="submit" class="btn btn-primary">
+					<button type="submit" class="btn">
 					@if($user->valide)
 						Suspendre
 					@else
@@ -150,10 +150,10 @@
 				</form>
 				@endif
 				@if(Route::is('Profil.index'))
-					<a href="{{ route('Mot_de_passe.index') }}" class="btn btn-primary" id="a">
+					<a href="{{ route('Mot_de_passe.index') }}" class="btn" id="a">
 						Changer le mot de passe
 					</a>
-					<a href="{{ route('Profil.edit', $user->id) }}" class="btn btn-primary" id="a">
+					<a href="{{ route('Profil.edit', $user->id) }}" class="btn" id="a">
 						Editer tout
 					</a>
 				@endif

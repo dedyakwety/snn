@@ -23,7 +23,7 @@ class Home extends Controller
         
         $articles = Articles::where('valide', true)
                             ->orderBy('created_at', 'desc')
-                            ->paginate(60);
+                            ->paginate(80);
         
         //visits(articles::findOrFail(1))->increment();
 

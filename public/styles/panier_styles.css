@@ -251,6 +251,22 @@ input{
 .id_article{
 	display: none;
 }
+.btn_panier{
+	background-color: #041e7f;
+	color: #fff;
+	padding: 8px;
+	border: 1px solid #041e7f;
+}
+.btn_panier_2{
+	background-color: red;
+	color: #fff;
+	padding: 8px;
+	border: 1px solid red;
+}
+.p_total{
+	font-size: 15px;
+	color: #000;
+}
 
 
 
