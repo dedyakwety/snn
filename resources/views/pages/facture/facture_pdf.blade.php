@@ -15,7 +15,7 @@ $incrementation = 1;
 <body>
     <style type="text/css">
         body{
-            font-family: cursive;
+            font-family: sans-serif;
         }
         .logo-header{
             width: 70%;
@@ -128,6 +128,7 @@ $incrementation = 1;
         .h1{
             text-align: center;
             font-size: 25;
+            font-family: sans-serif;
         }
         h3{
             text-align: center;
@@ -338,17 +339,18 @@ $incrementation = 1;
                         </tr>
                         <tr>
                             <td class="td-designation-2">MONTANT A PAYER</td>
-                            <td class="td-2"><strong>{{ number_format((double)$total_general - (double)$livraison->montant_remise, "2", ".", " ") }}</strong></td>
+                            <td class="td-2"><strong>{{ number_format($montant_payer, "2", ".", " ") }}</strong></td>
                         </tr>
                     @else
                     <tr>
                         <td class="td-designation-2">MONTANT A PAYER</td>
-                        <td class="td-2"><strong>{{ number_format($total_general, "2", ".", " ") }}</strong></td>
+                        <td class="td-2"><strong>{{ number_format($montant_payer, "2", ".", " ") }}</strong></td>
                     </tr>
                     @endif
                 </tbody>
             </table>
         </div>
+        {{ $total_general_lettre }}
         <!--div class="footer">
                 <p class="p-livreur">{{ $livreur->name." ".$livreur->postnom." ".$livreur->prenom }}<br>
                     Livreur
@@ -356,7 +358,7 @@ $incrementation = 1;
             <img src="images/cachet/CACHET.jpg" class="cachet">
         </div-->
         <div class="footer">
-            {{ $livreur->name." ".$livreur->postnom." ".$livreur->prenom }}
+            {{ "Nous disons : ".$livreur->name." ".$livreur->postnom." ".$livreur->prenom }}
         </div>
         <div class="footer-1">
             <div class="header">

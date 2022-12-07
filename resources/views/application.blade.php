@@ -177,7 +177,12 @@
 													<i class="fa fa-angle-down"></i>
 												</a>
 												<ul class="language_selection">
-													<li><a href="{{ route('Livraison.index') }}">Commandes</a></li>
+													@if(Auth::user()->role_id == 5)
+														<li><a href="#">Infos</a></li>
+														<li><a href="{{ route('Livraison.show', Auth::user()->id) }}">Commandes</a></li>
+													@else
+														<li><a href="{{ route('Livraison.index') }}">Commandes</a></li>
+													@endif
 												</ul>
 											</li>
 										@endif
@@ -190,13 +195,13 @@
 												</a>
 												<ul class="language_selection">
 													@if(Auth::user()->role_id == 1)
-													<li><a href="{{ route('Agents.index') }}">Agents</a></li>
-													<li><a href="{{ route('Gestion.index') }}">Gestion</a></li>
-													<li><a href="{{ route('boutique_index') }}">Boutique</a></li>
-													<li><a href="{{ route('boutique_index') }}">
-													<i class="entypo-eye"></i>
-													Vu
-													</a></li>
+														<li><a href="{{ route('Agents.index') }}">Agents</a></li>
+														<li><a href="{{ route('Gestion.index') }}">Gestion</a></li>
+														<li><a href="{{ route('boutique_index') }}">Boutique</a></li>
+														<li><a href="{{ route('boutique_index') }}">
+														<i class="entypo-eye"></i>
+														Vu
+														</a></li>
 													@endif
 													<li><a href="{{ route('client_index') }}">Clients</a></li>
 												</ul>
@@ -476,6 +481,10 @@
 @if(Route::is('categorie') OR Route::is('article.search'))
 	<script src="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
 	<script src="{{ asset('js/categories_custom.js') }}"></script>
+@endif
+
+@if(Route::is('Panier.index') OR Route::is('Articles.show'))
+	<script src="{{ asset('js/panier.js') }}"></script>
 @endif
 
 	<script src="{{ asset('js/refresh_page.js') }}"></script>

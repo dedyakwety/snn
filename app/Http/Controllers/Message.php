@@ -6,11 +6,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Messages;
 use Illuminate\Support\Facades\Session;
+use App\Models\Gestion;
 
 class Message extends Controller
 {
     public function index()
     {
+        if(auth()->check())
+        {
+            // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+            if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
+            {
+                return redirect()->route('Completion_compte.index');
+
+            } elseif(((Auth::user()->role_id == 5) === false) && (Auth::user()->adresse_id === null)){
+
+                return redirect()->route('Completion_compte.index');
+
+            }
+        }
+
         return view('pages.messages', [
             'notification' => parent::commande(),
         ]);

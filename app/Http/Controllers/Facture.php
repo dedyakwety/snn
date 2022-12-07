@@ -10,11 +10,26 @@ use App\Models\Commandes;
 use App\Models\User;
 use App\Models\Articles;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Gestions;
 
 class Facture extends Controller
 {
     public function viewFature($id)
     {
+        if(auth()->check())
+        {
+            // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+            if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
+            {
+                return redirect()->route('Completion_compte.index');
+
+            } elseif(((Auth::user()->role_id == 5) === false) && (Auth::user()->adresse_id === null)){
+
+                return redirect()->route('Completion_compte.index');
+
+            }
+        }
+        
         $livraison = Livraisons::findOrFail($id);
         
         if(Auth::user()->role_id == 1)
@@ -162,29 +177,43 @@ class Facture extends Controller
         $livraison = Livraisons::findOrFail($id);
         $commandes = Commandes::All()->where('livraison_id', $livraison->id);
         $livreur = User::findOrFail($livraison->livreur_id);
-        $total_general = Commandes::All()->where('livraison_id', $livraison->id)->sum('prix_total');
-        $total_general_lettre = int2str($total_general);
 
+        $total_general = Commandes::All()->where('livraison_id', $livraison->id)->sum('prix_total');
+
+        // VERIFIER SI C'EST LA LIVRAISON DE LA REMISE
+        if($livraison->montant_remise > 0)
+        {
+            $montant_payer = (double)Commandes::All()->where('livraison_id', $livraison->id)->sum('prix_total') - (double)$livraison->montant_remise;
+        } else{
+            $montant_payer = (double)Commandes::All()->where('livraison_id', $livraison->id)->sum('prix_total');
+        }
+
+        // CONVERTIR LE MONTANT EN LETTRE
+        $total_general_lettre = int2str(number_format($montant_payer, 2, ".", " "));
+        
         if(Auth::user()->role_id == 1)
         {
             $client = User::findOrFail($livraison->user_id);
             $remise = Livraisons::All()
                                 ->where('user_id', $client->id)
-                                ->where('beneficier', true);
+                                ->where('beneficier', true)
+                                ->where('montant_remise', '>', 0);
 
         } elseif(Auth::user()->role_id == 4){
 
             $client = User::findOrFail($livraison->user_id);
             $remise = Livraisons::All()
                                 ->where('user_id', $client->id)
-                                ->where('beneficier', true);
+                                ->where('beneficier', true)
+                                ->where('montant_remise', '>', 0);
 
         } elseif(Auth::user()->role_id == 5){
 
             $client = User::findOrFail(Auth::user()->id);
             $remise = Livraisons::All()
                                 ->where('user_id', Auth::user()->id)
-                                ->where('beneficier', true);
+                                ->where('beneficier', true)
+                                ->where('montant_remise', '>', 0);
         }
         
         $pdf = PDF::loadview('pages.facture.facture_pdf', [
@@ -194,6 +223,7 @@ class Facture extends Controller
             'livreur' => $livreur,
             'remise' => $remise,
             'total_general' => $total_general,
+            'montant_payer' => $montant_payer,
             'total_general_lettre' => $total_general_lettre,
         ]);
         

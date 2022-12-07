@@ -55,7 +55,7 @@ use App\Models\User;
 		        		@if(Auth::user()->role_id == 1)
 		        			<td>
 				        		@if($commande->livreur_id)
-				        			livreur
+				        			{{ User::findOrFail($commande->livreur_id)->name." ".User::findOrFail($commande->livreur_id)->prenom }}
 				        		@elseif(!$commande->livreur_id)
 				        			Non livreur
 				        		@endif

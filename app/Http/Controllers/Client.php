@@ -6,14 +6,31 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Livraisons;
+use App\Models\Gestions;
+use Illuminate\Support\Facades\Auth;
 
 class Client extends Controller
 {
     public function index ()
     {
+        if(auth()->check())
+        {
+            // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+            if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
+            {
+                return redirect()->route('Completion_compte.index');
+
+            } elseif(((Auth::user()->role_id == 5) === false) && (Auth::user()->adresse_id === null)){
+
+                return redirect()->route('Completion_compte.index');
+
+            }
+        }
+
         $clients = User::where('role_id', 5)
                         ->orderBy('prenom', 'desc')
                         ->paginate(50);
+                        
         $nombre_client = User::where('role_id', 5)->count();
 
         // LES COMMANDES LIVREES

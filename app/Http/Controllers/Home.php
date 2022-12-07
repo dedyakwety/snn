@@ -18,7 +18,19 @@ class Home extends Controller
 {
     public function index()
     {
-        
+        if(auth()->check())
+        {
+            // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+            if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
+            {
+                return redirect()->route('Completion_compte.index');
+
+            } elseif(((Auth::user()->role_id == 5) === false) && (Auth::user()->adresse_id === null)){
+
+                return redirect()->route('Completion_compte.index');
+
+            }
+        }
         //visits(Articles::All())->increment();
         
         $articles = Articles::where('valide', true)
@@ -44,7 +56,15 @@ class Home extends Controller
             $modeles = Modeles::All();
 
             // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
-            parent::completer_compte();
+            if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
+            {
+                return redirect()->route('Completion_compte.index');
+
+            } elseif(((Auth::user()->role_id == 5) === false) && (Auth::user()->adresse_id === null)){
+
+                return redirect()->route('Completion_compte.index');
+
+            }
             
             return view('pages.home', [
                 'gestion' => $gestion,

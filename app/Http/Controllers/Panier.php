@@ -20,9 +20,19 @@ class Panier extends Controller
      */
     public function index()
     {
+        if(auth()->check())
+        {
+            // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+            if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
+            {
+                return redirect()->route('Completion_compte.index');
 
-        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
-        parent::completer_compte();
+            } elseif(((Auth::user()->role_id == 5) === false) && (Auth::user()->adresse_id === null)){
+
+                return redirect()->route('Completion_compte.index');
+
+            }
+        }
 
         try {
 
@@ -196,8 +206,19 @@ class Panier extends Controller
      */
     public function edit($id)
     {
-        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
-        parent::completer_compte();
+        if(auth()->check())
+        {
+            // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+            if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
+            {
+                return redirect()->route('Completion_compte.index');
+
+            } elseif(((Auth::user()->role_id == 5) === false) && (Auth::user()->adresse_id === null)){
+
+                return redirect()->route('Completion_compte.index');
+
+            }
+        }
         
         try {
 

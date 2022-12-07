@@ -10,7 +10,7 @@
 			@endif
 		</h2>
 		<div class="form-recherche">
-			<form action="{{ route('client_search') }}">
+			<form action="{{ route('client_search') }}" class="form_rech">
 				@csrf
 				<input type="search" name="q" class="input" placeholder="Numéro">
 				<button class="btn btn-primary pt-2" id="btn-recherche">

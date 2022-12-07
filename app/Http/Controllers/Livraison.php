@@ -23,8 +23,19 @@ class Livraison extends Controller
     public function index()
     {
 
-        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
-        parent::completer_compte();
+        if(auth()->check())
+        {
+            // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+            if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
+            {
+                return redirect()->route('Completion_compte.index');
+
+            } elseif(((Auth::user()->role_id == 5) === false) && (Auth::user()->adresse_id === null)){
+
+                return redirect()->route('Completion_compte.index');
+
+            }
+        }
 
         $numero = 1;
         $numero_1 = 1;
@@ -113,19 +124,6 @@ class Livraison extends Controller
 
         $remise = ((double)$commandes->sum('prix_total') / 100) * ($gestion->remise);
 
-        // VERIFIER SI C'EST LA 5ème LIVRAISON
-        $verifier_remise = Livraisons::All()
-                                    ->where('user_id', Auth::user()->id)
-                                    ->where('beneficier', false)
-                                    ->count();
-                                   
-        if($verifier_remise == 4)
-        {
-            $reception_remise = (double)$verifier_remise->sum('remise') + (double)$remise;
-        } else{
-            $reception_remise = null;
-        }
-
         // ENREGISTREMENT D'INFORMATION DE LA LIVRAISON
         $livraison = Livraisons::create([
             'user_id' => Auth::user()->id,
@@ -138,8 +136,23 @@ class Livraison extends Controller
             'prix_total' => (double)$commandes->sum('prix_total'),
             'remise_pourcentage' => $gestion->remise,
             'remise' => $remise,
-            'montant_remise' => $reception_remise,
+            'montant_remise' => null,
         ])->id;
+
+        // RECUPERER TOUTES LES LIVRAISONS QUI ONT LES VALEURS FALSE
+        $livraisons_remises = Livraisons::All()
+                                        ->where('user_id', Auth::user()->id)
+                                        ->where('beneficier', false);
+
+        // TOUTES LES LIVRAISONS TRUE AU COLONE BENEFICIER   
+        foreach($livraisons_remises as $livraison_remise)
+        {
+            Livraisons::findOrFail($livraison_remise->id)
+                        ->update([
+                            'beneficier' => true,
+                        ]);
+        }
+
         // MODIFIER LES COMMANDES EN VALIDE
         foreach($commandes as $commande)
         {
@@ -162,11 +175,40 @@ class Livraison extends Controller
      */
     public function show($id)
     {
-        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
-        parent::completer_compte();
+        if(auth()->check())
+        {
+            // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+            if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
+            {
+                return redirect()->route('Completion_compte.index');
+
+            } elseif(((Auth::user()->role_id == 5) === false) && (Auth::user()->adresse_id === null)){
+
+                return redirect()->route('Completion_compte.index');
+
+            }
+        }
+
+        $client = User::findOrFail($id);
+        $livraisons = Livraisons::where('user_id', $client->id)
+                                ->where('livree', true)
+                                ->where('valide', true)
+                                ->orderBy('created_at', 'desc')
+                                ->paginate(50);
+
+        $numero = $livraisons->count();
+        $remise = Livraisons::All()
+                            ->where('user_id', $client->id)
+                            ->where('beneficier', true)
+                            ->where('livree', true)
+                            ->where('montant_remise', '>', '0');
         
         return view('pages.commande.commandes', [
             'notification' => parent::commande(),
+            'livraisons' => $livraisons,
+            'numero' => $numero,
+            'remise' => $remise,
+            'client' => $client,
         ]);
     }
 
@@ -190,8 +232,19 @@ class Livraison extends Controller
      */
     public function update(Request $request, $id)
     {
-        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
-        parent::completer_compte();
+        if(auth()->check())
+        {
+            // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+            if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
+            {
+                return redirect()->route('Completion_compte.index');
+
+            } elseif(((Auth::user()->role_id == 5) === false) && (Auth::user()->adresse_id === null)){
+
+                return redirect()->route('Completion_compte.index');
+
+            }
+        }
 
         $gestion = Gestions::findOrFail(1);
         $livraison = Livraisons::findOrFail($id);
@@ -234,9 +287,45 @@ class Livraison extends Controller
                 $gain_brut = (double)$vente - (double)$achat;
                 $remise_in = $livraison->remise;
 
-                if($livraison->montant_remise > 0)
+                // SIGNALER QUE LA LIVRAISON EST FAITE
+                Livraisons::findOrFail($id)
+                        ->update([
+                            'livree' => true,
+                        ]);
+
+                // RECUPERER TOUTES LES LIVRAISONS QUI ONT LES VALEURS FALSE
+                $total_remises = Livraisons::All()
+                                            ->where('user_id', $client->id)
+                                            ->where('beneficier', false)
+                                            ->where('livree', true)
+                                            ->count();
+
+                if($total_remises == 5)
                 {
-                    $remise_out = $livraison->montant_remise;
+
+                    $remise_out = Livraisons::All()
+                                            ->where('user_id', $client->id)
+                                            ->where('beneficier', false)
+                                            ->where('livree', true)
+                                            ->sum('remise');
+
+                    Livraisons::findOrFail($id)
+                                ->update([
+                                    'montant_remise' => $remise_out,
+                                ]);
+
+                    $livraisons2 = Livraisons::All()
+                                            ->where('user_id', $client->id)
+                                            ->where('beneficier', false)
+                                            ->where('livree', true);
+                    
+                    foreach($livraisons2 as $livraison2)
+                    {
+                        Livraisons::findOrFail($livraison2->id)
+                                ->update([
+                                    'beneficier' => true,
+                                ]);
+                    }
 
                 } else{
 
@@ -275,7 +364,6 @@ class Livraison extends Controller
 
                 } elseif(count($verifier_date) == 1){
                 
-                    
                     $partage_id = Partages::select('id')->where('date_vente', $livraison->date_livraison)->first()->id;
                     $partage_achat = Partages::select('achat')->where('date_vente', $livraison->date_livraison)->first()->achat;
                     $partage_vente = Partages::select('vente')->where('date_vente', $livraison->date_livraison)->first()->vente;
@@ -305,19 +393,7 @@ class Livraison extends Controller
                             ]);
 
                 }
-                // SIGNALER QUE LA LIVRAISON EST FAITE
-                Livraisons::findOrFail($id)
-                        ->update([
-                            'livree' => true,
-                        ]);
 
-                // MODIFIER BENEFICIER A TRUE DE LA LIVRAISON EN COUR
-                Livraisons::where('user_id', $client->id)
-                        ->where('valide', true)
-                        ->where('livree', true)
-                        ->update([
-                            'beneficier' => true,
-                        ]);
             } else{
 
                 return redirect()->route("viewFacture", $livraison->id);

@@ -43,10 +43,10 @@ use App\Models\User;
         @endif
         @if(Auth::user()->role_id == 1)
             @if(!$livraison->livree)
-                <form method="POST" action="{{ route('Livraison.update', $livraison->id) }}" class="form">
+                <form method="POST" action="{{ route('Livraison.update', $livraison->id) }}" class="formulaire">
                     @csrf
                     @method('PUT')
-                    <select name="livreur" class="input" required>
+                    <select name="livreur" class="input_livreur" required>
 
                         <option value="null">Choisissez le livreur</option>
 
@@ -80,7 +80,7 @@ use App\Models\User;
                             @endforeach
                         @endif
                     </select>
-                    <button type="submit" class="boutton">Valider</button>
+                    <button type="submit" class="boutt">Valider</button>
                 </form>
             @else
                 <p class="p-livreur">Livrée par : {{ $livreur_existe->prenom." ".$livreur_existe->name." le ".$livraison->date_livraison }}</p>
