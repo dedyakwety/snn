@@ -131,7 +131,7 @@ class Panier extends Controller
                 return redirect()->route('index');
 
             } else{
-
+                
                 // CLIENT SANS COMPTE
                 $request->validate([
                     'quantite' => ['required'],
@@ -177,6 +177,7 @@ class Panier extends Controller
                     'prix_total' => $prix_total,
                     'valide' => true,
                 ]);
+
                 // RETOURNER USER A L'ACCUEIL
                 return redirect()->route('commande_reussie');
 
@@ -222,16 +223,22 @@ class Panier extends Controller
         
         try {
 
-            $gestion = Gestions::findOrFail(1);
-            $article = Commandes::findOrFail($id);
-            
-            return view('pages.article.article_edit', [
-                'gestion' => $gestion,
-                'article' => $article,
-                'notification' => parent::commande(),
-                'tailles_1' => parent::taille_lettre(),
-                'tailles_2' => parent::taille_chiffre(),
-            ]);
+            if(auth()->check())
+            {
+                $gestion = Gestions::findOrFail(1);
+                $article = Commandes::findOrFail($id);
+                
+                return view('pages.article.article_edit', [
+                    'gestion' => $gestion,
+                    'article' => $article,
+                    'notification' => parent::commande(),
+                    'tailles_1' => parent::taille_lettre(),
+                    'tailles_2' => parent::taille_chiffre(),
+                ]);
+
+            } else {
+                return redirect()->route('404');
+            }
 
         } catch (Exception $e) {
 
@@ -249,26 +256,32 @@ class Panier extends Controller
      */
     public function update(Request $request, $id)
     {
-        // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
-        parent::completer_compte();
-        
-        $request->validate([
-            'taille' => ['required'],
-            'quantite' => ['required'],
-        ]);
-        
-        $commande = Commandes::findOrFail($id);
-        $prix_achat = (double)Articles::findOrFail($commande->article_id)->prix * (double)$request->quantite;
-        $prix_total = (double)$commande->prix_unitaire * (double)$request->quantite;
-        
-        $commande->update([
-            'taille' => $request->taille,
-            'prix_achat' => $prix_achat,
-            'quantite' => $request->quantite,
-            'prix_total' => $prix_total,
-        ]);
+        if(auth()->check())
+        {
+            // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
+            parent::completer_compte();
+            
+            $request->validate([
+                'taille' => ['required'],
+                'quantite' => ['required'],
+            ]);
+            
+            $commande = Commandes::findOrFail($id);
+            $prix_achat = (double)Articles::findOrFail($commande->article_id)->prix * (double)$request->quantite;
+            $prix_total = (double)$commande->prix_unitaire * (double)$request->quantite;
+            
+            $commande->update([
+                'taille' => $request->taille,
+                'prix_achat' => $prix_achat,
+                'quantite' => $request->quantite,
+                'prix_total' => $prix_total,
+            ]);
 
-        return redirect()->route('Panier.index');
+            return redirect()->route('Panier.index');
+
+        } else {
+            return redirect()->route('404');
+        }
     }
 
     /**
@@ -279,13 +292,18 @@ class Panier extends Controller
      */
     public function destroy($id)
     {
-        try {
-            $article = Commandes::findOrFail($id);
-            $article->delete();
+        if(auth()->check())
+        {
+            try {
+                $article = Commandes::findOrFail($id);
+                $article->delete();
 
-            return redirect()->route('Panier.index');
+                return redirect()->route('Panier.index');
 
-        } catch (Exception $e) {
+            } catch (Exception $e) {
+                return redirect()->route('404');
+            }
+        } else {
             return redirect()->route('404');
         }
         

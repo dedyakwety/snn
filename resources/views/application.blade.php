@@ -1,3 +1,12 @@
+<?php
+use App\Models\Pours;
+
+$homme = Pours::findOrFail(1);
+$femme = Pours::findOrFail(2);
+$enfant = Pours::findOrFail(3);
+$accessoire = Pours::findOrFail(4);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -119,6 +128,9 @@
 @if(Route::is('boutique_index'))
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/boutique_index.css') }}">
 @endif
+@if(Route::is('commande_reussie'))
+	<link rel="stylesheet" type="text/css" href="{{ asset('styles/commande_reussie.css') }}">
+@endif
 
 </head>
 
@@ -227,7 +239,7 @@
 												<form method="POST" action="{{ route('logout') }}">
 						                            @csrf
 						                            <li><a href="{{ route('register') }}">
-						                            	<button type="submit" class="btn btn-second">Deconnexion</button>
+						                            	<button type="submit" class="btn-deconnexion">Deconnexion</button>
 						                            </li></a>
 						                        </form>
 											@endauth
@@ -254,15 +266,18 @@
 							<nav class="navbar">
 								<ul class="navbar_menu">
 									<li><a href="{{ route('index') }}">Accueil</a></li>
-									<li><a href="{{ route('categorie', ['id' => 'homme']) }}">Hommes</a></li>
-									<li><a href="{{ route('categorie', ['id' => 'femme']) }}">Femmes</a></li>
-									<li><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfants</a></li>
-									@auth
-										@if((Auth()->user()->role_id == 1) OR (Auth()->user()->role_id == 2))
-											<li><a href="{{ route('index_message') }}">messages</a></li>
-										@endif
-									@endauth
-									<li><a href="#">apropos</a></li>
+									@if($homme->articles()->count() > 0)
+										<li><a href="{{ route('categorie', ['id' => 'homme']) }}">Homme</a></li>
+									@endif
+									@if($femme->articles()->count() > 0)
+										<li><a href="{{ route('categorie', ['id' => 'femme']) }}">Femme</a></li>
+									@endif
+									@if($enfant->articles()->count() > 0)
+										<li><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfant</a></li>
+									@endif
+									@if($accessoire->articles()->count() > 0)
+										<li><a href="#">accessoire</a></li>
+									@endif
 								</ul>
 								<ul class="navbar_user">
 								
@@ -428,6 +443,8 @@
 		@yield('body-profil-edit')
 
 		@yield('client-index')
+
+		@yield('body-commande-reussie')
 
 		<div class="benefit">
 			<div class="container">

@@ -60,117 +60,132 @@ class Article extends Controller
         
         try {
             
-            // AJOUTER DANS LA BOUTIQUE
-            $boutique = Boutiques::findOrFail($request->boutique);
-            
-            if($boutique->articles >= 1)
+            if(auth()->check())
             {
-                Boutiques::where('nom', $request->boutique)
-                        ->update([
-                            'articles' => (int)$boutique->articles + 1,
-                        ]);
-            } elseif($boutique->articles == 0){
 
-                Boutiques::where('nom', $request->boutique)
-                        ->update([
-                            'articles' => 1,
-                        ]);
-            }
+                if(Auth::user()->role_id == 1)
+                {
+                    // AJOUTER DANS LA BOUTIQUE
+                    $boutique = Boutiques::findOrFail($request->boutique);
+                    
+                    if($boutique->articles >= 1)
+                    {
+                        Boutiques::where('nom', $request->boutique)
+                                ->update([
+                                    'articles' => (int)$boutique->articles + 1,
+                                ]);
+                    } elseif($boutique->articles == 0){
 
-            // ARTICLE
-            $id_pour = Pours::findOrFail($request->pour)->id;
-            $id_categorie = Categories::findOrFail($request->categorie)->id;
-            $id_modele = Modeles::findOrFail($request->modele)->id;
-            
-            $id_article = Articles::create([
-                'boutique_id' => $request->boutique,
-                'pour_id' => $id_pour,
-                'categorie_id' => $id_categorie,
-                'modele_id' => $id_modele,
-                'prix' => $request->prix,
-                'commentaire' => $request->commentaire,
-            ])->id;
+                        Boutiques::where('nom', $request->boutique)
+                                ->update([
+                                    'articles' => 1,
+                                ]);
+                    }
 
-            // ENREGISTREMENT DES IMAGES ARTICLES
-                // IMAGES 1
-            
-            $path_1 = $request->image_1->storeAs(
-                'images/articles/article'.$id_article,
-                'image_1'.".".$request->image_1->getClientOriginalExtension(),
-                's3',
-            );
-            /*
-            // Si la taille d'image est superieur 1.5mb Suprimer Envoi exception 
-            if((((double)Storage::size("public/".$path_1) / 1024) / 1024) > 2.5)
-            {
-                Storage::disk('s3')->delete("public/".$path_1);
-                // RETOUR AVEC MESSAGE
-                Session::put('erreur', 'La photo est trop lourde doit avoir au max 2.5MB');
-                return redirect()->route('index');
-            }*/
-                // IMAGES 2
-            $path_2 = $request->image_2->storeAs(
-                'images/articles/article'.$id_article,
-                'image_2'.".".$request->image_2->getClientOriginalExtension(),
-                's3',
-            );
-            /*
-            // Si la taille d'image est superieur 2.5mb Suprimer Envoi exception 
-            if((((double)Storage::size("public/".$path_2) / 1024) / 1024) > 2.5)
-            {
-                Storage::disk('s3')->delete("public/".$path_2);
-                // RETOUR AVEC MESSAGE
-                Session::put('erreur', 'La photo est trop lourde doit avoir au max 2.5MB');
-                return redirect()->route('index');
+                    // ARTICLE
+                    $id_pour = Pours::findOrFail($request->pour)->id;
+                    $id_categorie = Categories::findOrFail($request->categorie)->id;
+                    $id_modele = Modeles::findOrFail($request->modele)->id;
+                    
+                    $id_article = Articles::create([
+                        'boutique_id' => $request->boutique,
+                        'pour_id' => $id_pour,
+                        'categorie_id' => $id_categorie,
+                        'modele_id' => $id_modele,
+                        'prix' => $request->prix,
+                        'commentaire' => $request->commentaire,
+                    ])->id;
+
+                    // ENREGISTREMENT DES IMAGES ARTICLES
+                        // IMAGES 1
+                    
+                    $path_1 = $request->image_1->storeAs(
+                        'images/articles/article'.$id_article,
+                        'image_1'.".".$request->image_1->getClientOriginalExtension(),
+                        's3',
+                    );
+                    /*
+                    // Si la taille d'image est superieur 1.5mb Suprimer Envoi exception 
+                    if((((double)Storage::size("public/".$path_1) / 1024) / 1024) > 2.5)
+                    {
+                        Storage::disk('s3')->delete("public/".$path_1);
+                        // RETOUR AVEC MESSAGE
+                        Session::put('erreur', 'La photo est trop lourde doit avoir au max 2.5MB');
+                        return redirect()->route('index');
+                    }*/
+                        // IMAGES 2
+                    $path_2 = $request->image_2->storeAs(
+                        'images/articles/article'.$id_article,
+                        'image_2'.".".$request->image_2->getClientOriginalExtension(),
+                        's3',
+                    );
+                    /*
+                    // Si la taille d'image est superieur 2.5mb Suprimer Envoi exception 
+                    if((((double)Storage::size("public/".$path_2) / 1024) / 1024) > 2.5)
+                    {
+                        Storage::disk('s3')->delete("public/".$path_2);
+                        // RETOUR AVEC MESSAGE
+                        Session::put('erreur', 'La photo est trop lourde doit avoir au max 2.5MB');
+                        return redirect()->route('index');
+                    }
+                    */
+                    // IMAGES 3
+                    $path_3 = $request->image_3->storeAs(
+                        'images/articles/article'.$id_article,
+                        'image_3'.".".$request->image_3->getClientOriginalExtension(),
+                        's3',
+                    );
+                    /*
+                    // Si la taille d'image est superieur 2.5mb Suprimer Envoi exception 
+                    if((((double)Storage::size("public/".$path_3) / 1024) / 1024) > 2.5)
+                    {
+                        Storage::disk('s3')->delete("public/".$path_3);
+                        // RETOUR AVEC MESSAGE
+                        Session::put('erreur', 'La photo est trop lourde doit avoir au max 2.5MB');
+                        return redirect()->route('index');
+                    }
+                    */
+                    // IMAGES 4
+                    $path_4 = $request->image_4->storeAs(
+                        'images/articles/article'.$id_article,
+                        'image_4'.".".$request->image_4->getClientOriginalExtension(),
+                        's3',
+                    );
+                    Storage::disk('s3')->setVisibility($path_1, 'public');
+                    Storage::disk('s3')->setVisibility($path_2, 'public');
+                    Storage::disk('s3')->setVisibility($path_3, 'public');
+                    Storage::disk('s3')->setVisibility($path_4, 'public');
+                    /*
+                    // Si la taille d'image est superieur 2.5mb Suprimer Envoi exception 
+                    if((((double)Storage::size("public/".$path_4) / 1024) / 1024) > 2.5)
+                    {
+                        Storage::disk('s3')->delete("public/".$path_4);
+                        // RETOUR AVEC MESSAGE
+                        Session::put('erreur', 'La photo est trop lourde doit avoir au max 2.5MB');
+                        return redirect()->route('index');
+                    }
+                    */
+                    // ENREGISTREMENT IMAGES
+                    Images::create([
+                        'article_id' => $id_article,
+                        'path_1' => $path_1,
+                        'path_2' => $path_2,
+                        'path_3' => $path_3,
+                        'path_4' => $path_4,
+                    ]);
+
+                    // RETOUR AVEC MESSAGE
+                    Session::put('succes', 'Article ajouter avec sussès');
+                    return redirect()->route('index');
+
+                } else{
+
+                    return redirect()->route('404');
+                }
+
+            } else{
+                return redirect()->route('404');
             }
-            */
-            // IMAGES 3
-            $path_3 = $request->image_3->storeAs(
-                'images/articles/article'.$id_article,
-                'image_3'.".".$request->image_3->getClientOriginalExtension(),
-                's3',
-            );
-            /*
-            // Si la taille d'image est superieur 2.5mb Suprimer Envoi exception 
-            if((((double)Storage::size("public/".$path_3) / 1024) / 1024) > 2.5)
-            {
-                Storage::disk('s3')->delete("public/".$path_3);
-                // RETOUR AVEC MESSAGE
-                Session::put('erreur', 'La photo est trop lourde doit avoir au max 2.5MB');
-                return redirect()->route('index');
-            }
-            */
-            // IMAGES 4
-            $path_4 = $request->image_4->storeAs(
-                'images/articles/article'.$id_article,
-                'image_4'.".".$request->image_4->getClientOriginalExtension(),
-                's3',
-            );
-            Storage::disk('s3')->setVisibility($path_1, 'public');
-            Storage::disk('s3')->setVisibility($path_2, 'public');
-            Storage::disk('s3')->setVisibility($path_3, 'public');
-            Storage::disk('s3')->setVisibility($path_4, 'public');
-            /*
-            // Si la taille d'image est superieur 2.5mb Suprimer Envoi exception 
-            if((((double)Storage::size("public/".$path_4) / 1024) / 1024) > 2.5)
-            {
-                Storage::disk('s3')->delete("public/".$path_4);
-                // RETOUR AVEC MESSAGE
-                Session::put('erreur', 'La photo est trop lourde doit avoir au max 2.5MB');
-                return redirect()->route('index');
-            }
-            */
-            // ENREGISTREMENT IMAGES
-            Images::create([
-                'article_id' => $id_article,
-                'path_1' => $path_1,
-                'path_2' => $path_2,
-                'path_3' => $path_3,
-                'path_4' => $path_4,
-            ]);
-            // RETOUR AVEC MESSAGE
-            Session::put('succes', 'Article ajouter avec sussès');
-            return redirect()->route('index');
 
         } catch (Exception $e) {
             return redirect()->route('404');
@@ -244,35 +259,49 @@ class Article extends Controller
      */
     public function update(Request $request, $id)
     {
-        $article = Articles::findOrFail($id);
-
-        $request->validate([
-            'pour' => ['required'],
-            'categorie' => ['required'],
-            'modele' => ['required'],
-            'prix' => ['required'],
-            'commentaire' => ['required'],
-            'password' => ['required'],
-        ]);
-        
-        if(password_verify($request->password, Auth::user()->password))
+        if(auth()->check())
         {
-            $article->update([
-                        'pour' => $request->pour,
-                        'categorie' => $request->categorie,
-                        'modele' => $request->modele,
-                        'prix' => $request->prix,
-                        'commentaire' => $request->commentaire,
-                    ]);
-            Session::put('succes', 'Article modifier avec succès');
+
+            if(Auth::user()->role_id == 1)
+            {
+                $article = Articles::findOrFail($id);
+
+                $request->validate([
+                    'pour' => ['required'],
+                    'categorie' => ['required'],
+                    'modele' => ['required'],
+                    'prix' => ['required'],
+                    'commentaire' => ['required'],
+                    'password' => ['required'],
+                ]);
+                
+                if(password_verify($request->password, Auth::user()->password))
+                {
+                    $article->update([
+                                'pour' => $request->pour,
+                                'categorie' => $request->categorie,
+                                'modele' => $request->modele,
+                                'prix' => $request->prix,
+                                'commentaire' => $request->commentaire,
+                            ]);
+                    Session::put('succes', 'Article modifier avec succès');
+
+                } else{
+
+                    Session::put('erreur', 'Mot de passe incorect');
+
+                }
+
+                return redirect()->route('Articles.show', $article->id);
+            
+            } else{
+                return redirect()->route('404');
+            }
 
         } else{
-
-            Session::put('erreur', 'Mot de passe incorect');
-
+            return redirect()->route('404');
         }
 
-        return redirect()->route('Articles.show', $article->id);
     }
 
     /**

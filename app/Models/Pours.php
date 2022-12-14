@@ -17,6 +17,6 @@ class Pours extends Model
 
     public function articles()
     {
-        return $this->hasMany('App\Models\Articles');
+        return $this->hasMany('App\Models\Articles', 'pour_id', 'id');
     }
 }

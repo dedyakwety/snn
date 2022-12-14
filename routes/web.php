@@ -25,6 +25,9 @@ Route::resource('/Profil', 'App\Http\Controllers\Profil')->middleware(['auth']);
 Route::resource('/Mot_de_passe', 'App\Http\Controllers\Mot_de_passe')->middleware(['auth']);
 
 // 404
+Route::fallback(function() {
+    return view('404');
+});
 Route::get('/Erreur/404', 'App\Http\Controllers\Erreur@erreur_404')->name('404');
 
 // AGENTS
@@ -44,7 +47,7 @@ Route::get('/Search', 'App\Http\Controllers\Recherche@search')->name('article.se
 Route::get('/Categorie/{id}', 'App\Http\Controllers\Categorie@index')->name('categorie');
 
 // PANIER
-Route::resource('/Panier', 'App\Http\Controllers\Panier')->middleware(['auth']);
+Route::resource('/Panier', 'App\Http\Controllers\Panier');
 
 // MODIFICATION COMMANDE
 Route::get('/commande/{id}', 'App\Http\Controllers\Update_commande@index')->middleware(['auth'])->name('commande_index');
@@ -73,9 +76,9 @@ Route::get('/Commande-reussie', 'App\Http\Controllers\Facture@commande_reussie')
 Route::resource('/Gestion', 'App\Http\Controllers\Gestion')->middleware(['auth']);
 
 // BOUTIQUE
-Route::get('/Boutiques', 'App\Http\Controllers\Boutique@index')->name('boutique_index');
-Route::post('/Boutique/Ajout', 'App\Http\Controllers\Boutique@store')->name('boutique_store');
-Route::get('/Boutique/{id}', 'App\Http\Controllers\Boutique@articles')->name('boutique_articles');
+Route::get('/Boutiques', 'App\Http\Controllers\Boutique@index')->middleware(['auth'])->name('boutique_index');
+Route::post('/Boutique/Ajout', 'App\Http\Controllers\Boutique@store')->middleware(['auth'])->name('boutique_store');
+Route::get('/Boutique/{id}', 'App\Http\Controllers\Boutique@articles')->middleware(['auth'])->name('boutique_articles');
 
 // RESET PASSWORD USER
 Route::get('/Reset_password_user/{id}', 'App\Http\Controllers\Reset_password@index')->middleware(['auth'])->name('reset_password_user_index');

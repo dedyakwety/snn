@@ -26,18 +26,28 @@ class Boutique extends Controller
                 return redirect()->route('Completion_compte.index');
 
             }
-        }
         
-        $numero = 1;
-        $numero_2 = 1;
-        $boutiques = Boutiques::All();
+            if ((Auth::user()->role_id == 1 OR Auth::user()->role_id == 2)) {
+                
+                // code...
+                $numero = 1;
+                $numero_2 = 1;
+                $boutiques = Boutiques::All();
 
-        return view('pages.boutique.boutique_index', [
-            'notification' => parent::commande(),
-            'boutiques' => $boutiques,
-            'numero' => $numero,
-            'numero_2' => $numero_2,
-        ]);
+                return view('pages.boutique.boutique_index', [
+                    'notification' => parent::commande(),
+                    'boutiques' => $boutiques,
+                    'numero' => $numero,
+                    'numero_2' => $numero_2,
+                ]);
+
+            } else {
+                return redirect()->route('404');
+            }
+            
+        } else {
+            return redirect()->route('404');
+        }
     }
 
     public function store(Request $request)
@@ -61,26 +71,33 @@ class Boutique extends Controller
             } else{
                 Session::put('erreur', 'Mot de passe incorect');
             }
+            return redirect()->route('boutique_index');
 
         } catch (Exception $e) {
             return redirect()->route('404');
         }
-        return redirect()->route('boutique_index');
+        
     }
 
     public function articles($id)
     {
-        $id_boutique = Boutiques::select('id')->where('nom', $id)->first()->id;
-        $boutique = Boutiques::findOrFail($id_boutique);
-        $articles = Articles::where('boutique_id', $id_boutique)
-                            ->orderBy('created_at', 'desc')
-                            ->take(400)
-                            ->get();
-        
-        return view('pages.boutique.boutique_articles', [
-            'notification' => parent::commande(),
-            'boutique' => $boutique,
-            'articles' => $articles,
-        ]);
+        try {
+            
+            $id_boutique = Boutiques::select('id')->where('nom', $id)->first()->id;
+            $boutique = Boutiques::findOrFail($id_boutique);
+            $articles = Articles::where('boutique_id', $id_boutique)
+                                ->orderBy('created_at', 'desc')
+                                ->take(400)
+                                ->get();
+            
+            return view('pages.boutique.boutique_articles', [
+                'notification' => parent::commande(),
+                'boutique' => $boutique,
+                'articles' => $articles,
+            ]);
+
+        } catch (Exception $e) {
+            return redirect()->route('404');
+        }
     }
 }

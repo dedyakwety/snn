@@ -46,6 +46,14 @@ COLOR PALETTE
 2. Body and some general stuff
 *********************************/
 
+.select{
+	width: 100px;
+	padding: 10px;
+}
+.option{
+	background-color: teal;
+	padding: 10px;
+}
 
 
 
@@ -513,7 +521,7 @@ section
 .account_selection li a
 {
 	display: block;
-	color: #232530;
+	color: green;
 	border-bottom: solid 1px #dddddd;
 	font-size: 14px;
 	-webkit-transition: all 0.3s ease;
@@ -570,6 +578,12 @@ section
 	-ms-transition: color 0.3s ease;
 	-o-transition: color 0.3s ease;
 	transition: color 0.3s ease;
+}
+.btn-deconnexion{
+	background-color: transparent;
+	font-size: 13px;
+	width: 100%;
+	border: 0px solid transparent;
 }
 .navbar_menu li a:hover
 {

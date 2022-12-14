@@ -1,0 +1,33 @@
+.body-404{
+	position: absolute;
+	width: 80%;
+	height: 100vh;
+	top: 0%;
+	left: 10%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.div-404{
+	width: 150px;
+	height: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.div-404 h1{
+	font-family: cursive;
+	color: #000;
+	font-size: 19px;
+	text-align: center;
+}
+.div-404 a{
+	text-decoration: none;
+	padding: 7px;
+	width: 50%;
+	color: #000;
+	margin-left: 21%;
+	text-align: center;
+	font-family: cursive;
+	background-color: #d4d4d4;
+}
