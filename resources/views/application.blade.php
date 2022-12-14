@@ -4,7 +4,7 @@ use App\Models\Pours;
 $homme = Pours::findOrFail(1);
 $femme = Pours::findOrFail(2);
 $enfant = Pours::findOrFail(3);
-$accessoire = Pours::findOrFail(4);
+//$accessoire = Pours::findOrFail(4);
 
 ?>
 <!DOCTYPE html>
@@ -275,9 +275,7 @@ $accessoire = Pours::findOrFail(4);
 									@if($enfant->articles()->count() > 0)
 										<li><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfant</a></li>
 									@endif
-									@if($accessoire->articles()->count() > 0)
-										<li><a href="#">accessoire</a></li>
-									@endif
+										<!--li><a href="#">accessoire</a></li-->
 								</ul>
 								<ul class="navbar_user">
 								
@@ -388,9 +386,16 @@ $accessoire = Pours::findOrFail(4);
 							</ul>
 						</li>
 					@endauth
-					<li class="menu_item"><a href="{{ route('categorie', ['id' => 'homme']) }}">Hommes</a></li>
-					<li class="menu_item"><a href="{{ route('categorie', ['id' => 'femme']) }}">Femmes</a></li>
-					<li class="menu_item"><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfant</a></li>
+
+					@if($homme->articles()->count() > 0)
+						<li class="menu_item"><a href="{{ route('categorie', ['id' => 'homme']) }}">Hommes</a></li>
+					@endif
+					@if($femme->articles()->count() > 0)
+						<li class="menu_item"><a href="{{ route('categorie', ['id' => 'femme']) }}">Femmes</a></li>
+					@endif
+					@if($enfant->articles()->count() > 0)
+						<li class="menu_item"><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfant</a></li>
+					@endif
 					<li class="menu_item"><a href="#">A propos</a></li>
 				</ul>
 			</div>
