@@ -263,6 +263,11 @@ $enfant = Pours::findOrFail(3);
 									<img src="{{ asset('images/logo/logo.jpg') }}" alt="image-logo">
 								</a>
 							</div>
+							<div class="logo_container_responsive">
+								<a href="{{ route('index') }}">
+									<img src="{{ asset('images/logo/logo.jpg') }}" alt="image-logo">
+								</a>
+							</div>
 							<nav class="navbar">
 								<ul class="navbar_menu">
 									<li><a href="{{ route('index') }}">Accueil</a></li>
@@ -468,7 +473,7 @@ $enfant = Pours::findOrFail(3);
 							<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
 							<div class="benefit_content">
 								<h6>Paiement à domicile par :</h6>
-								<p>espèce, range money, M-pesa, Airtel money</p>
+								<p>Espèce, Orange money, M-pesa, Airtel money</p>
 							</div>
 						</div>
 					</div>
@@ -476,7 +481,7 @@ $enfant = Pours::findOrFail(3);
 						<div class="benefit_item d-flex flex-row align-items-center">
 							<div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
 							<div class="benefit_content">
-								<h6>CommandeZ chaque jour 24h/24h dans en ligne</h6>
+								<h6>CommandeZ chaque jour 7jrs/7jrs 24h/24h dans en ligne</h6>
 								<p></p>
 							</div>
 						</div>
@@ -486,7 +491,7 @@ $enfant = Pours::findOrFail(3);
 							<div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
 							<div class="benefit_content">
 								<h6>6 jours de livraison :</h6>
-								<p>du lundi au vendredi de 08h' à 15h30' et samedi de 08h' à 13h'</p>
+								<p>du lundi au vendredi de 08h' à 15h30' et samedi de 08h' à 14h30'</p>
 							</div>
 						</div>
 					</div>

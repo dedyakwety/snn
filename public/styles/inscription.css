@@ -143,13 +143,13 @@ select{
 
 
 
-@media only screen and (max-width: 500px)
+@media only screen and (max-width: 650px)
 {
 	.div-inscription{
 		width: 90%;
 		margin-left: 5%;
 		margin-top: 20vh;
-		height: 700px;
+		height: 650px;
 	}
 	.form{
 		width: 100%;

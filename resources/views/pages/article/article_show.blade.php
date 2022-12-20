@@ -28,7 +28,7 @@
 						<div class="col-lg-3 thumbnails_col order-lg-1 order-2">
 							<div class="single_product_thumbnails">
 								<ul>
-									<li><img src="{{ asset(Storage::url($article->image->path_2)) }}" alt="image" data-image="images/single_1.jpg"></li>
+									<li><img src="{{ asset(Storage::url($article->image->path_2)) }}" alt="image" data-image="images/single_1.jp"></li>
 									<li class="active"><img src="{{ asset(Storage::url($article->image->path_3)) }}" alt="image" data-image="images/single_2.jpg"></li>
 									<li><img src="{{ asset(Storage::url($article->image->path_4)) }}" alt="image" data-image="images/single_3.jpg" class="image-3"></li>
 								</ul>

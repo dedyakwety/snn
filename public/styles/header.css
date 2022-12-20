@@ -51,7 +51,6 @@ COLOR PALETTE
 	padding: 10px;
 }
 .option{
-	background-color: teal;
 	padding: 10px;
 }
 
@@ -521,7 +520,7 @@ section
 .account_selection li a
 {
 	display: block;
-	color: green;
+	color: #000;
 	border-bottom: solid 1px #dddddd;
 	font-size: 14px;
 	-webkit-transition: all 0.3s ease;
@@ -810,13 +809,15 @@ section
 /*********************************
 3.6 Logo
 *********************************/
-
+.logo_container_responsive img{
+	width: 0px;
+}
 .logo_container
 {
 	position: absolute;
-	top: 50%;
-	width: 200px;
-	height: 40px;
+	top: 65px;
+	width: 120px;
+	height: 110px;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
@@ -826,9 +827,8 @@ section
 }
 .logo_container img
 {
-	width: 50%;
-	height: 40px;
-	font-size: 24px;
+	width: 100%;
+	height: 100%;
 	color: #000;
 	font-weight: 700;
 	text-transform: uppercase;

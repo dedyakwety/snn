@@ -89,15 +89,17 @@
 	}
 }
 */
-
-@media only screen and (max-width: 480px)
+@media only screen and (max-width: 991px)
 {
+	.logo_container_responsive img{
+		width: 0px;
+	}
 	.logo_container
 	{
 		position: absolute;
-		top: 30%;
+		top: 65px;
 		width: 100px;
-		height: 30px;
+		height: 80%;
 		-webkit-transform: translateY(-50%);
 		-moz-transform: translateY(-50%);
 		-ms-transform: translateY(-50%);
@@ -107,19 +109,57 @@
 	}
 	.logo_container img
 	{
-		width: 50%;
-		height: 40px;
-		font-size: 20px;
+		width: 100%;
+		height: 100%;
 		color: #000;
-		font-weight: 100;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+}
+
+
+
+@media only screen and (max-width: 650px)
+{
+	.logo_container
+	{
+		display: none;
+	}
+	.logo_container img
+	{
+		display: none;
+	}
+	.logo_container_responsive
+	{
+		position: absolute;
+		top: 50px;
+		width: 65px;
+		height: 60px;
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+		transform: translateY(-50%);
+		left: 15px;
+	}
+	.logo_container_responsive img
+	{
+		width: 100%;
+		height: 100%;
+		color: #000;
+		font-weight: 700;
 		text-transform: uppercase;
 	}
 	.logo_container a
 	{
-		font-size: 20px;
+		font-size: 24px;
 		color: #000;
 		font-weight: 700;
 		text-transform: uppercase;
+	}
+	.logo_container a span
+	{
+		color: #1315b9;
 	}
 	.logo_container a span
 	{
@@ -134,18 +174,68 @@
 		margin-left: 37px;
 		margin-right: 0px;
 	}
+	.logo{
+		width: 100%;
+		height: 100%;
+	}
+}
+
+
+
+@media only screen and (max-width: 480px)
+{
 	.logo_container
 	{
-		width: 75px;
-		height: 40px;
+		display: none;
+	}
+	.logo_container img
+	{
+		display: none;
+	}
+	.logo_container_responsive
+	{
 		position: absolute;
-		top: 50%;
+		top: 35px;
+		width: 55px;
+		height: 50px;
 		-webkit-transform: translateY(-50%);
 		-moz-transform: translateY(-50%);
 		-ms-transform: translateY(-50%);
 		-o-transform: translateY(-50%);
 		transform: translateY(-50%);
 		left: 15px;
+	}
+	.logo_container_responsive img
+	{
+		width: 100%;
+		height: 100%;
+		color: #000;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	.logo_container a
+	{
+		font-size: 24px;
+		color: #000;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	.logo_container a span
+	{
+		color: #1315b9;
+	}
+	.logo_container a span
+	{
+		color: #1315b9;
+	}
+	#caroussel-1{
+		display: none;
+	}
+
+	.navbar_user
+	{
+		margin-left: 37px;
+		margin-right: 0px;
 	}
 	.logo{
 		width: 100%;
