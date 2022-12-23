@@ -42,7 +42,7 @@ Session::put('chemin', url()->current());
                         <a href="https://www.facebook.com/profile.php?id=100086428621447" class="fa fa-facebook" id="facebook"></a>
                     </div>
                     <div class="rx-2">
-                        dad vente
+                        Dad Favori Officiel
                     </div>
                 </div>
                 </a>
@@ -51,7 +51,7 @@ Session::put('chemin', url()->current());
                         <a href="#" class="fa fa-twitter" id="twitter"></a>
                     </div>
                     <div class="rx-2">
-                        @dadvente
+                        @dadfavori
                     </div>
                 </div>
                 <div class="rx">
@@ -59,7 +59,7 @@ Session::put('chemin', url()->current());
                         <a href="#" class="fa fa-instagram" id="instagram"></a>
                     </div>
                     <div class="rx-2">
-                        dad vente
+                        dad favori
                     </div>
                 </div>
                 <div class="rx">

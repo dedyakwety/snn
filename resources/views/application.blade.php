@@ -10,7 +10,7 @@ $enfant = Pours::findOrFail(3);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>somba na ndaku</title>
+<title>Dad Favori</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Colo Shop Template">

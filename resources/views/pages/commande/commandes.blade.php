@@ -6,7 +6,7 @@
 			{{ "Client : ".$client->prenom." ".$client->name }}<br>
 			{{ "Numéro : ".$client->numero->numero }}<br>
 			{{ "Nombre d'achat : ".$livraisons->count() }}<br>
-			{{ "Nombre de remise ".count($remise) }}
+			{{ "Nombre de remise : ".count($remise) }}
 		</div>
 		<table>
 			<tr>
