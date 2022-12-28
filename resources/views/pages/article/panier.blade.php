@@ -126,11 +126,17 @@ use App\Models\Articles;
 			@empty
 				@if(Session::has('succes'))
 					<div class="panier-vide">
-						{{ Session::get('succes') }}
+						<div class="div-accueil">
+							{{ Session::get('succes') }}
+							<a href="{{ route('index') }}" class="accueil">Accueil</a>
+						</div>
 					</div>
 				@else
 					<div class="panier-vide">
-						<h2>Le parnier est vide!</h2>
+						<div class="div-accueil">
+							<h2>Le parnier est vide!</h2>
+							<a href="{{ route('index') }}" class="accueil">Accueil</a>
+						</div>
 					</div>
 				@endif
 			@endforelse

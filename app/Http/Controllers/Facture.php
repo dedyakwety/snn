@@ -241,6 +241,8 @@ class Facture extends Controller
 
     public function commande_reussie()
     {
-        return view('pages.commande.commande_reussie');
+        return view('pages.commande.commande_reussie', [
+            'notification' => parent::commande(),
+        ]);
     }
 }

@@ -18,6 +18,8 @@ class Home extends Controller
 {
     public function index()
     {
+        $modeles = Modeles::All();
+        
         if(auth()->check())
         {
             // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
@@ -53,7 +55,6 @@ class Home extends Controller
             $boutiques = Boutiques::All();
             $pours = Pours::All();
             $categories = Categories::All();
-            $modeles = Modeles::All();
 
             // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
             if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
@@ -81,6 +82,7 @@ class Home extends Controller
             return view('pages.home', [
                 'gestion' => $gestion,
                 'articles' => $articles,
+                'modeles' => $modeles,
             ]);
         }
 

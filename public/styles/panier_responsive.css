@@ -1115,6 +1115,17 @@
 		margin-right: 3%;
 		border: 1px solid transparent;
 	}
+	.div-accueil{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+	.accueil{
+		background-color: #0a0a4b;
+		color: #fff;
+		text-align: center;
+		padding: 5px;
+	}
 
 
 	.div-infos{

@@ -10,12 +10,12 @@ Session::put('chemin', url()->current());
 
                 @if(Session::has('succes'))
                     <div class="message-footer">
-                        {{ Session::get('succes') }}
+                        {{ Session::get('succes_footer') }}
                     </div>
                 @endif
                 @if(Session::has('erreur'))
                     <div class="message-footer">
-                        {{ Session::get('erreur') }}
+                        {{ Session::get('erreur_footer') }}
                     </div>
                 @endif
 

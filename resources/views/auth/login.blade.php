@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>SNN</title>
+<title>Dad Favori</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Colo Shop Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/login.css') }}">
+<link rel="shortcut icon" href="{{ asset('images/logo/logo.jpg') }}">
 </head>
 <body>
 

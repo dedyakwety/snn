@@ -398,7 +398,7 @@
 @media only screen and (max-width: 479px)
 {
 	#cadre-1{
-		background-color: teal;
+		background-color: transparent;
 		margin-top: 25px;
 		border-bottom: 1.5px solid #d4d4d4;
 	}
@@ -442,7 +442,6 @@
 	}
 	.single_product_thumbnails ul li img
 	{
-		background-color: teal;
 		width: 100%;
 		height: 100%;
 	}

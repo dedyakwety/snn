@@ -83,6 +83,17 @@ COLOR PALETTE
 .h3{
 	display: none;
 }
+.div-accueil{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.accueil{
+	background-color: blue;
+	color: #fff;
+	text-align: center;
+	padding: 8px;
+}
 
 
 /* DIV INFOS */
@@ -278,7 +289,7 @@ input{
 
 .single_product_container
 {
-	margin-top: 150px;
+	margin-top: 165px;
 	min-height: 75vh;
 	padding-bottom: 80px;
 	border-bottom: solid 1px #ebebeb;

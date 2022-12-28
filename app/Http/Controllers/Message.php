@@ -66,7 +66,7 @@ class Message extends Controller
             
         }
         
-        Session::put('succes', 'Merci pour votre message, donnez nous quelques minutes...');
+        Session::put('succes_footer', 'Merci pour votre message, donnez nous quelques minutes...');
         return redirect(Session::get('chemin'));
 
     }

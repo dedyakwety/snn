@@ -530,4 +530,6 @@ $enfant = Pours::findOrFail(3);
 	use Illuminate\Support\Facades\Session;
 	Session::forget('erreur');
 	Session::forget('succes');
+	Session::forget('erreur_footer');
+	Session::forget('succes_footer');
 ?>
