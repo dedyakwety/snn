@@ -50,7 +50,7 @@
 				<div class="col">
 						@guest
 							<div class="informer">
-								ENous vous livrons les articles de qualités à domicile partout à Kinshasa, et vous offre une remise de 3% sur la totalité de vos 5 achats au 5ème achat en créant votre compte pour passer vos commandes en toutes sécurité enfin de bénéficier de remises en boucle. Exemple :<br>
+								Nous vous livrons les articles de qualités à domicile partout à Kinshasa, et vous offre une remise de 3% sur la totalité de vos 5 achats au 5ème achat en créant votre compte pour passer vos commandes en toutes sécurité enfin de bénéficier de remises en boucle. Exemple :<br>
 								Achat 1 = 100$ payer 100$<br>
 								Achat 2 = 100$ payer 100$<br>
 								Achat 3 = 100$ payer 100$<br>

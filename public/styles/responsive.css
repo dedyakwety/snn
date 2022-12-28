@@ -511,6 +511,7 @@
 
 	.main_slider
 	{
+		background-color: gray;
 		width: 100%;
 		height: 100vh;
 		margin-top: 0vh;
@@ -525,6 +526,7 @@
 	}
 	.main_slider-2
 	{
+		background-color: red;
 		width: 100%;
 		height: 100vh;
 		margin-top: -100vh;
@@ -552,6 +554,7 @@
 		justify-content: space-around;
 	}
 	.categorie_{
+		background-color: teal;
 		padding-left: 8px;
 		padding-right: 8px;
 		padding-top: 5px;
@@ -588,7 +591,7 @@
 		width: 100%;
 	}
 	input, select{
-		background: #fff;
+		background-color: #fff;
 		width: 98%;
 		height: 90%;
 		font-size: 11px;
@@ -633,6 +636,7 @@
 
 
 	.img-carousel-phone{
+		margin-top: 0vh;
 		width: 100%;
 		height: 100vh;
 	}
