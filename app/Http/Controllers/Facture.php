@@ -29,6 +29,19 @@ class Facture extends Controller
 
             }
         }
+
+        $livraison = Livraisons::findOrFail($id);
+        $commandes = Commandes::All()->where('livraison_id', $livraison->id);
+
+        $total_general = Commandes::All()->where('livraison_id', $livraison->id)->sum('prix_total');
+
+        // VERIFIER SI C'EST LA LIVRAISON DE LA REMISE
+        if($livraison->montant_remise > 0)
+        {
+            $montant_payer = (double)Commandes::All()->where('livraison_id', $livraison->id)->sum('prix_total') - (double)$livraison->montant_remise;
+        } else{
+            $montant_payer = (double)Commandes::All()->where('livraison_id', $livraison->id)->sum('prix_total');
+        }
         
         $livraison = Livraisons::findOrFail($id);
         
@@ -90,6 +103,8 @@ class Facture extends Controller
             'users_livreurs' => $users_livreurs,
             'livraison' => $livraison,
             'client' => $client,
+            'total_general' => $total_general,
+            'montant_payer' => $montant_payer,
         ]);
     }
 
@@ -227,14 +242,15 @@ class Facture extends Controller
             'total_general_lettre' => $total_general_lettre,
         ]);
         
-        return $pdf->download('facture.pdf');
-        /*return view('pages.facture.facture_pdf', [
+        return $pdf->download('facture.pdf');/*
+        return view('pages.facture.facture_pdf', [
             'commandes' => $commandes,
             'livraison' => $livraison,
             'client' => $client,
             'livreur' => $livreur,
             'remise' => $remise,
             'total_general' => $total_general,
+            'montant_payer' => $montant_payer,
             'total_general_lettre' => $total_general_lettre,
         ]);*/
     }

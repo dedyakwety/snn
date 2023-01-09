@@ -126,8 +126,8 @@ use App\Models\User;
                         <td>{{ $incrementation++; }}</td>
                         <td>{{ Articles::find($commande->article->id)->modele->modele." Taille ".$commande->taille }}</td>
                         <td>{{ $commande->quantite }}</td>
-                        <td>${{ $commande->prix_unitaire }}</td>
-                        <td>${{ $commande->prix_total }}</td>
+                        <td>{{ $commande->prix_unitaire }}</td>
+                        <td>{{ $commande->prix_total }}</td>
                         <!--button type="submit" class="btn btn-outline-success">
                             @if($livraison->livree == true)
                                 Livrée
@@ -137,6 +137,30 @@ use App\Models\User;
                         </button-->
                     </tr>
                     @endforeach
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr id="remise">
+                        <td>TOTAL GENERAL</td>
+                        <td id="prix-2"><strong>{{ $total_general }}</strong></td>
+                    </tr>
+
+                    @if($livraison->montant_remise > 0)
+                        <tr id="remise">
+                            <td>REMISE</td>
+                            <td><strong>-{{ number_format($livraison->montant_remise, "2", ".", " ") }}</strong></td>
+                        </tr>
+                        <tr id="prix-payer">
+                            <td>MONTANT A PAYER</td>
+                            <td><strong>{{ number_format($montant_payer, "2", ".", " ") }}</strong></td>
+                        </tr>
+                    @else
+                    <tr id="prix-payer">
+                        <td>MONTANT A PAYER</td>
+                        <td><strong>{{ number_format($montant_payer, "2", ".", " ") }}</strong></td>
+                    </tr>
+                    @endif
                 </tbody>
             </table>
         @endif

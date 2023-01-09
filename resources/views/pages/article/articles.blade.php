@@ -10,7 +10,7 @@
 	@endif
 		<div class="product discount product_filter">
 			<div class="product_image">
-				<img src="{{ asset(Storage::url($article->image->path_1)) }}" alt="image-article">
+				<img src="{{ asset('images/logo/logo.jpg') }}" alt="image-article">
 			</div>
 			<div class="favorite favorite_left"></div>
 			@auth

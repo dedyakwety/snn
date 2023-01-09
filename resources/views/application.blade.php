@@ -150,7 +150,7 @@ $enfant = Pours::findOrFail(3);
 						<div class="col-md-6">
 							<div class="top_nav_left">
 								@guest
-									livraison gratuit sur toutes vos commandes
+									livraison gratuit pour toutes vos commandes
 								@endguest
 								@auth
 									@if(Auth::user()->role_id == 5)

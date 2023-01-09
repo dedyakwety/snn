@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Dad Favori</title>
+<title>DF | Login</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Colo Shop Template">
@@ -18,7 +18,6 @@
             <div class="logo">
                 <img src="{{ asset('images/logo/logo.png') }}" alt="image-logo" class="img-logo">
             </div>
-            <h3>Se conneter</h3>
             <div class="message">
                 
                 <x-auth-session-status class="mb-2" :status="session('status')" />

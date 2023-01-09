@@ -97,7 +97,8 @@
 	padding: 6px;
 	color: #000;
 	margin-top: 20px;
-}.boutt{
+}
+.boutt{
 	background-color: #d4d4d4;
 	width: 100px;
 	height: 40px;
@@ -119,7 +120,7 @@ table{
 	width: 100%;
 }
 th{
-	background-color: #1315b9;
+	background-color: #0a0a4b;
 	color: #fff;
 	font-size: 17px;
 	text-align: center;
@@ -135,8 +136,18 @@ td{
 	border-right: 1px solid #fff;
 }
 #prix{
-	background-color: #1315b9;
+	background-color: #0a0a4b;
 	width: 150px;
+}
+#prix-2{
+	width: 150px;
+}
+#prix-payer{
+	background-color: #0a0a4b;
+	color: #fff;
+}
+#remise{
+	background-color: #d4d4d4;
 }
 tr{
 	text-align: center;
@@ -277,7 +288,7 @@ tr{
 		width: 100%;
 	}
 	th{
-		background-color: #1315b9;
+		background-color: #0a0a4b;
 		color: #fff;
 		font-size: 13px;
 		text-align: center;
@@ -294,7 +305,7 @@ tr{
 		border-right: 1px solid #fff;
 	}
 	#prix{
-		background-color: #1315b9;
+		background-color: #0a0a4b;
 		width: 150px;
 	}
 	tr{
@@ -453,7 +464,7 @@ tr{
 		width: 100%;
 	}
 	th{
-		background-color: #1315b9;
+		background-color: #0a0a4b;
 		color: #fff;
 		font-size: 7px;
 		text-align: center;
@@ -570,7 +581,7 @@ tr{
 		width: 100%;
 	}
 	th{
-		background-color: #1315b9;
+		background-color: #0a0a4b;
 		color: #fff;
 		font-size: 7px;
 		text-align: center;

@@ -10,7 +10,8 @@ $incrementation = 1;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOMBA NA NDAKU</title>
+    <link rel="shortcut icon" href="{{ asset('images/logo/logo.jpg') }}">
+    <title>Dad Favori</title>
 </head>
 <body>
     <style type="text/css">
@@ -18,21 +19,31 @@ $incrementation = 1;
             font-family: sans-serif;
         }
         .logo-header{
-            width: 70%;
-            height: 75px;
+            width: 130px;
+            height: 125px;
             margin-top: 0%;
-            margin-left: 15%;
+            margin-left: 0%;
+        }
+        .header{
+            width: 75%;
+            margin-top: -120px;
+        }
+        .nom{
+            font-family: sans-serif;
+            font-size: 35px;
+            width: 75%;
+            margin-left: 25%;
+            height: 50px;
         }
         .div-header{
-            width: 100%;
+            width: 75%;
             height: 75px;
-            border-bottom: 1px solid black;
+            margin-left: 25%;
         }
         .div-site{
             width: 100%;
             height: 25px;
-            font-size: 13px;
-            text-align: center;
+            font-size: 14px;
         }
         .div-adresse{
             width: 100%;
@@ -41,6 +52,104 @@ $incrementation = 1;
             display: flex;
             flex-direction: row;
         }
+        .reseaux{
+            width: 100%;
+            height: 65px;
+        }
+        .reseau-1{
+            width: 100%;
+            height: 50%;
+            display: flex;
+            flex-direction: row;
+        }
+        .reseau-2{
+            width: 100%;
+            height: 27%;
+            margin-top: 0%;
+        }
+        .rx-1{
+            width: 16.66%;
+            height: 100%;
+            margin-left: 0%;
+        }
+        .rx-2{
+            width: 16.66%;
+            height: 100%;
+            margin-left: 16.66%;
+            margin-top: -100%;
+        }
+        .rx-3{
+            width: 16.66%;
+            height: 100%;
+            margin-left: 33.32%;
+            margin-top: -100%;
+        }
+        .rx-4{
+            width: 16.66%;
+            height: 100%;
+            margin-left: 49.98%;
+            margin-top: -100%;
+        }
+        .rx-5{
+            width: 16.66%;
+            height: 100%;
+            margin-left: 66.64%;
+            margin-top: -100%;
+        }
+        .rx-6{
+            width: 16.66%;
+            height: 100%;
+            margin-left: 83.3%;
+            margin-top: -100%;
+        }
+        .icone{
+            width: 30px;
+            height: 80%;
+            margin-top: 5%;
+            margin-left: 40%;
+        }
+        .r-1{
+            width: 16.66%;
+            height: 100%;
+            margin-left: 0%;
+        }
+        .r-2{
+            width: 16.66%;
+            height: 100%;
+            margin-left: 16.66%;
+            margin-top: -100%;
+        }
+        .r-3{
+            width: 16.66%;
+            height: 100%;
+            margin-left: 33.32%;
+            margin-top: -100%;
+        }
+        .r-4{
+            width: 16.66%;
+            height: 100%;
+            margin-left: 49.98%;
+            margin-top: -100%;
+        }
+        .r-5{
+            width: 16.66%;
+            height: 100%;
+            margin-left: 66.64%;
+            margin-top: -100%;
+        }
+        .r-6{
+            width: 16.66%;
+            height: 100%;
+            margin-left: 83.3%;
+            margin-top: -100%;
+        }
+        .p-rx{
+            font-family: sans-serif;
+            text-align: center;
+            font-size: 12px;
+        }
+
+
         .header{
             width: 100%;
             height: 50px;
@@ -75,6 +184,9 @@ $incrementation = 1;
         .div-header-1{
             width: 100%;
             height: 50%;
+        }
+        .p-date{
+            font-family: sans-serif;
         }
         .div-header-1 img{
             width: 15%;
@@ -153,6 +265,9 @@ $incrementation = 1;
             border: 1px solid #051959;
             padding-top: 7px;
             padding-bottom: 7px;
+        }
+        #total{
+            background-color: #0a0a4b;
         }
         .td-designation{
             padding-left: 10px;
@@ -245,15 +360,59 @@ $incrementation = 1;
     <div class="contenair">
                 
         <img src="images/logo/logo.jpg" class="logo-header">
-        <div class="div-header">
-            <div class="div-site">
-                www.sombanandaku.com<br>
-                155 Avenue de la justice, Quartier Joli parc Commune de la Gombe<br>
-                RCCM : AAB-4D-14D-45<br>
-                Id.nat : 251456
+        <div class="header">
+            <div class="nom">Dad Favori</div>
+            <div class="div-header">
+                <div class="div-site">
+                    www.dadfavori.com<br>
+                    155 Avenue de la justice, Quartier Joli parc Commune de la Gombe<br>
+                    RCCM : AAB-4D-14D-45<br>
+                    Id.nat : 251456
+                </div>
             </div>
         </div>
-        
+        <div class="reseaux">
+            <div class="reseau-1">
+                <div class="rx-1">
+                    <img src="images/rx/email.jpg" class="icone">
+                </div>
+                <div class="rx-2">
+                    <img src="images/rx/whatsapp.jpg" class="icone">
+                </div>
+                <div class="rx-3">
+                    <img src="images/rx/facebook.jpg" class="icone">
+                </div>
+                <div class="rx-4">
+                    <img src="images/rx/twitter.jpg" class="icone">
+                </div>
+                <div class="rx-5">
+                    <img src="images/rx/instagram.jpg" class="icone">
+                </div>
+                <div class="rx-6">
+                    <img src="images/rx/instagram.jpg" class="icone">
+                </div>
+            </div>
+            <div class="reseau-2">
+                <div class="r-1">
+                    <p class="p-rx">dadfavori@gmail.com</p>
+                </div>
+                <div class="r-2">
+                    <p class="p-rx">+243 897 283 842</p>
+                </div>
+                <div class="r-3">
+                    <p class="p-rx">Dad Favori Officiel</p>
+                </div>
+                <div class="r-4">
+                    <p class="p-rx">@DadFavoriOfficiel</p>
+                </div>
+                <div class="r-5">
+                    <p class="p-rx">Dad Favori Officiel</p>
+                </div>
+                <div class="r-6">
+                    <p class="p-rx">Dad_Favori_Officiel</p>
+                </div>
+            </div>
+        </div>
         <div class="date">
             <p class="p-date">Kinshasa, le {{ $livraison->date_livraison }}
         </div>
@@ -274,6 +433,10 @@ $incrementation = 1;
                 <div class="info">
                         <strong>Paiement</strong>
                         : Espèce
+                </div>
+                <div class="info">
+                        <strong>Nombre article</strong>
+                        : {{ count($commandes) }}
                 </div>
             </div>
             <div class="infos-2">
@@ -297,7 +460,7 @@ $incrementation = 1;
         </div>
         <div class="facture">
             <h1 class="h1">FACTURE</h1>
-            <h3>Nº SNN/{{ $client->id."/".$livraison->id."/".explode('-', $livraison->date_livraison)[2]."/".explode('-', $livraison->date_livraison)[1]."/".explode('-', $livraison->date_livraison)[0] }}</h3>
+            <h3>Nº DF/{{ $client->id."/".$livraison->id."/".explode('-', $livraison->date_livraison)[2]."/".explode('-', $livraison->date_livraison)[1]."/".explode('-', $livraison->date_livraison)[0] }}</h3>
         </div>
         <div class="droit">
             Doit pour ce qui suit:
@@ -327,22 +490,22 @@ $incrementation = 1;
             </table>
             <table class="table table-bordered" id="tab-2">
                 <tbody>
-                    <tr>
+                    <tr id="total">
                         <td class="td-designation-2">TOTAL GENERAL</td>
                         <td class="td-2"><strong>{{ $total_general }}</strong></td>
                     </tr>
 
                     @if($livraison->montant_remise > 0)
-                        <tr>
+                        <tr class="remise">
                             <td class="td-designation-2">REMISE</td>
                             <td class="td-2"><strong>-{{ number_format($livraison->montant_remise, "2", ".", " ") }}</strong></td>
                         </tr>
-                        <tr>
+                        <tr class="color">
                             <td class="td-designation-2">MONTANT A PAYER</td>
                             <td class="td-2"><strong>{{ number_format($montant_payer, "2", ".", " ") }}</strong></td>
                         </tr>
                     @else
-                    <tr>
+                    <tr class="color">
                         <td class="td-designation-2">MONTANT A PAYER</td>
                         <td class="td-2"><strong>{{ number_format($montant_payer, "2", ".", " ") }}</strong></td>
                     </tr>
@@ -351,59 +514,8 @@ $incrementation = 1;
             </table>
         </div>
         {{ $total_general_lettre }}
-        <!--div class="footer">
-                <p class="p-livreur">{{ $livreur->name." ".$livreur->postnom." ".$livreur->prenom }}<br>
-                    Livreur
-                </p>
-            <img src="images/cachet/CACHET.jpg" class="cachet">
-        </div-->
         <div class="footer">
             {{ "Nous disons : ".$livreur->name." ".$livreur->postnom." ".$livreur->prenom }}
-        </div>
-        <div class="footer-1">
-            <div class="header">
-                <div class="header-1">
-                    <div class="div-header-1">
-                        <img src="images/rx/contact.jpg">
-                        <img src="images/rx/whatsapp.jpg">
-                    </div>
-                    <div class="div-header-2">
-                        +243 813 896 978
-                    </div>
-                </div>
-                <div class="header-2">
-                    <div class="div-header-1">
-                        <img src="images/rx/facebook.jpg">
-                    </div>
-                    <div class="div-header-2">
-                        somba na ndaku
-                    </div>
-                </div>
-                <div class="header-3">
-                    <div class="div-header-1">
-                        <img src="images/rx/email.jpg">
-                    </div>
-                    <div class="div-header-2">
-                        somba.na.ndaku@gmail.com
-                    </div>
-                </div>
-                <div class="header-4">
-                    <div class="div-header-1">
-                        <img src="images/rx/twitter.jpg">
-                    </div>
-                    <div class="div-header-2">
-                        @SombaNaNdaku
-                    </div>
-                </div>
-                <div class="header-5">
-                    <div class="div-header-1">
-                        <img src="images/rx/instagram.jpg">
-                    </div>
-                    <div class="div-header-2">
-                        somba na ndaku
-                    </div>
-                </div>
-            </div>
         </div>
         <!--img src="images/logo/logo.png" class="fond"-->
         <img src="images/cachet/PAYER.jpg" class="div-payer">
