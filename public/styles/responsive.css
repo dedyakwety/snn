@@ -98,15 +98,15 @@
 	}
 	.new_arrivals
 	{
-		margin-top: 300px;
+		margin-top: 15vh;
 		width: 100%;
 		min-height: 100vh;
 		margin-bottom: 25px;
 	}
 	.div-categorie{
-		margin-top: 15vh;
+		margin-top: 35%;
 		width: 100%;
-		height: 50px;
+		height: 20%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -1069,6 +1069,7 @@
 		display: none;
 	}
 	.informer{
+		background-color: #fff;
 		width: 95%;
 		height: 60%;
 		padding: 7px;

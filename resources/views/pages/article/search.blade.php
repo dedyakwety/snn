@@ -36,7 +36,7 @@
 
 						<!-- Product 1 -->
 						@forelse($articles as $article)
-							<a href="#">
+							<a href="{{ route('Articles.show', $article->id) }}">
 								@if($article->pour->id == 1)
 								<div class="product-item homme">
 								@elseif($article->pour->id == 2)
