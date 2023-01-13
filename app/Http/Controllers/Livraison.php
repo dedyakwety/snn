@@ -232,6 +232,7 @@ class Livraison extends Controller
      */
     public function update(Request $request, $id)
     {
+
         if(auth()->check())
         {
             // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
@@ -269,13 +270,13 @@ class Livraison extends Controller
 
         } elseif($livraison->livreur_id)
         {
+            
             $request->validate([
                 'password' => ['required'],
             ]);
             
             if(password_verify($request->password, Auth::user()->password))
             {
-
                 $livraison = Livraisons::findOrFail($id);
                 $client = User::findOrFail($livraison->user_id);
 

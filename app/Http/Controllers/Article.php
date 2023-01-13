@@ -201,6 +201,7 @@ class Article extends Controller
      */
     public function show($id)
     {
+        
         if(auth()->check())
         {
             // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER

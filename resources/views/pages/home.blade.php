@@ -17,16 +17,16 @@
 		  	<!-- The slideshow -->
 		  	<div class="carousel-inner" id="carousel">
 		    	<div class="carousel-item active">
-		      		<img src="{{ asset('images/caroussel/affiche-pc.jpg') }}" class="img-carousel-pc" alt="Los Angeles">
-		      		<img src="{{ asset('images/caroussel/affiche-phone.jpg') }}" class="img-carousel-phone" alt="Los Angeles">
+		      		<img src="{{ asset('images/caroussel/affiche-pc-1.jpg') }}" class="img-carousel-pc" alt="Los Angeles">
+		      		<img src="{{ asset('images/caroussel/affiche-phone-1.jpg') }}" class="img-carousel-phone" alt="Los Angeles">
 		    	</div>
 			    <div class="carousel-item">
-			      	<img src="{{ asset('images/caroussel/affiche-pc.jpg') }}" class="img-carousel-pc" alt="Chicago">
-			      	<img src="{{ asset('images/caroussel/affiche-phone.jpg') }}" class="img-carousel-phone" alt="Chicago">
+			      	<img src="{{ asset('images/caroussel/affiche-pc-2.jpg') }}" class="img-carousel-pc" alt="Chicago">
+			      	<img src="{{ asset('images/caroussel/affiche-phone-2.jpg') }}" class="img-carousel-phone" alt="Chicago">
 			    </div>
 			    <div class="carousel-item">
-			      	<img src="{{ asset('images/caroussel/affiche-pc.jpg') }}" class="img-carousel-pc" alt="New York">
-			      	<img src="{{ asset('images/caroussel/affiche-phone.jpg') }}" class="img-carousel-phone" alt="New York">
+			      	<img src="{{ asset('images/caroussel/affiche-pc-3.jpg') }}" class="img-carousel-pc" alt="New York">
+			      	<img src="{{ asset('images/caroussel/affiche-phone-3.jpg') }}" class="img-carousel-phone" alt="New York">
 			    </div>
 		  	</div>
 

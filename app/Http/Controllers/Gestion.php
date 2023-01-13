@@ -35,7 +35,7 @@ class Gestion extends Controller
         $gestion = Gestions::findOrFail(1);
         $partages = Partages::where('valide', true)
                             ->orderBy('created_at', 'desc')
-                            ->take(31)
+                            ->take(50)
                             ->get();
 
         return view('pages.gestion.gestion_index', [

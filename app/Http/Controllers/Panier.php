@@ -89,6 +89,7 @@ class Panier extends Controller
      */
     public function store(Request $request)
     {
+        
         try {
 
             $gestion = Gestions::findOrFail(1);

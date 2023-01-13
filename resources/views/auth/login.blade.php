@@ -7,7 +7,7 @@
 <meta name="description" content="Colo Shop Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/login.css') }}">
-<link rel="shortcut icon" href="{{ asset('images/logo/logo.jpg') }}">
+<link rel="shortcut icon" href="{{ asset('images/logo/logo.png') }}">
 </head>
 <body>
 

@@ -32,9 +32,9 @@
 					<th>Montant</th>
 					<th>Rémise</th-->
 				</tr>
-				<tr>
-					@forelse($clients as $client)
-						@if($client->livraisons->count() > 0)
+				@forelse($clients as $client)
+					@if($client->livraisons->count() > 0)
+					<tr>
 							<td>{{ $numero++ }}</td>
 							<td>{{ $client->prenom }}</td>
 							<td>{{ $client->name }}</td>
@@ -50,11 +50,10 @@
 							<!--td>{{ $client->livraisons->count() }}</td>
 							<td>{{ $client->livraisons->sum('prix_total') }}</td>
 							<td>{{ $client->livraisons->count('montant_remise') }}</td-->
-							
-						@endif
-					@empty
-					@endforelse
-				</tr>
+					</tr>
+					@endif
+				@empty
+				@endforelse
 			</table>
 		</div>
 	</div>
