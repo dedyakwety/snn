@@ -128,9 +128,6 @@ $enfant = Pours::findOrFail(3);
 @if(Route::is('boutique_index'))
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/boutique_index.css') }}">
 @endif
-@if(Route::is('commande_reussie'))
-	<link rel="stylesheet" type="text/css" href="{{ asset('styles/commande_reussie.css') }}">
-@endif
 
 </head>
 

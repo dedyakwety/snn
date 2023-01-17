@@ -195,40 +195,63 @@ class Facture extends Controller
 
         $total_general = Commandes::All()->where('livraison_id', $livraison->id)->sum('prix_total');
 
-        // VERIFIER SI C'EST LA LIVRAISON DE LA REMISE
-        if($livraison->montant_remise > 0)
+        if($livraison->user_id)
         {
-            $montant_payer = (double)Commandes::All()->where('livraison_id', $livraison->id)->sum('prix_total') - (double)$livraison->montant_remise;
+            // VERIFIER SI C'EST LA LIVRAISON DE LA REMISE
+            if($livraison->montant_remise > 0)
+            {
+                $montant_payer = (double)Commandes::All()->where('livraison_id', $livraison->id)->sum('prix_total') - (double)$livraison->montant_remise;
+            } else{
+                $montant_payer = (double)Commandes::All()->where('livraison_id', $livraison->id)->sum('prix_total');
+            }
         } else{
-            $montant_payer = (double)Commandes::All()->where('livraison_id', $livraison->id)->sum('prix_total');
+
+            $montant_payer = $total_general;
         }
 
         // CONVERTIR LE MONTANT EN LETTRE
         $total_general_lettre = int2str(number_format($montant_payer, 2, ".", " "));
         
-        if(Auth::user()->role_id == 1)
+        if(auth()->check())
         {
-            $client = User::findOrFail($livraison->user_id);
-            $remise = Livraisons::All()
-                                ->where('user_id', $client->id)
-                                ->where('beneficier', true)
-                                ->where('montant_remise', '>', 0);
+            if(Auth::user()->role_id == 1)
+            {
+                if($livraison->user_id)
+                {
+                    $client = User::findOrFail($livraison->user_id);
+                    $remise = Livraisons::All()
+                                    ->where('user_id', $client->id)
+                                    ->where('beneficier', true)
+                                    ->where('montant_remise', '>', 0);
+                } else{
 
-        } elseif(Auth::user()->role_id == 4){
+                    $client = null;
+                    $remise = null;
+                }
 
-            $client = User::findOrFail($livraison->user_id);
-            $remise = Livraisons::All()
-                                ->where('user_id', $client->id)
-                                ->where('beneficier', true)
-                                ->where('montant_remise', '>', 0);
+            } elseif(Auth::user()->role_id == 4){
 
-        } elseif(Auth::user()->role_id == 5){
+                if($livraison->user_id)
+                {
+                    $client = User::findOrFail($livraison->user_id);
+                    $remise = Livraisons::All()
+                                    ->where('user_id', $client->id)
+                                    ->where('beneficier', true)
+                                    ->where('montant_remise', '>', 0);
+                } else{
 
-            $client = User::findOrFail(Auth::user()->id);
-            $remise = Livraisons::All()
+                    $client = null;
+                    $remise = null;
+                }
+
+            } elseif(Auth::user()->role_id == 5){
+                
+                $client = User::findOrFail(Auth::user()->id);
+                $remise = Livraisons::All()
                                 ->where('user_id', Auth::user()->id)
                                 ->where('beneficier', true)
                                 ->where('montant_remise', '>', 0);
+            }
         }
         
         $pdf = PDF::loadview('pages.facture.facture_pdf', [

@@ -67,7 +67,7 @@ Route::middleware(['auth'])->group(function() {
 
 // FACTURE ET IMPRESSION
 Route::get('/facture/{id}', 'App\Http\Controllers\Facture@viewFature')->middleware(['auth'])->name('viewFacture');
-Route::get('/telechargement/facture/{id}', 'App\Http\Controllers\Facture@telecharger_facture')->name('telechargement');
+Route::get('/telechargement/facture/{id}', 'App\Http\Controllers\Facture@telecharger_facture')->middleware(['auth'])->name('telechargement');
 
 // COMMANDE REUSSIE
 Route::get('/Commande-reussie', 'App\Http\Controllers\Facture@commande_reussie')->name('commande_reussie');

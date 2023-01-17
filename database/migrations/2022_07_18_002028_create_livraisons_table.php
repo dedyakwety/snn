@@ -28,6 +28,8 @@ return new class extends Migration
             $table->double('remise')->nullable();
             $table->boolean('beneficier')->default(0);
             $table->double('montant_remise')->nullable();
+            // SI LE CLIENT PASSE LA COMMANDE SANS COMPTE
+            $table->string('email')->nullable();
             $table->boolean('livree')->default(0);
             $table->boolean('valide')->default(1);
             $table->timestamps();

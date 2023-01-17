@@ -246,7 +246,7 @@ class Livraison extends Controller
 
             }
         }
-
+        
         $gestion = Gestions::findOrFail(1);
         $livraison = Livraisons::findOrFail($id);
         
@@ -277,8 +277,13 @@ class Livraison extends Controller
             
             if(password_verify($request->password, Auth::user()->password))
             {
+
                 $livraison = Livraisons::findOrFail($id);
-                $client = User::findOrFail($livraison->user_id);
+
+                if($livraison->user_id)
+                {
+                    $client = User::findOrFail($livraison->user_id);
+                }
 
                 $commandes = Commandes::All()->where('livraison_id', $id);
 
@@ -286,49 +291,61 @@ class Livraison extends Controller
                 $achat = $livraison->prix_achat;
                 $vente = $livraison->prix_total;
                 $gain_brut = (double)$vente - (double)$achat;
-                $remise_in = $livraison->remise;
-
+                if($livraison->user_id)
+                {
+                    $remise_in = $livraison->remise;
+                } else{
+                    $remise_in = 0;
+                }
+                
                 // SIGNALER QUE LA LIVRAISON EST FAITE
                 Livraisons::findOrFail($id)
                         ->update([
                             'livree' => true,
                         ]);
 
-                // RECUPERER TOUTES LES LIVRAISONS QUI ONT LES VALEURS FALSE
-                $total_remises = Livraisons::All()
-                                            ->where('user_id', $client->id)
-                                            ->where('beneficier', false)
-                                            ->where('livree', true)
-                                            ->count();
-
-                if($total_remises == 5)
+                if($livraison->user_id)
                 {
+                    // RECUPERER TOUTES LES LIVRAISONS QUI ONT LES VALEURS FALSE
+                    $total_remises = Livraisons::All()
+                                                ->where('user_id', $client->id)
+                                                ->where('beneficier', false)
+                                                ->where('livree', true)
+                                                ->count();
 
-                    $remise_out = Livraisons::All()
-                                            ->where('user_id', $client->id)
-                                            ->where('beneficier', false)
-                                            ->where('livree', true)
-                                            ->sum('remise');
-
-                    Livraisons::findOrFail($id)
-                                ->update([
-                                    'montant_remise' => $remise_out,
-                                ]);
-
-                    $livraisons2 = Livraisons::All()
-                                            ->where('user_id', $client->id)
-                                            ->where('beneficier', false)
-                                            ->where('livree', true);
-                    
-                    foreach($livraisons2 as $livraison2)
+                    if($total_remises == 5)
                     {
-                        Livraisons::findOrFail($livraison2->id)
-                                ->update([
-                                    'beneficier' => true,
-                                ]);
+
+                        $remise_out = Livraisons::All()
+                                                ->where('user_id', $client->id)
+                                                ->where('beneficier', false)
+                                                ->where('livree', true)
+                                                ->sum('remise');
+
+                        Livraisons::findOrFail($id)
+                                    ->update([
+                                        'montant_remise' => $remise_out,
+                                    ]);
+
+                        $livraisons2 = Livraisons::All()
+                                                ->where('user_id', $client->id)
+                                                ->where('beneficier', false)
+                                                ->where('livree', true);
+                        
+                        foreach($livraisons2 as $livraison2)
+                        {
+                            Livraisons::findOrFail($livraison2->id)
+                                    ->update([
+                                        'beneficier' => true,
+                                    ]);
+                        }
+
+                    } else{
+
+                        $remise_out = 0;
                     }
 
-                } else{
+                } else {
 
                     $remise_out = 0;
                 }
@@ -339,7 +356,12 @@ class Livraison extends Controller
                 $agent = ((double)$gain / 100) * $gestion->agent;
                 $admin = ((double)$gain / 100) * $gestion->admin;
                 $entreprise = ((double)$gain / 100) * $gestion->entreprise;
-                $remise_pourcentage = $livraison->remise_pourcentage;
+                if($livraison->user_id)
+                {
+                    $remise_pourcentage = $livraison->remise_pourcentage;
+                } else{
+                    $remise_pourcentage = 0;
+                }
 
                 // VERIFIER SI LA DATE EXISTE DANS LA BDD
                 $verifier_date = Partages::All()->where('date_vente', $livraison->date_livraison);

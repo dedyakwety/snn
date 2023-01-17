@@ -142,6 +142,13 @@ class Panier extends Controller
                     'contact' => ['required'],
                     'adresse_livraison' => ['required'], 
                 ]);
+
+                if($request->email)
+                {
+                    $email = $request->email;
+                } else{
+                    $email = null;
+                }
                 
                 if($article->prix < 20)
                 {
@@ -166,6 +173,7 @@ class Panier extends Controller
                     'nombre_article' => $request->quantite,
                     'prix_achat' => $prix_achat,
                     'prix_total' => $prix_total,
+                    'email' => $email,
                 ])->id;
                 
                 Commandes::create([

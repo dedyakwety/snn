@@ -418,49 +418,71 @@ $incrementation = 1;
         </div>
         <div class="infos">
             <div class="infos-1">
-                <div class="info">
+                @if(($client === null) === false)
+                    <div class="info">
                         <strong>Client</strong>
                         : {{ $client->prenom." ".$client->name }}
-                </div>
-                <div class="info">
+                    </div>
+                    <div class="info">
                         <strong>Code Client</strong>
                         : {{ $client->numero->numero }}
+                    </div>
+                @else
+                    <div class="info">
+                        Sans compte
+                    </div>
+                @endif
+                <div class="info">
+                    <strong>Adresse E-mail</strong>
+                    : 
+                    @if(($client === null) === false)
+                        {{ $client->email }}
+                    @else
+                        @if($livraison->email)
+                            {{ $livraison->email }}
+                        @else
+                            {{ "Pas d'adresse mail" }}
+                        @endif
+                    @endif
                 </div>
                 <div class="info">
-                        <strong>Adresse E-mail</strong>
-                        : {{ $client->email }}
+                    <strong>Paiement</strong>
+                    : Espèce
                 </div>
                 <div class="info">
-                        <strong>Paiement</strong>
-                        : Espèce
-                </div>
-                <div class="info">
-                        <strong>Nombre article</strong>
-                        : {{ count($commandes) }}
+                    <strong>Nombre article</strong>
+                    : {{ count($commandes) }}
                 </div>
             </div>
             <div class="infos-2">
                 <div class="info">
-                        <strong>Livraison</strong>
+                    <strong>Livraison</strong>
                     : {{ $livraison->adresse_livraison }}
                 </div>
+                @if(($client === null) === false)
                 <div class="info">
-                        <strong>Achat Nº</strong>
+                    <strong>Achat Nº</strong>
                     : {{ $livraison->achat_numero }}
                 </div>
                 <div class="info">
-                        <strong>Nbr Rémise</strong>
+                    <strong>Nbr Rémise</strong>
                     : {{ count($remise) }}
                 </div>
+                @endif
                 <div class="info">
-                        <strong>Date commande</strong>
+                    <strong>Date commande</strong>
                     : {{ $livraison->created_at }}
                 </div>
             </div>
         </div>
         <div class="facture">
             <h1 class="h1">FACTURE</h1>
-            <h3>Nº DF/{{ $client->id."/".$livraison->id."/".explode('-', $livraison->date_livraison)[2]."/".explode('-', $livraison->date_livraison)[1]."/".explode('-', $livraison->date_livraison)[0] }}</h3>
+            <h3>Nº DF/
+                @if(($client === null) === false)
+                    {{ $client->id."/" }}
+                @endif
+
+                {{ $livraison->id."/".explode('-', $livraison->date_livraison)[2]."/".explode('-', $livraison->date_livraison)[1]."/".explode('-', $livraison->date_livraison)[0] }}</h3>
         </div>
         <div class="droit">
             Doit pour ce qui suit:
@@ -495,20 +517,22 @@ $incrementation = 1;
                         <td class="td-2"><strong>{{ $total_general }}</strong></td>
                     </tr>
 
-                    @if($livraison->montant_remise > 0)
-                        <tr class="remise">
-                            <td class="td-designation-2">REMISE</td>
-                            <td class="td-2"><strong>-{{ number_format($livraison->montant_remise, "2", ".", " ") }}</strong></td>
-                        </tr>
+                    @if(($client === null) === false)
+                        @if($livraison->montant_remise > 0)
+                            <tr class="remise">
+                                <td class="td-designation-2">REMISE</td>
+                                <td class="td-2"><strong>-{{ number_format($livraison->montant_remise, "2", ".", " ") }}</strong></td>
+                            </tr>
+                            <tr class="color">
+                                <td class="td-designation-2">MONTANT A PAYER</td>
+                                <td class="td-2"><strong>{{ number_format($montant_payer, "2", ".", " ") }}</strong></td>
+                            </tr>
+                        @else
                         <tr class="color">
                             <td class="td-designation-2">MONTANT A PAYER</td>
                             <td class="td-2"><strong>{{ number_format($montant_payer, "2", ".", " ") }}</strong></td>
                         </tr>
-                    @else
-                    <tr class="color">
-                        <td class="td-designation-2">MONTANT A PAYER</td>
-                        <td class="td-2"><strong>{{ number_format($montant_payer, "2", ".", " ") }}</strong></td>
-                    </tr>
+                        @endif
                     @endif
                 </tbody>
             </table>
