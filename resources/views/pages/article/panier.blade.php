@@ -109,12 +109,14 @@ use App\Models\Articles;
 						<div class="div-infos">
 							<div class="infos-boutton">
 									<a href="{{ route('Panier.edit', $commande->id) }}">
-										<button type="submit" class="btn_panier" id="btn-liv">Modifier</button>
+										<button type="submit" class="btn_panier" id="btn-liv">
+											<span class="glyphicon glyphicon-pencil"></span> Modifier
+										</button>
 									</a>
 									<form action="{{ route('Panier.destroy', $commande->id) }}" method="POST">
 										@csrf
 										@method('DELETE')
-											<button type="submit" class="btn_panier_2" id="btn-liv">Suprimer
+											<button type="submit" id="btn_panier_2" class="btn btn-default btn-sm" id="btn-liv"><span class="glyphicon glyphicon-trash"></span> Suprimer
 											</button>
 									</form>
 							</div>
@@ -175,7 +177,7 @@ use App\Models\Articles;
 						</div>
 						<div class="commentaire">
 							<div class="commentaire-texte">
-								Adressee livraison
+								Adresse livraison
 							</div>
 							<div class="com">
 								<textarea name="adresse_livraison" class="text" min="50" max="200" placeholder="Adresse" required id="commentaire"></textarea>

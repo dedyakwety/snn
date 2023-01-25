@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>DF | Login</title>
+<title>DF | Reset</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Colo Shop Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="{{ asset('styles/login.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('styles/form_plus.css') }}">
 <link rel="shortcut icon" href="{{ asset('images/logo/logo.png') }}">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -28,7 +28,7 @@
                 <x-auth-validation-errors class="mb-2" :errors="$errors" />
             </div>
 
-            <form method="POST" action="{{ route('login') }}" class="form">
+            <form method="POST" action="{{ route('traitement_reset_password') }}" class="form">
                 @csrf
                 
                 <!-- Email Address -->
@@ -36,7 +36,19 @@
                     <div class="icone">
                         <span class="glyphicon glyphicon-user"></span>
                     </div>
-                    <input class="input" type="email" name="email" placeholder="example@gmail.com" required autofocus />
+                    <input class="input" type="email" name="email" placeholder="{{ $email }}" disabled autofocus />
+                </div>
+
+                <!-- Password -->
+                <div class="div-password">
+                    <div class="icone">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </div>
+                    <input class="input"
+                            type="password"
+                            name="code"
+                            placeholder="Code d'accès"
+                            required autofocus />
                 </div>
 
                 <!-- Password -->
@@ -51,6 +63,18 @@
                             required autocomplete="current-password" />
                 </div>
 
+                <!-- Password -->
+                <div class="div-password">
+                    <div class="icone">
+                        <span class="glyphicon glyphicon-lock"></span>
+                    </div>
+                    <input class="input"
+                            type="password"
+                            name="confirm_password"
+                            placeholder="Confirmer Mot de passe"
+                            required autocomplete="current-password" />
+                </div>
+
                 <!-- Remember Me -->
                 <!--div class="block mt-4">
                     <label for="remember_me" class="inline-flex items-center">
@@ -62,20 +86,9 @@
                 
                 <div class="bouttons">
                     <button class="boutton" id="btn">
-                        Connexion
+                        Mis à jour
                     </button>
                 </div>
-                @if(Route::has('password.request'))
-                    <div class="bouttons">
-                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                            Mot de passe oublier?
-                        </a>
-
-                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
-                            J'ai un compte
-                        </a>
-                    </div>
-                @endif
             </form>
         </div>
     </div>

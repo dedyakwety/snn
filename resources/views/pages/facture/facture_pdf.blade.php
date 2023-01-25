@@ -389,7 +389,7 @@ $incrementation = 1;
                     <img src="images/rx/instagram.jpg" class="icone">
                 </div>
                 <div class="rx-6">
-                    <img src="images/rx/instagram.jpg" class="icone">
+                    <img src="images/rx/tiktok.jpg" class="icone">
                 </div>
             </div>
             <div class="reseau-2">
@@ -537,7 +537,7 @@ $incrementation = 1;
                 </tbody>
             </table>
         </div>
-        {{ $total_general_lettre }}
+        {{ $total_general_lettre."." }}
         <div class="footer">
             {{ "Nous disons : ".$livreur->name." ".$livreur->postnom." ".$livreur->prenom }}
         </div>

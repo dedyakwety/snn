@@ -33,6 +33,8 @@ class User extends Authenticatable
         'email',
         'valide',
         'password',
+        'code_reset',
+        'liens_reset_password',
     ];
 
     public function role()

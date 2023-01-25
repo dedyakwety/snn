@@ -128,6 +128,9 @@ $enfant = Pours::findOrFail(3);
 @if(Route::is('boutique_index'))
 	<link rel="stylesheet" type="text/css" href="{{ asset('styles/boutique_index.css') }}">
 @endif
+@if(Route::is('Panier.index') OR Route::is('Profil.index'))
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+@endif
 
 </head>
 
@@ -501,6 +504,11 @@ $enfant = Pours::findOrFail(3);
 	@if(!Route::is('login'))
 		@include('layouts.footer.footer')
 	@endif
+
+@if(Route::is('Panier.index') OR Route::is('Profil.index'))
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+@endif
 
 @if(Route::is('categorie') OR Route::is('article.search'))
 	<script src="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>

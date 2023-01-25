@@ -151,10 +151,11 @@
 				@endif
 				@if(Route::is('Profil.index'))
 					<a href="{{ route('Mot_de_passe.index') }}" class="btn" id="a">
-						Changer le mot de passe
+						<span class="glyphicon glyphicon-pencil"></span> Changer le mot de passe
 					</a>
+
 					<a href="{{ route('Profil.edit', $user->id) }}" class="btn" id="a">
-						Editer tout
+						<span class="glyphicon glyphicon-pencil"></span> Editer tout
 					</a>
 				@endif
 			</div>

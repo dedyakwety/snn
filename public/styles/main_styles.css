@@ -6,7 +6,7 @@
 
 .div-recherche{
 	width: 100%;
-	margin-top: 25px;
+	padding-top: 25px;
 	display: flex;
 	flex-direction: row-reverse;
 }
@@ -396,7 +396,7 @@ input, select{
 	height: 450px;
 	cursor: pointer;
 	margin-top: 15px;
-}
+}/*
 .product-item::after
 {
 	display: block;
@@ -420,12 +420,12 @@ input, select{
 	box-shadow: 29px rgba(63, 78, 100, 0.15);
 	border: solid 2px rgba(235,235,235,1);
 	opacity: 1;
-}
+}*/
 .product
 {
 	width: 100%;
 	height: 380px;
-	border-right: solid 1px #e9e9e9;
+	border-right: solid 0px #e9e9e9;
 }
 .product_image
 {

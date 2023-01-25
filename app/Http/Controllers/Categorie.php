@@ -8,6 +8,7 @@ use App\Models\Articles;
 use App\Models\Pours;
 use App\Models\Gestions;
 use App\Models\Modeles;
+use Illuminate\Support\Facades\Auth;
 
 class Categorie extends Controller
 {

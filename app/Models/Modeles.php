@@ -17,6 +17,6 @@ class Modeles extends Model
 
     public function articles()
     {
-        return $this->hasMany('App\Models\Articles');
+        return $this->hasMany('App\Models\Articles', 'modele_id', 'id');
     }
 }

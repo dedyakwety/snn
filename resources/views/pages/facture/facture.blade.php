@@ -20,7 +20,7 @@ use App\Models\User;
         <div class="div-tete">
             @if($livraison->livree == 1)
                 <a href="{{ route('telechargement', ['id' => $livraison->id]) }}" class="btn-facture">
-                    Télécharger en pdf
+                <span class="glyphicon glyphicon-download"></span> Télécharger en pdf
                 </a>
             @endif
             @if($livraison->livreur_id == Auth::user()->id)
@@ -114,7 +114,7 @@ use App\Models\User;
                 <thead>
                     <tr>
                         <th id="numero">Nº</th>
-                        <th>DESIGNATION</th>
+                        <th>DESIGNATIONYYY</th>
                         <th id="prix">Qté</th>
                         <th id="prix">P.U$</th>
                         <th id="prix">P.T$</th>

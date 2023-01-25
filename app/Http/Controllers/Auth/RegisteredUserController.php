@@ -17,6 +17,9 @@ use App\Models\Pours;
 use App\Models\Categories;
 use App\Models\Modeles;
 use App\Models\Numeros;
+//MAILS
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Confirmation_compte;
 
 class RegisteredUserController extends Controller
 {
@@ -164,11 +167,16 @@ class RegisteredUserController extends Controller
                 $numero_id = Numeros::create([
                     'numero' => $numero,
                 ])->id;
-
+                
                 User::findOrFail($user)
                     ->update([
                         'numero_id' => $numero_id,
                     ]);
+
+                $user = User::findOrFail($user);
+                $user_mail = ['nom' => $user->name, 'prenom' => $user->prenom, 'sexe' => $user->sexe];
+                // ENVOYER LE MAIL A L'UTILISATEUR
+                Mail::to($user->email)->send(new Confirmation_compte($user_mail));
 
                 // REDIRECTION D'UTILISATEUR POUR SE CONNECTE
                 return redirect()->route('login');

@@ -29,6 +29,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('valide')->default(1);
             $table->string('password');
+            $table->string('code_reset')->nullable();
+            $table->string('liens_reset_password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

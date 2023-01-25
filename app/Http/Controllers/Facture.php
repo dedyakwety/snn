@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Articles;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Gestions;
+use Illuminate\Support\Facades\Storage;
 
 class Facture extends Controller
 {

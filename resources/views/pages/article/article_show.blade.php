@@ -146,6 +146,7 @@
 									<div class="infos-1">
 										Quantité
 									</div>
+									<!-- C'est pour utiliser l'id -->
 										<input type="text" name="id_article" value="{{ $article->id }}" class="id_article" required>
 									<div class="infos-2">
 										<input type="number" name="quantite" id="input" min="1" value="1" required>

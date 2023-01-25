@@ -13,16 +13,16 @@ body{
 	justify-content: center;
 }
 .form{
+	background-color: #d4d4d4;
+	padding-top: 10px;
 	width: 400px;
 	height: 300px;
 }
-p{
-	color: #041e7f;
-	font-size: 18px;
-	text-align: center;
-	margin-top: 50px;
+.paragraph{
+	width: 90%;
 	margin-left: 5%;
-	margin-right: 5%;
+	font-family: sans-serif;
+	text-align: justify;
 }
 .inputs{
 	width: 90%;
@@ -33,10 +33,26 @@ p{
 	flex-direction: column;
 	justify-content: space-around;
 }
+.div-password{
+	background-color: teal;
+	margin-top: 20px;
+	width: 100%;
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+}
 .input{
-	width: 90.7%;
+	width: 90%;
 	padding: 15px;
-	border: 1px solid #041e7f;
+	border: 1px solid transparent;
+}
+.icone{
+	background-color: #fff;
+	width: 10%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .input:hover{
 	width: 90.5%;
@@ -45,7 +61,7 @@ p{
 }
 .boutton{
 	color: #fff;
-	background-color: #041e7f;
-	padding: 15px;
-	border: 1px solid #041e7f;
+	background-color: #0a0a4b;
+	padding: 12px;
+	border: 1px solid #0a0a4b;
 }

@@ -268,7 +268,7 @@ input{
 	padding: 8px;
 	border: 1px solid #041e7f;
 }
-.btn_panier_2{
+#btn_panier_2{
 	background-color: red;
 	color: #fff;
 	padding: 8px;
@@ -289,7 +289,7 @@ input{
 
 .single_product_container
 {
-	margin-top: 165px;
+	margin-top: 180px;
 	min-height: 75vh;
 	padding-bottom: 80px;
 	border-bottom: solid 1px #ebebeb;

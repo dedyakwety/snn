@@ -6,9 +6,21 @@ use App\Models\User;
 @section('livraison-index')
 	<div class="div-livraisons">
 		@if(count($commandes) > 0)
-		  	<h2>Commandes
+		  	<h2>
 		  		@if(Auth::user()->role_id == 1 OR Auth::user()->role_id == 4)
+		  			@if(count($commandes) > 1)
+		  				{{ "Commandes" }}
+		  			@else
+		  				{{ "Commande" }}
+		  			@endif
 		  			{{ $encour."/".$livree }}
+		  		@elseif(Auth::user()->role_id == 5)
+		  			{{ count($commandes) }}
+		  			@if(count($commandes) > 1)
+		  				{{ "Commandes" }}
+		  			@else
+		  				{{ "Commande" }}
+		  			@endif
 		  		@endif
 		  	</h2> 
 
@@ -38,7 +50,7 @@ use App\Models\User;
 		    	<tbody>
 		    		@forelse($commandes as $commande)
 		      		<tr>
-		        		<td>{{ $numero++ }}</td>
+		        		<td>{{ $numero-- }}</td>
 		        		<td>{{ $commande->date_livraison }}</td>
 		        		<td>{{ $commande->heure_livraison }}</td>
 		        		@if(Auth::user()->role_id == 1)
@@ -87,7 +99,7 @@ use App\Models\User;
 		  	<div class="commandes">
 		  		@forelse($commandes as $commande)
 				  	<div class="commande">
-				  		Nº : {{ $numero_1++ }}</br>
+				  		Nº : {{ $numero_1-- }}</br>
 				  		Date : {{ $commande->date_livraison }}</br>
 				  		Heure : {{ $commande->heure_livraion }}
 				  		Quantité : {{ $commande->nombre_article }}</br>

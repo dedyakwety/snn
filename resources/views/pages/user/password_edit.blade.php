@@ -21,7 +21,7 @@
 			<input type="password" name="password_ancien" class="input_edit_password" placeholder="Ancien mot de passe" class="form-control" required autofocus />
 			<input type="password" name="password" class="input_edit_password" placeholder="nouveau mot de passe" class="form-control" required />
 			<input type="password" name="password_confirm" class="input_edit_password" placeholder="Confirmer nouveau mot de passe" class="form-control" required />
-			<button type="submit" class="btn btn-primary">Mis à jour</button>
+			<button type="submit" class="btn">Mis à jour</button>
 		</form>
 	</div>
 @endsection

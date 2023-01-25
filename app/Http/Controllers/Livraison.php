@@ -13,6 +13,9 @@ use App\Models\Partages;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EnvoiMail;
+
 class Livraison extends Controller
 {
     /**
@@ -36,15 +39,13 @@ class Livraison extends Controller
 
             }
         }
-
-        $numero = 1;
-        $numero_1 = 1;
         
         if(Auth::user()->role_id == 1)
         {
             $commandes = Livraisons::where('valide', true)
                                     ->orderBy('created_at', 'desc')
                                     ->paginate(30);
+            $nombre = Livraisons::where('valide', true)->count();
 
             $livree = Livraisons::where('valide', true)
                                 ->count();
@@ -58,6 +59,7 @@ class Livraison extends Controller
             $commandes = Livraisons::where('livreur_id', Auth::user()->id)
                                     ->orderBy('created_at', 'desc')
                                     ->paginate(30);
+            $nombre = Livraisons::where('livreur_id', Auth::user()->id)->count();
 
             $livree = Livraisons::where('valide', true)
                                 ->where('livreur_id', Auth::user()->id)
@@ -70,13 +72,19 @@ class Livraison extends Controller
 
         } elseif(Auth::user()->role_id == 5){
 
-            $commandes = Livraisons::where('user_id', Auth::user()->id)
+            $commandes = Livraisons::where('valide', true)
+                                    ->where('user_id', Auth::user()->id)
                                     ->orderBy('created_at', 'desc')
                                     ->paginate(30);
+            $nombre = Livraisons::where('valide', true)
+                                ->where('user_id', Auth::user()->id)->count();
 
             $livree = "";
             $encour = "";
         }
+
+        $numero = $nombre;
+        $numero_1 = $nombre;
 
         return view('pages.livraisons.livraisons', [
             'commandes' => $commandes,
@@ -368,7 +376,6 @@ class Livraison extends Controller
                 
                 if(count($verifier_date) == 0)
                 {
-
                     Partages::create([
                         'date_vente' => $date_vente,
                         'achat' => $achat,
@@ -423,6 +430,8 @@ class Livraison extends Controller
             }
 
         }
+        // ENVOYEZ MAIL SI L'UTILISATEUR N'AS PAS UN COMPTE
+        //Mail::to('dedyakwety1@gmail.com')->send(new EnvoiMail());
 
         return redirect()->route('viewFacture', ['id' => $id]);
     }

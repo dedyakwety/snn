@@ -45,6 +45,36 @@ class Reset_password extends Controller
         }
     }
 
+    // FORMULAIRE POUR LES INFOS POUR CODE D'ACCES ET LE NOUVEAU MOT DE PASSE
+    public function form_plus($id)
+    {
+        $users = User::select('liens_reset_password')->where('valide', true)->get();
+        foreach($users as $user)
+        {
+            $tab = [];
+            array_push($tab, $user->liens_reset_password);
+        }
+
+        if(in_array($id, $tab))
+        {
+            $email = User::select('email')->where('liens_reset_password', $id)->first()->email;
+
+            return view('pages.user.form_plus', [
+                'email' => $email,
+            ]);
+
+        } else{
+            
+            return redirect()->route('404');
+        }
+    }
+
+    // TRAITEMENT DE CHANGEMENT
+    public function traitement_reset_password(Request $request)
+    {
+        dd("dedy");
+    }
+
     public function reset(Request $request, $id)
     {
         // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
