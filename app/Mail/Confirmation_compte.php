@@ -13,7 +13,7 @@ class Confirmation_compte extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data = [];
+    public $user_email = [];
 
     /**
      * Create a new message instance.
@@ -22,7 +22,7 @@ class Confirmation_compte extends Mailable
      */
     public function __construct(array $user_mail)
     {
-        $this->date = $user_mail;
+        $this->user_email = $user_mail;
     }
 
     /**

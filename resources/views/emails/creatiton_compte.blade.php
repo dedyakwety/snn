@@ -8,7 +8,7 @@
     <title>Dad Favori</title>
 </head>
 <body>
-    <h1>Salut, {{ $date['prenom']." ".$data['nom'] }}<br>
+    <p>Salut, {{ $user_email['prenom']." ".$user_email['nom']." votre a été crér avec succès!" }}<br>
     Connectez vous par : https://www.dadfavori.com/login<br>
     Pour plus d'infos : +243 897 283 842<br>
     Rejoignez nous par :<br>
@@ -16,6 +16,6 @@
     Twitter : @DadFavori Officiel<br>
     Instagram : Dad Favori Officiel<br>
     Tiktok : Dad_Favori_Officiel
-    </h1>
+    </p>
 </body>
 </html>
