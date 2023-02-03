@@ -21,7 +21,6 @@
 				{{ Session::get('erreur') }}
 			</div>
 		@endif
-	
 
 	<div class="infos">
 		<div class="div-infos">

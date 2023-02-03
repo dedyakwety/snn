@@ -1295,7 +1295,7 @@
 	{
 		height: auto;
 		padding-bottom: 10px;
-		border: 2px solid #d4d4d4;
+		border-bottom: 2px solid #d4d4d4;
 	}
 	.product_name a
 	{

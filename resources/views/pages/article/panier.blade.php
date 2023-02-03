@@ -152,7 +152,7 @@ use App\Models\Articles;
 								Date et heure
 							</div>
 							<div class="infos-liv-2">
-								<input id="date1" type="date" placeholder="MM/DD/YYYY" name="date_livraison" class="input-form" data-input required />
+								<input id="date1" type="date" name="date_livraison" class="input-form" data-input required />
 								<select name="heure_livraison" class="input-form" placeholder="date" required>
 									<option>HEURE</option>
 									<option value="08H00 à 08H30">08H00 à 08H30</option>

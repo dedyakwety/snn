@@ -67,7 +67,7 @@
 				</a>
 			</div>
 			<div class="bouton">
-				<button type="submit" class="btn_edit">Modifier</button>
+				<button type="submit" class="btn_edit">Enregistrer</button>
 			</div>
 		</div>
 	</form>

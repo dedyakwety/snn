@@ -449,12 +449,12 @@
 	}
 	.h2-info{
 		text-align: center;
-		font-size: 22px;
+		font-size: 17px;
 		text-transform: uppercase;
 		margin-bottom: 25px;
 	}
 	.h2{
-		font-size: 25px;
+		font-size: 17px;
 		text-align: center;
 		margin-bottom: 25px;
 	}
@@ -543,6 +543,20 @@
 	}
 	#btn-liv{
 		background-color: #041e7f;
+	}
+	.btn_panier{
+		background-color: #041e7f;
+		font-size: 11px;
+		color: #fff;
+		padding: 8px;
+		border: 1px solid #041e7f;
+	}
+	#btn_panier_2{
+		background-color: red;
+		font-size: 11px;
+		color: #fff;
+		padding: 8px;
+		border: 1px solid red;
 	}
 
 
@@ -905,7 +919,7 @@
 	}
 
 	h2{
-		font-size: 30px;
+		font-size: 15px;
 	}
 	.navbar
 	{
@@ -1195,6 +1209,20 @@
 	.id_article{
 		display: none;
 	}
+	.btn_panier{
+		background-color: #041e7f;
+		font-size: 11px;
+		color: #fff;
+		padding: 8px;
+		border: 1px solid #041e7f;
+	}
+	#btn_panier_2{
+		background-color: red;
+		font-size: 11px;
+		color: #fff;
+		padding: 8px;
+		border: 1px solid red;
+	}
 
 
 	.panier-vide{
@@ -1220,8 +1248,13 @@
 		text-transform: uppercase;
 		margin-bottom: 25px;
 	}
+	h2{
+		font-size: 15px;
+		text-align: center;
+		margin-bottom: 25px;
+	}
 	.h2{
-		font-size: 25px;
+		font-size: 15px;
 		text-align: center;
 		margin-bottom: 25px;
 	}

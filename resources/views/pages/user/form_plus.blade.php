@@ -26,9 +26,21 @@
 
             <!-- Validation Errors -->
                 <x-auth-validation-errors class="mb-2" :errors="$errors" />
+
+                @if(Session::has('succes'))
+                    <div class="div-message-succes">
+                        {{ Session::get('succes') }}
+                    </div>
+                @endif
+                @if(Session::has('erreur'))
+                    <div class="div-message-erreur">
+                        {{ Session::get('erreur') }}
+                    </div>
+                @endif
+                
             </div>
 
-            <form method="POST" action="{{ route('traitement_reset_password') }}" class="form">
+            <form method="POST" action="{{ route('traitement_reset') }}" class="form">
                 @csrf
                 
                 <!-- Email Address -->
@@ -36,7 +48,7 @@
                     <div class="icone">
                         <span class="glyphicon glyphicon-user"></span>
                     </div>
-                    <input class="input" type="email" name="email" placeholder="{{ $email }}" disabled autofocus />
+                    <input class="input" type="email" name="email" value="{{ $email }}" disabled autofocus />
                 </div>
 
                 <!-- Password -->
@@ -45,9 +57,10 @@
                         <span class="glyphicon glyphicon-cog"></span>
                     </div>
                     <input class="input"
-                            type="password"
+                            type="number"
                             name="code"
                             placeholder="Code d'accès"
+                            min="5" max="5" 
                             required autofocus />
                 </div>
 
@@ -70,7 +83,7 @@
                     </div>
                     <input class="input"
                             type="password"
-                            name="confirm_password"
+                            name="password_confirmation"
                             placeholder="Confirmer Mot de passe"
                             required autocomplete="current-password" />
                 </div>

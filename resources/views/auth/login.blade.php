@@ -26,6 +26,7 @@
 
             <!-- Validation Errors -->
                 <x-auth-validation-errors class="mb-2" :errors="$errors" />
+                
             </div>
 
             <form method="POST" action="{{ route('login') }}" class="form">

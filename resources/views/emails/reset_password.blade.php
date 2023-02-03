@@ -8,7 +8,9 @@
     <title>Dad Favori</title>
 </head>
 <body>
-    <h2>Code de reset password : {{ $code['code'] }}<br>
-    </h2>
+    <h3>Code de reinitialisation de mot de passe : {{ $infos['code'] }}<br>
+        Cliquez sur le liens ci-déssous pour changer votre mot de passe<br>
+        https://www.dadfavori.com/infos_reset_password/{{ $infos['liens'] }}
+    </h3>
 </body>
 </html>

@@ -83,8 +83,9 @@ Route::get('/Boutique/{id}', 'App\Http\Controllers\Boutique@articles')->middlewa
 // RESET PASSWORD USER
 Route::get('/Reset_password_user/{id}', 'App\Http\Controllers\Reset_password@index')->middleware(['auth'])->name('reset_password_user_index');
 Route::post('/Reset_password/{id}', 'App\Http\Controllers\Reset_password@reset')->middleware(['auth'])->name('reset');
-Route::get('/Reset_password/{id}', 'App\Http\Controllers\Reset_password@form_plus')->name('form_plus');
-Route::post('/traitement', 'APP\http\Controllers\Reset_password@traitement_reset_password')->name('traitement_reset_password');
+Route::get('/Form_reset_password/{id}', 'App\Http\Controllers\Reset_password@form_plus_password')->name('form_reset_password');
+Route::get('/infos_reset_password/{id}', 'App\Http\Controllers\Reset_password@infos_reset_password')->name('infos_reset_password');
+Route::post('/traitement', 'APP\http\Controllers\Reset_password@traitement_reset')->name('traitement_reset');
 
 // MESSAEGES
 Route::post('/Index_message', 'App\Http\Controllers\Message@index')->name('index_message');

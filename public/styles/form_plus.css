@@ -107,6 +107,20 @@ h3{
 	flex-direction: row;
 	justify-content: space-between;
 }
+.div-message-succes{
+	width: 100%;
+	color: green;
+	font-size: 13px;
+	font-family: sans-serif;
+	text-align: center;
+}
+.div-message-erreur{
+	width: 100%;
+	color: red;
+	font-size: 13px;
+	font-family: sans-serif;
+	text-align: center;
+}
 
 
 

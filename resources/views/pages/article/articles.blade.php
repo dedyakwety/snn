@@ -10,17 +10,16 @@
 	@endif
 		<div class="product discount product_filter">
 			<div class="product_image">
-				<img src="{{ asset(Storage::url($article->image->path_1)) }}" alt="image-article">
+				<img src="{{ asset('images/logo/logo.jpg') }}" alt="image-article">
 			</div>
 			<div class="favorite favorite_left"></div>
 			@auth
 				<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 					<span>
-						$
 						@if($article->prix < 20)
-							{{ number_format((((double)$article->prix + (double)$gestion->gain_1) / 100) * (double)$gestion->remise, 2, '.', ' ') }}
+							{{ "$".number_format((((double)$article->prix + (double)$gestion->gain_1) / 100) * (double)$gestion->remise, 2, '.', ' ') }}
 						@elseif($article->prix >= 20)
-							{{ number_format((((((double)$article->prix / 100) * (double)$gestion->gain_2) + (double)$article->prix) / 100) * (double)$gestion->remise, 2, '.', ' ') }}
+							{{ "$".number_format((((((double)$article->prix / 100) * (double)$gestion->gain_2) + (double)$article->prix) / 100) * (double)$gestion->remise, 2, '.', ' ') }}
 						@endif
 					</span>
 				</div>

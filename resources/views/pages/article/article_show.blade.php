@@ -233,9 +233,9 @@
 								Date et heure
 							</div>
 							<div class="infos-2">
-								<input id="date1" type="date" name="date_livraison"  placeholder="MM/DD/YYYY" id="date_livraison" class="date_heure" date-input required>
+								<input id="date1" type="date" name="date_livraison"  placeholder="m/dd/yy" id="date_livraison" class="date_heure" date-input required>
 								<select name="heure_livraison" id="heure_livraison" class="date_heure" required>
-									<option>HEURE</option>
+									<option>Heure</option>
 									<option value="08H00 à 08H30">08H00 à 08H30</option>
 									<option value="08H30 à 09H00">08H30 à 09H00</option>
 									<option value="09H00 à 09H30">09H00 à 09H30</option>

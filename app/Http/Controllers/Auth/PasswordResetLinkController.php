@@ -37,32 +37,41 @@ class PasswordResetLinkController extends Controller
             'email' => ['required', 'email'],
         ]);
 
-        // Récupérer l'id de l'adresse encours Vérifier si l'adresse email existe dans la bdd
-        $user = User::findOrFail(User::select('id')->where('email', $request->email)->first()->id);
-
-        if($user)
+        // Vérifier si l'adresse email ests bien dans la base de données
+        if(User::where('email', $request->email)->exists())
         {
+            $user = User::findOrFail(User::select('id')->where('email', $request->email)->first()->id);
+            
             // id de  user de l'adresse, adresse email, 10 chiffres générés
             $code_reset = rand(10000, 99999);
             $liens_1 = $user->id."".$user->prenom."".$user->name."".$user->email."".rand(1000000000, 9999999999)."".$code_reset;
-
-            $code = ['code' => $code_reset];
-            // ENVOI DU CODE DE RESET
-            Mail::to($request->email)->send(new Reset_password($code));
 
             // ENREGISTRE LE LIEN DANS LA BDD
             $user->update([
                 'code_reset' => $code_reset,
                 'liens_reset_password' => Hash::make($liens_1),
             ]);
+
+            $infos = ['code' => $code_reset, 'liens' => $user->liens_reset_password];
+            // ENVOI DU CODE DE RESET
+            Mail::to($request->email)->send(new Reset_password($infos));
             
-            return redirect()->route('form_plus', $user->liens_reset_password);
+            return redirect()->route('infos_reset_password', $user->liens_reset_password);
 
         } else{
-            dd("dedy");
-            //return redirect()->route('404');
+            
+            return redirect()->route('login');
 
-        }   
+        }
+        
+        $adresse = User::select('email')->where('email', 'somba.na.ndaku@gmail.com')->first()->email;
+
+        dd($adresse);
+
+        // Récupérer l'id de l'adresse encours Vérifier si l'adresse email existe dans la bdd
+        //$user = User::findOrFail(User::select('id')->where('email', $request->email);
+
+        
         // creer le liens suivant
 
         dd($request->email);
