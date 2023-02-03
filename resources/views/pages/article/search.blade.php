@@ -4,13 +4,13 @@
 
 	<div class="new_arrivals">
 		<div class="container">
-			<div class="row">
+			<!--div class="row">
 				<div class="col text-center">
 					<div class="section_title new_arrivals_title">
 						<h2>Les produits dans la boutique</h2>
 					</div>
 				</div>
-			</div>
+			</div-->
 			<div class="div-recherche">
 				<form action="{{ route('article.search') }}" class="form-recherche">
 					@csrf
