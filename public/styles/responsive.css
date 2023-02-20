@@ -964,6 +964,14 @@
 		height: 90vh;
 		margin-top: -100vh;
 	}
+	.div-recherche{
+		background-color: teal;
+		margin-top: 500px;
+		width: 30%;
+		margin-left: 70%;
+		display: flex;
+		flex-direction: row-reverse;
+	}
 	.div-categorie{
 		margin-top: 70px;
 		width: 100%;

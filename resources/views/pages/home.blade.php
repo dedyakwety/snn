@@ -119,7 +119,9 @@
 					@csrf
 					<select name="q" class="categorie_">
 						@foreach($modeles as $modele)
-							<option value="{{ $modele->modele }}">{{ $modele->modele }}</option>
+							@if(count($modele->articles) > 0)
+								<option value="{{ $modele->modele }}">{{ $modele->modele }}</option>
+							@endauth
 						@endforeach
 					</select>
 					<!--input type="text" name="q" class="form-control mr-2" id="champ-recherche"-->

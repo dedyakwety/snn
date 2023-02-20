@@ -19,7 +19,9 @@
 						@foreach($modeles as $modele)
 							@if($modele->modele == $search)
 							@else
-								<option>{{ $modele->modele }}</option>
+								@if(count($modele->articles) > 0)
+									<option>{{ $modele->modele }}</option>
+								@endif
 							@endif
 						@endforeach
 					</select>
@@ -46,7 +48,7 @@
 								@endif
 									<div class="product discount product_filter">
 										<div class="product_image">
-											<img src="{{ asset(Storage::url($article->image->path_1)) }}" alt="image-article">
+											<img src="{{ asset('https://stockage-sombanandaku.s3.us-east-2.amazonaws.com/images/articles/article15/image_1.jpg') }}" alt="image-article">
 										</div>
 										<div class="favorite favorite_left"></div>
 										@auth
