@@ -92,6 +92,7 @@ class Controller extends BaseController
             'homme' => 'homme',
             'femme' => 'femme',
             'enfant' => 'enfant',
+            'electronique' => 'electronique',
         ];
 
         return $pours;

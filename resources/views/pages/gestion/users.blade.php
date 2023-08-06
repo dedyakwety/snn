@@ -28,12 +28,12 @@
 		</form>
 		<div class="agents">
 		  	@forelse($agents as $agent)
-			  	@if(($agent->adresse_id) === null)
-			  	
+			  	@if($agent->adresse_id === null)
 			  	@else
 					<div class="infos">
 						<div class="info-1">
-							<img src="{{ asset(Storage::url($agent->image->profil)) }}" alt="photo-profil">
+							<img src="{{ asset('images/logo/logo.png') }}" alt="image-article">
+							<!--img src="{{ asset(Storage::url($agent->image->profil)) }}" alt="photo-profil"-->
 						</div>
 						<div class="info-2">
 				      		<p>

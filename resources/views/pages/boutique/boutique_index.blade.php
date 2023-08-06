@@ -3,7 +3,57 @@
 @section('boutique')
 
 	<div class="boutique">
-		<h2>Ajouter une boutique</h2>
+		<div class="div-form">
+			<div class="div-h2">
+				<h2>Ajouter une boutique</h2>
+				<br>
+				@if(Session::has('succes'))
+					<p class="message-succes">{{ Session::get('succes') }}</p>
+				@endif
+				@if(Session::has('erreur'))
+					<p class="message-erreur">{{ Session::get('erreur') }}</p>
+				@endif
+			</div>
+			<div class="div-form-2">
+				<form action="{{ route('boutique_store') }}" method="POST" class="form">
+					@csrf
+					<input type="text" name="nom_boutique" id="name" placeholder="Nom Boutique"required>
+					<input type="tel" name="contact_boutique" class="" placeholder="Contact Whatsapp" required>
+					<input type="password" name="password" class="" placeholder="Password" required>
+					<button class="btn btn-primary" id="btn">Enregistrer</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="div-boutique">
+			<table class="table table-striped" id="table">
+		    	<thead>
+		      		<tr>
+		        		<th>Nº</th>
+		        		<th>Nom</th>
+		        		<th>Contact</th>
+		        		<th>Plus</th>
+		      		</tr>
+		    	</thead>
+		    	<tbody>
+	      			@forelse($boutiques as $boutique)
+		      			<tr>
+		      				<td>{{ $numero++ }}</td>
+		      				<td>{{ $boutique->nom }}</td>
+		      				<td>{{ $boutique->contact_whatsapp }}</td>
+		      				<td>
+		      					<a href="{{ route('boutique_articles', $boutique->nom) }}">
+									Articles
+								</a>
+		      				</td>
+		      			</tr>
+	      			@empty
+	      				<h2>Aucune boutique disponoble pour l'instant</h2>
+	      			@endforelse
+		    	</tbody>
+		  	</table>
+		</div>
+		<!--h2>Ajouter une boutique</h2>
 		<div>
 			@if(Session::has('succes'))
 				<p>{{ Session::get('succes') }}</p>
@@ -49,10 +99,10 @@
 	      				<h2>Aucune boutique disponoble pour l'instant</h2>
 	      			@endforelse
 		    	</tbody>
-		  	</table>
+		  	</table-->
 
 		  	<!-- RESPONSIVE -->
-		  	<div class="div-responsive">
+		  	<!--div class="div-responsive">
 		  		<div class="div-boutique-2">
 		  			<div>Nº</div>
 		  			<div>Nom</div>
@@ -70,7 +120,7 @@
       				<h2>Aucune boutique disponoble pour l'instant</h2>
       			@endforelse
 		  	</div>
-		</div>
+		</div-->
 	</div>
 
 @endsection

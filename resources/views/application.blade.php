@@ -1,16 +1,21 @@
 <?php
 use App\Models\Pours;
 
-$homme = Pours::findOrFail(1);
-$femme = Pours::findOrFail(2);
-$enfant = Pours::findOrFail(3);
+$pours = Pours::All();
+
+if($pours->count() > 0)
+{
+	$homme = Pours::findOrFail(1);
+	$femme = Pours::findOrFail(2);
+	$enfant = Pours::findOrFail(3);
+}
 //$accessoire = Pours::findOrFail(4);
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Dad Favori</title>
+<title>DadFavori</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Colo Shop Template">
@@ -270,19 +275,21 @@ $enfant = Pours::findOrFail(3);
 								</a>
 							</div>
 							<nav class="navbar">
-								<ul class="navbar_menu">
-									<li><a href="{{ route('index') }}">Accueil</a></li>
-									@if($homme->articles()->count() > 0)
-										<li><a href="{{ route('categorie', ['id' => 'homme']) }}">Homme</a></li>
-									@endif
-									@if($femme->articles()->count() > 0)
-										<li><a href="{{ route('categorie', ['id' => 'femme']) }}">Femme</a></li>
-									@endif
-									@if($enfant->articles()->count() > 0)
-										<li><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfant</a></li>
-									@endif
-										<!--li><a href="#">accessoire</a></li-->
-								</ul>
+								@if($pours->count() > 0)
+									<ul class="navbar_menu">
+										<li><a href="{{ route('index') }}">Accueil</a></li>
+										@if($homme->articles()->count() > 0)
+											<li><a href="{{ route('categorie', ['id' => 'homme']) }}">Homme</a></li>
+										@endif
+										@if($femme->articles()->count() > 0)
+											<li><a href="{{ route('categorie', ['id' => 'femme']) }}">Femme</a></li>
+										@endif
+										@if($enfant->articles()->count() > 0)
+											<li><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfant</a></li>
+										@endif
+											<!--li><a href="#">accessoire</a></li-->
+									</ul>
+								@endif
 								<ul class="navbar_user">
 								
 									@auth
@@ -325,7 +332,7 @@ $enfant = Pours::findOrFail(3);
 			</div>
 
 		</header>
-
+		
 		<div class="fs_menu_overlay"></div>
 		<div class="hamburger_menu">
 			<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
@@ -393,14 +400,17 @@ $enfant = Pours::findOrFail(3);
 						</li>
 					@endauth
 
-					@if($homme->articles()->count() > 0)
-						<li class="menu_item"><a href="{{ route('categorie', ['id' => 'homme']) }}">Hommes</a></li>
-					@endif
-					@if($femme->articles()->count() > 0)
-						<li class="menu_item"><a href="{{ route('categorie', ['id' => 'femme']) }}">Femmes</a></li>
-					@endif
-					@if($enfant->articles()->count() > 0)
-						<li class="menu_item"><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfant</a></li>
+					<!-- Vérifier si un article existe dans la base de données -->
+					@if($pours->count() > 0)
+						@if($homme->articles()->count() > 0)
+							<li class="menu_item"><a href="{{ route('categorie', ['id' => 'homme']) }}">Hommes</a></li>
+						@endif
+						@if($femme->articles()->count() > 0)
+							<li class="menu_item"><a href="{{ route('categorie', ['id' => 'femme']) }}">Femmes</a></li>
+						@endif
+						@if($enfant->articles()->count() > 0)
+							<li class="menu_item"><a href="{{ route('categorie', ['id' => 'enfant']) }}">Enfant</a></li>
+						@endif
 					@endif
 					<li class="menu_item"><a href="#">A propos</a></li>
 				</ul>
@@ -474,7 +484,7 @@ $enfant = Pours::findOrFail(3);
 							<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
 							<div class="benefit_content">
 								<h6>Paiement à domicile par :</h6>
-								<p>Espèce, Orange money, M-pesa, Airtel money</p>
+								<p>Espèce, Orange money, M-pesa, Airtel money, UBA: 4035 2522 8210 1222</p>
 							</div>
 						</div>
 					</div>
@@ -482,7 +492,7 @@ $enfant = Pours::findOrFail(3);
 						<div class="benefit_item d-flex flex-row align-items-center">
 							<div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
 							<div class="benefit_content">
-								<h6>CommandeZ chaque jour 7jrs/7jrs 24h/24h dans en ligne</h6>
+								<h6>Commandez chaque jour 7jrs/7jrs 24h/24h dans en ligne</h6>
 								<p></p>
 							</div>
 						</div>

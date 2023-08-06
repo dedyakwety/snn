@@ -74,6 +74,6 @@ Session::put('chemin', url()->current());
         </div>
     </div>
     <div class="footer-2">
-        <a href="http://copyright.be" target="_blank" id="copy">Copyright © 2022 Maintenu et réaliser par Dedy Akwety</a>
+        <a href="http://copyright.be" target="_blank" id="copy">Copyright © 2022 Maintenu et réaliser par @Dedy Akwety Desgo</a>
     </div>
 </footer>

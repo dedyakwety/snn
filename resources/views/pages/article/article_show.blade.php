@@ -51,21 +51,13 @@
 						<p>{{ $article->commentaire }}</p>
 					</div>
 					<div class="free_delivery d-flex flex-row align-items-center justify-content-center">
-						<span class="ti-truck"></span><span>Livraison à domicile gratuit</span>
+						<span class="ti-truck"></span><span>Livraison à domicile gratuite</span>
 					</div>
 					<div class="original_price">
-						@if($article->prix < 20)
-							<span>${{ number_format(((double)$article->prix + (double)$gestion->gain_1) + (((double)$article->prix / 100) * (double)12.5), 2, '.', ' ') }}</span>
-						@elseif($article->prix >= 20)
-							<span>${{ number_format(((((double)$article->prix / 100) * (double)$gestion->gain_2) + (double)$article->prix) + (((double)$article->prix / 100) * 12.5), 2, '.', ' ') }}</span>
-						@endif
+						<span>${{ number_format(((double)$article->prix_vente + (double)$gestion->gain_1) + (((double)$article->prix_vente / 100) * (double)7.5), 2, '.', ' ') }}</span>
 					</div>
 					<div class="product_price">
-						@if($article->prix < 20)
-							${{ number_format(((double)$article->prix + (double)$gestion->gain_1), 2, '.', ' ') }}
-						@elseif($article->prix >= 20)
-							${{ number_format((((double)$article->prix / 100) * (double)$gestion->gain_2) + (double)$article->prix, 2, '.', ' ') }}
-						@endif
+						${{ number_format((double)$article->prix_vente, 2, '.', ' ') }}
 					</div>
 					<ul class="star_rating">
 						<li><i class="fa fa-star" aria-hidden="true"></i></li>

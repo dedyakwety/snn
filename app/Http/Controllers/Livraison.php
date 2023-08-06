@@ -240,7 +240,6 @@ class Livraison extends Controller
      */
     public function update(Request $request, $id)
     {
-
         if(auth()->check())
         {
             // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
@@ -285,9 +284,9 @@ class Livraison extends Controller
             
             if(password_verify($request->password, Auth::user()->password))
             {
-
                 $livraison = Livraisons::findOrFail($id);
 
+                // VERIFIER SI LA COMMANDE EST DEPUIS UN COMPTE
                 if($livraison->user_id)
                 {
                     $client = User::findOrFail($livraison->user_id);
@@ -295,22 +294,34 @@ class Livraison extends Controller
 
                 $commandes = Commandes::All()->where('livraison_id', $id);
 
+                // RECUPERER TOUTES LA COMMANDE ET SOUSTRAIT LA QUANTITE DANS LE NOMBRE D'ARTICLE
+                foreach($commandes as $commande)
+                {
+                    Articles::findOrFail($commande->article_id)->update([
+                        "quantite" => (int)Articles::findOrFail($commande->article_id)->quantite - (int)$commande->quantite,
+                    ]);
+                }
+
                 $date_vente = $livraison->date_livraison;
                 $achat = $livraison->prix_achat;
                 $vente = $livraison->prix_total;
                 $gain_brut = (double)$vente - (double)$achat;
+
                 if($livraison->user_id)
                 {
                     $remise_in = $livraison->remise;
                 } else{
                     $remise_in = 0;
                 }
-                
+
                 // SIGNALER QUE LA LIVRAISON EST FAITE
                 Livraisons::findOrFail($id)
                         ->update([
                             'livree' => true,
                         ]);
+
+                // INCREMENTATION DE LA QUANTITE D'ARTICLE
+
 
                 if($livraison->user_id)
                 {
@@ -392,6 +403,7 @@ class Livraison extends Controller
                         'remise_pourcentage' => $remise_pourcentage,
                     ]);
 
+                // VERIFIER SI LA DATE DE LA COMMANDE EXISTE DEJA DANS LA BDD
                 } elseif(count($verifier_date) == 1){
                 
                     $partage_id = Partages::select('id')->where('date_vente', $livraison->date_livraison)->first()->id;

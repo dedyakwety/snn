@@ -50,10 +50,14 @@
 		<input type="file" name="image_3" id="image">
 	</div>
 	<div class="div-form">
-		<input type="file" name="image_4" id="image">
+		<!--input type="file" name="image_4" id="image"-->
+		<input type="number" name="quantite" placeholder="Quantite d'article" />
 	</div>
 	<div class="div-form" id="prix">
 		<input type="number" name="prix" step="0.01" placeholder="Prix d'article" />
+	</div>
+	<div class="div-form" id="prix_vente">
+		<input type="number" name="prix_vente" step="0.01" placeholder="Prix de vente" />
 	</div>
 	<div class="div-comment">
 		<textarea name="commentaire" placeholder="Commentaire" class="commentaire-article"></textarea>

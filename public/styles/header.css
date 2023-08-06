@@ -54,7 +54,13 @@ COLOR PALETTE
 	padding: 10px;
 }
 
-
+/* COULEURS POUR DIFFERENCIER ARTICLES DADFAVORI ET AUTRES */
+#color_1{
+	color: #1315b9;
+}
+#color_2{
+	color: gray;
+}
 
 
 *

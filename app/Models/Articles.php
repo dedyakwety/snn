@@ -22,6 +22,7 @@ class Articles extends Model
         'categorie_id',
         'modele_id',
         'prix',
+        'prix_vente',
         'commentaire',
         'quantite',
         'vente',

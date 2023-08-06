@@ -20,8 +20,9 @@ return new class extends Migration
             $table->foreignId('categorie_id')->constrained();
             $table->foreignId('modele_id')->constrained();
             $table->double('prix');
+            $table->double('prix_vente');
             $table->string('commentaire');
-            $table->integer('quantite')->nullable();
+            $table->integer('quantite'); // J'ai retiré nullable
             $table->integer('vente')->nullable();
             $table->boolean('valide')->default(1);
             $table->timestamps();

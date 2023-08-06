@@ -89,7 +89,7 @@ use App\Models\User;
 
         @if((Auth::user()->role_id == 1) OR (Auth::user()->role_id == 2) OR (Auth::user()->role_id == 3))
             <div class="footer-facture">
-                TOTAL : ${{ $livraison->prix_total }}
+                TOTAL : ${{ number_format($livraison->prix_total, "2", ".", " ") }}
             </div>
             <div class="div-facture-2">
                 @forelse($commandes as $commande)
@@ -99,9 +99,9 @@ use App\Models\User;
                         </div>
                         <div class="div-image-2">
                             {{ Articles::findOrFail($commande->article->id)->commentaire }}<br>
-                            P.U : ${{ $commande->prix_unitaire }}<br>
+                            P.U : ${{ number_format($commande->prix_unitaire, "2", ".", " ") }}<br>
                             Q : {{ $commande->quantite }}<br>
-                            P.T : ${{ $commande->prix_total }}
+                            P.T : ${{ number_format($commande->prix_total, "2", ".", " ") }}
                         </div>
                     </div>
                 @empty
@@ -110,11 +110,12 @@ use App\Models\User;
             </div>
         @else
             <h3>FACTURE</h3>
+            <P>Adresse livraison : {{ $livraison->adresse_livraison }}</P>
             <table>
                 <thead>
                     <tr>
                         <th id="numero">Nº</th>
-                        <th>DESIGNATIONYYY</th>
+                        <th>DESIGNATION</th>
                         <th id="prix">Qté</th>
                         <th id="prix">P.U$</th>
                         <th id="prix">P.T$</th>
@@ -126,8 +127,8 @@ use App\Models\User;
                         <td>{{ $incrementation++; }}</td>
                         <td>{{ Articles::find($commande->article->id)->modele->modele." Taille ".$commande->taille }}</td>
                         <td>{{ $commande->quantite }}</td>
-                        <td>{{ $commande->prix_unitaire }}</td>
-                        <td>{{ $commande->prix_total }}</td>
+                        <td>{{ number_format($commande->prix_unitaire, "2", ".", " ") }}</td>
+                        <td>{{ number_format($commande->prix_total, "2", ".", " ") }}</td>
                         <!--button type="submit" class="btn btn-outline-success">
                             @if($livraison->livree == true)
                                 Livrée
@@ -143,7 +144,7 @@ use App\Models\User;
                 <tbody>
                     <tr id="remise">
                         <td>TOTAL GENERAL</td>
-                        <td id="prix-2"><strong>{{ $total_general }}</strong></td>
+                        <td id="prix-2"><strong>{{ number_format($total_general, "2", ".", " ") }}</strong></td>
                     </tr>
 
                     @if($livraison->montant_remise > 0)

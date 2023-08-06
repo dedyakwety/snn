@@ -8,6 +8,9 @@
 h2{
 	text-align: center;
 }
+#jour-livraison{
+	color: gray;
+}
 #form{
 	display: flex;
 	flex-wrap: wrap;

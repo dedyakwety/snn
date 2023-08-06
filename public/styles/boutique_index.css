@@ -1,13 +1,69 @@
 .boutique{
 	width: 80%;
+	min-height: 75vh;
 	margin-top: 25vh;
 	margin-left: 10%;
+	display: flex;
+	flex-direction: row;
+}
+.div-form{
+	width: 40%;
+	height: 75vh;
+	display: flex;
+	flex-direction: column;
+}
+.div-h2{
+	width: 100%;
+	height: 20%;
+}
+.div-form-2{
+	width: 100%;
+	height: 80%;
 }
 h2{
-	text-transform: uppercase;
-	font-size: 22px;
-	font-family: sans-serif;
+	margin-top: 20px;
 	text-align: center;
+	text-transform: uppercase;
+	font-size: 15px;
+	font-family: sans-serif;
+}
+.message-succes{
+	text-align: center;
+	color: green;
+}
+.message-erreur{
+	text-align: center;
+	color: red;
+}
+::placeholder{
+	color: blue;
+}
+input{
+	width: 100%;
+	margin-top: 10px;
+}
+#btn{
+	background-color: transparent;
+	margin-top: 10px;
+	font-size: 13px;
+	border: 1px solid #d4d4d4;
+	float: right;
+}
+.div-boutique{
+	width: 60%;
+	height: 75vh;
+}
+
+
+
+
+
+
+/*
+h2{
+	text-transform: uppercase;
+	font-size: 15px;
+	font-family: sans-serif;
 }
 #form{
 	width: 40%;
@@ -43,12 +99,12 @@ tr{
 }
 .div-responsive{
 	display: none;
-}
+}*/
 
 
 
 
-
+/*
 @media only screen and (max-width: 1000px)
 {
 	.boutique{
@@ -278,3 +334,4 @@ tr{
 		justify-content: space-between;
 	}
 }
+*/

@@ -12,6 +12,13 @@ h2{
 	font-size: 25px;
 	text-transform: uppercase;
 }
+.jour-livraison{
+	background-color: green;
+	color: #fff;
+}
+.jour-valide{
+	background-color: yellow;
+}
 th{
 	text-align: center;
 	text-transform: uppercase;

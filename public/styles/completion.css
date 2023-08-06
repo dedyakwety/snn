@@ -9,19 +9,21 @@
 }
 h1{
 	font-family: sans-serif;
-	font-size: 15px;
+	font-size: 20px;
 	text-align: center;
 	margin-bottom: 20px;
 }
 .form-completion{
-	width: 350px;
+	width: 50%;
+	margin-top: 20px;
+	margin-bottom: 35px;
 }
-.input{
+.inputt{
 	width: 80%;
 	margin-left: 10%;
 	padding: 7px;
 	margin-top: 8px;
-	border: 1px solid #000;
+	border: 1px solid #d4d4d4;
 }
 .boutton{
 	background-color: transparent;
@@ -53,7 +55,7 @@ h1{
 	.form-completion{
 		width: 100%;
 	}
-	.input{
+	.inputt{
 		width: 100%;
 		margin-left: 0%;
 		font-size: 11px;

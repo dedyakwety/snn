@@ -18,6 +18,9 @@ $incrementation = 1;
         body{
             font-family: sans-serif;
         }
+        #contenair{
+            /*background-image: url('images/logo/logo.jpg');*/
+        }
         .logo-header{
             width: 130px;
             height: 125px;
@@ -31,12 +34,14 @@ $incrementation = 1;
         .nom{
             font-family: sans-serif;
             font-size: 35px;
-            width: 75%;
+            width: 50%;
             margin-left: 25%;
             height: 50px;
+            text-align: center;
         }
         .div-header{
-            width: 75%;
+            font-family: sans-serif;
+            width: 50%;
             height: 75px;
             margin-left: 25%;
         }
@@ -44,6 +49,11 @@ $incrementation = 1;
             width: 100%;
             height: 25px;
             font-size: 14px;
+            text-align: center;
+        }
+        .p-infos-header{
+            font-family: sans-serif;
+            font-size: 11px;
         }
         .div-adresse{
             width: 100%;
@@ -258,7 +268,7 @@ $incrementation = 1;
             padding-bottom: 7px;
             height: 35px;
             font-size: 18px;
-            border: 1px solid #051959;
+            opacity: 1;
         }
         td{
             background-color: transparent;
@@ -271,6 +281,7 @@ $incrementation = 1;
         }
         .td-designation{
             padding-left: 10px;
+            opacity: 1;
         }    
         .td{
             width: 115px;
@@ -313,7 +324,7 @@ $incrementation = 1;
             bottom: 5px;
         }
         .p-date{
-            font-family: cursive;
+            font-family: sans-serif;
             margin-top: 10px;
             text-align: right;
         }
@@ -332,8 +343,16 @@ $incrementation = 1;
             height: 200px;
             left: 65%;
             bottom: 100px;
-            opacity: 0.6;
-            transform: rotate(-45deg);
+            transform: rotate(25deg);
+        }
+        .fond-facture{
+            position: absolute;
+            top: 20%;
+            width: 100%;
+            height: 65%;
+            left: 0%;
+            bottom: 100px;
+            z-index: 4;
         }
 
 
@@ -343,8 +362,9 @@ $incrementation = 1;
             height: 225px;
             bottom: 0px;
             left: 0%;
-            border-top: 1px solid black;
-            text-align: right;
+        }
+        .p-livreur{
+            margin-left: 10%;
         }
         .footer-1{
             position: absolute;
@@ -353,21 +373,22 @@ $incrementation = 1;
             padding-top: 5px;
             bottom: 0px;
             left: 0%;
-            border-top: 1px solid black;
         }
     </style>
     
-    <div class="contenair">
+    <div class="contenair" id="contenair">
                 
         <img src="images/logo/logo.jpg" class="logo-header">
         <div class="header">
-            <div class="nom">Dad Favori</div>
+            <div class="nom">Dad Favori Boutique</div>
             <div class="div-header">
                 <div class="div-site">
-                    www.dadfavori.com<br>
-                    155 Avenue de la justice, Quartier Joli parc Commune de la Gombe<br>
-                    RCCM : AAB-4D-14D-45<br>
-                    Id.nat : 251456
+                    <p class="p-infos-header">
+                        Site web : www.dadfavori.com<br>
+                        Contacts : +243 897 283 842 / 813 896 978<br>
+                        RCCM : CD/KNM/RCCM/23-A-01295<br>
+                        ID.NAT : 01-G4701-N36376H
+                    </p>
                 </div>
             </div>
         </div>
@@ -414,14 +435,22 @@ $incrementation = 1;
             </div>
         </div>
         <div class="date">
-            <p class="p-date">Kinshasa, le {{ $livraison->date_livraison }}
+            <p class="p-date">Kinshasa, le {{ $livraison->date_livraison }}</p>
         </div>
         <div class="infos">
             <div class="infos-1">
                 @if(($client === null) === false)
                     <div class="info">
-                        <strong>Client</strong>
-                        : {{ $client->prenom." ".$client->name }}
+                        @if($livraison->user_id)
+                                @if($client->sexe == "homme")
+                                    <strong>Client</strong>
+                                    : M. 
+                                @else
+                                    <strong>Cliente</strong>
+                                    : Mme
+                                @endif
+                            <strong>{{ $client->prenom." ".$client->name }}</strong>
+                        @endif
                     </div>
                     <div class="info">
                         <strong>Code Client</strong>
@@ -479,10 +508,20 @@ $incrementation = 1;
             <h1 class="h1">FACTURE</h1>
             <h3>Nº DF/
                 @if(($client === null) === false)
-                    {{ $client->id."/" }}
+                    @if(strlen($client->id) == 1)
+                        {{"0000".$client->id."/"}}
+                    @elseif(strlen($client->id) == 2)
+                        {{"000".$client->id."/"}}
+                    @elseif(strlen($client->id) == 3)
+                        {{"00".$client->id."/"}}
+                    @elseif(strlen($client->id) == 4)
+                        {{"0".$client->id."/"}}
+                    @elseif(strlen($client->id) == 5)
+                        {{$client->id."/"}}
+                    @endif
                 @endif
 
-                {{ $livraison->id."/".explode('-', $livraison->date_livraison)[2]."/".explode('-', $livraison->date_livraison)[1]."/".explode('-', $livraison->date_livraison)[0] }}</h3>
+                {{$livraison->id."/".explode('-', $livraison->date_livraison)[2]."/".explode('-', $livraison->date_livraison)[1]."/".explode('-', $livraison->date_livraison)[0] }}</h3>
         </div>
         <div class="droit">
             Doit pour ce qui suit:
@@ -504,8 +543,8 @@ $incrementation = 1;
                         <td class="td-n">{{ $incrementation++; }}</td>
                         <td class="td-designation">{{ Articles::find($commande->article->id)->modele->modele." Taille ".$commande->taille }}</td>
                         <td class="td">{{ $commande->quantite }}</td>
-                        <td class="td">{{ $commande->prix_unitaire }}</td>
-                        <td class="td">{{ $commande->prix_total }}</td>
+                        <td class="td">{{ number_format($commande->prix_unitaire, "2", ".", " ") }}</td>
+                        <td class="td">{{ number_format($commande->prix_total, "2", ".", " ") }}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -514,7 +553,7 @@ $incrementation = 1;
                 <tbody>
                     <tr id="total">
                         <td class="td-designation-2">TOTAL GENERAL</td>
-                        <td class="td-2"><strong>{{ $total_general }}</strong></td>
+                        <td class="td-2"><strong>{{ number_format($total_general, "2", ".", " ") }}</strong></td>
                     </tr>
 
                     @if(($client === null) === false)
@@ -537,13 +576,16 @@ $incrementation = 1;
                 </tbody>
             </table>
         </div>
-        {{ $total_general_lettre."." }}
-        <div class="footer">
-            {{ "Nous disons : ".$livreur->name." ".$livreur->postnom." ".$livreur->prenom }}
-        </div>
-        <!--img src="images/logo/logo.png" class="fond"-->
-        <img src="images/cachet/PAYER.jpg" class="div-payer">
+        {{ "Nous disons :".$total_general_lettre."." }}
         <img src="images/cachet/CACHET.jpg" class="cachet">
+        <div class="footer">
+            <p class="p-livreur">
+                Livré par {{ $livreur->name." ".$livreur->postnom." ".$livreur->prenom }}
+            </p>
+        </div>
+        <!--img src="images/logo/fond.jpg" class="fond-facture"-->
+        <!--img src="images/logo/logo.png" class="fond"-->
+        <!--img src="images/cachet/PAYER.jpg" class="div-payer"-->
     </div>
 
     <script src="styles/bootstrap4/popper.js"></script>

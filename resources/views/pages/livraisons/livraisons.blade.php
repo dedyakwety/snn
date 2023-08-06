@@ -49,7 +49,15 @@ use App\Models\User;
 		    	</thead>
 		    	<tbody>
 		    		@forelse($commandes as $commande)
+		    		<!-- VERIFIER SI LA COMMANDE DOIT ETRE LIVRER AUJOURD'HUI -->
+		    		@if(date("Y-m-d") == $commande->date_livraison)
+		    		<tr class="jour-livraison">
+		      		<!-- VERIFIER SI LA COMMANDE NE PAS ENCORE LIVRER -->
+		      		@elseif(!$commande->livree)
+		    		<tr class="jour-valide">
+	    			@else
 		      		<tr>
+		      		@endif
 		        		<td>{{ $numero-- }}</td>
 		        		<td>{{ $commande->date_livraison }}</td>
 		        		<td>{{ $commande->heure_livraison }}</td>

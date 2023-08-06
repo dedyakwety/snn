@@ -2,6 +2,7 @@ body{
 	font-family: sans-serif;
 }
 .body-connexion{
+	background-image: url('images/logo/logo.png');
 	width: 80%;
 	margin-left: 10%;
 	margin-top: 0vh;
@@ -48,12 +49,18 @@ body{
 	justify-content: center;
 }
 .input{
+	padding-left: 10px;
+	padding-right: 10px;
 	width: 90%;
 	height: 100%;
 }
 .input:hover{
 	width: 90%;
 	height: 100%;
+}
+#compte{
+	color: #1315b9;
+	text-decoration: none;
 }
 .champ{
 	width: 80%;

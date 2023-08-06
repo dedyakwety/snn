@@ -80,6 +80,7 @@ class Home extends Controller
         } else{
 
             return view('pages.home', [
+                'pours' => Pours::All(),
                 'gestion' => $gestion,
                 'articles' => $articles,
                 'modeles' => $modeles,

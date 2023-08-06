@@ -99,25 +99,16 @@ class Panier extends Controller
             {
                 $request->validate([
                     'id_article' => ['required'],
-                    'taille' => ['required', 'integer'],
+                    'taille' => ['required'],
                     'quantite' => ['required'],
                 ]);
                 
-                if($article->prix < 20)
-                {
-                    $prix_total = ((double)$article->prix + (double)$gestion->gain_1) * (int)$request->quantite;
+                // ENREGISTREMENT DANS LE PANIER
+                $prix_total = (double)$article->prix_vente * (int)$request->quantite;
 
-                    $prix_achat = (double)$article->prix * (int)$request->quantite;
+                $prix_achat = (double)$article->prix * (int)$request->quantite;
 
-                    $prix_unitaire = (double)$article->prix + (double)$gestion->gain_1;
-
-                } elseif($article->prix >= 20){
-                    $prix_total = ((((double)$article->prix / 100) * (double)$gestion->gain_2) + (double)$article->prix) * (int)$request->quantite;
-
-                    $prix_achat = (double)$article->prix * (int)$request->quantite;
-
-                    $prix_unitaire = (double)$article->prix / 100 * (double)$gestion->gain_2 + (double)$article->prix;
-                }
+                $prix_unitaire = (double)$article->prix_vente;
                 
                 Commandes::create([
                     'user_id' => Auth::user()->id,
@@ -150,21 +141,12 @@ class Panier extends Controller
                     $email = null;
                 }
                 
-                if($article->prix < 20)
-                {
-                    $prix_total = ((double)$article->prix + (double)$gestion->gain_1) * (int)$request->quantite;
+                
+                    $prix_total = (double)$article->prix_vente * (int)$request->quantite;
 
                     $prix_achat = (double)$article->prix * (int)$request->quantite;
 
-                    $prix_unitaire = ((double)$article->prix + (double)$gestion->gain_1) * (int)$request->quantite;
-
-                } elseif($article->prix >= 20){
-                    $prix_total = ((((double)$article->prix / 100) * (double)$gestion->gain_2) + (double)$article->prix) * (int)$request->quantite;
-
-                    $prix_achat = (double)$article->prix * (int)$request->quantite;
-
-                    $prix_unitaire = (double)$article->prix / 100 * (double)$gestion->gain_2 + (double)$article->prix;
-                }
+                    $prix_unitaire = (double)$article->prix_vente;
 
                 $livraison = Livraisons::create([
                     'date_livraison' => $request->date_livraison,

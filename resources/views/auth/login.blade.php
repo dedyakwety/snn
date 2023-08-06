@@ -68,12 +68,12 @@
                 </div>
                 @if(Route::has('password.request'))
                     <div class="bouttons">
-                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" id="compte" href="{{ route('password.request') }}">
                             Mot de passe oublier?
                         </a>
 
-                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
-                            J'ai un compte
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" id="compte" href="{{ route('register') }}">
+                            Creer un compte
                         </a>
                     </div>
                 @endif

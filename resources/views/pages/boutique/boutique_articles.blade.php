@@ -3,7 +3,7 @@
 @section('articles-boutique')
 
 	<div class="boutique-articles">
-		<h2>Boutique : {{ $boutique->nom.", Tél : +243 ".$boutique->contact_whatsapp }}<br>{{ count($articles) }} Articles</h2>
+		<h2>{{ $boutique->nom.", Contact : +243 ".$boutique->contact_whatsapp }}<br>{{ count($articles) }} Articles</h2>
 
 	</div>
 	<!-- New Arrivals -->
@@ -42,7 +42,7 @@
 							</div>
 						</a>
 						@empty
-						<h1>Autcun article disponisple pour l'instant</h1>
+							<h1>Autcun article disponisple pour l'instant</h1>
 						@endforelse
 
 					</div>

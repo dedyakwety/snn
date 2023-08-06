@@ -87,26 +87,29 @@
 			</div>
 		</div>
 	</div>
+	
 	@auth
 		@if(((Auth::user()->role_id == 1) === false) & ((Auth::user()->role_id == 2) === false))
 			<div class="main_slider-3">
 				<div class="div-categorie">
-					<form action="{{ route('article.search') }}" class="form-recherche">
-						@csrf
-						<select name="q" class="categorie_">
-							@foreach($modeles as $modele)
-								@if(count($modele->articles) > 0)
-									<option value="{{ $modele->modele }}">{{ $modele->modele }}</option>
-								@endif
-							@endforeach
-						</select>
-						<!--input type="text" name="q" class="form-control mr-2" id="champ-recherche"-->
-						<button class="btn btn-primary pt-2" id="btn">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-						  	<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-							</svg>
-						</button>
-					</form>
+					@if($pours->count() > 0)
+						<form action="{{ route('article.search') }}" class="form-recherche">
+							@csrf
+							<select name="q" class="categorie_">
+								@foreach($modeles as $modele)
+									@if(count($modele->articles) > 0)
+										<option value="{{ $modele->modele }}">{{ $modele->modele }}</option>
+									@endif
+								@endforeach
+							</select>
+							<!--input type="text" name="q" class="form-control mr-2" id="champ-recherche"-->
+							<button class="btn btn-primary pt-2" id="btn">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+							  	<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+								</svg>
+							</button>
+						</form>
+					@endif
 				</div>
 			</div>
 		@endif
@@ -115,6 +118,7 @@
 	@guest
 		<div class="main_slider-3">
 			<div class="div-categorie">
+				@if($pours->count() > 0)
 				<form action="{{ route('article.search') }}" class="form-recherche">
 					@csrf
 					<select name="q" class="categorie_">
@@ -131,6 +135,7 @@
 						</svg>
 					</button>
 				</form>
+				@endif
 			</div>
 		</div>
 	@endguest
@@ -147,49 +152,55 @@
 
 	<!-- New Arrivals -->
 
-	<div class="new_arrivals">
-		<div class="container">
-			@if(Route::is('index'))
-				<div class="row">
-					<div class="col text-center">
-						<div class="section_title new_arrivals_title">
-							<h2>Les produits dans la boutique</h2>
+	@if(count($articles) > 0)
+		<div class="new_arrivals">
+			<div class="container">
+				@if(Route::is('index'))
+					<div class="row">
+						<div class="col text-center">
+							<div class="section_title new_arrivals_title">
+								@if($pours->count() > 0)
+									<h2>Les produits dans la boutique</h2>
+								@else
+									<h2>Aucun produit disponible pour l'instant</h2>
+								@endif
+							</div>
 						</div>
 					</div>
-				</div>
-			@endif
-			<!--div class="row align-items-center">
-				<div class="col text-center">
-					<div class="new_arrivals_sorting">
-						<ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">Tout</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">femmes</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">accessoirs</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">hommes</li>
-						</ul>
+				@endif
+				<!--div class="row align-items-center">
+					<div class="col text-center">
+						<div class="new_arrivals_sorting">
+							<ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
+								<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">Tout</li>
+								<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">femmes</li>
+								<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">accessoirs</li>
+								<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">hommes</li>
+							</ul>
+						</div>
 					</div>
-				</div>
-			</div-->
-			<div class="row">
-				<div class="col">
-					<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
+				</div-->
+				<div class="row">
+					<div class="col">
+						<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
 
-						@forelse($articles as $article)
-							@include('pages.article.articles')
-						@empty
-							<div class="no-article">
-								<h3>Aucun article pour l'instant</h3>
-							</div>
-						@endforelse
+							@forelse($articles as $article)
+								@include('pages.article.articles')
+							@empty
+								<div class="no-article">
+									<h3>Aucun article pour l'instant</h3>
+								</div>
+							@endforelse
 
-					</div>
-					<div class="div-paginate">
-						{{ $articles->links() }}
+						</div>
+						<div class="div-paginate">
+							{{ $articles->links() }}
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	@endif
 
 	<div class="best_sellers">
 		

@@ -89,14 +89,6 @@ td{
 		margin-top: 0px;
 		border: 1px solid #d4d4d4;
 	}
-	.input:hover{
-		padding: 5px;
-		font-size: 11px;
-		width: 80%;
-		height: 35px;
-		margin-top: 0px;
-		border: 1px solid #d4d4d4;
-	}
 	.clients{
 		width: 100%;
 		margin-top: 15px;

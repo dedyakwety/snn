@@ -195,7 +195,7 @@ class Facture extends Controller
         $livreur = User::findOrFail($livraison->livreur_id);
 
         $total_general = Commandes::All()->where('livraison_id', $livraison->id)->sum('prix_total');
-
+        
         if($livraison->user_id)
         {
             // VERIFIER SI C'EST LA LIVRAISON DE LA REMISE

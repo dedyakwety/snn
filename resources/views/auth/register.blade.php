@@ -4,7 +4,7 @@
     <div class="div-inscription">
         <form method="POST" action="{{ route('register') }}" class="form">
             @csrf
-            <p class="titre">Formulaire d'inscription</p>
+            <p class="titre">Créer un compte</p>
             <!-- Name -->
             
             <input type="text" name="name" placeholder="Nom" class="input-inscrit" required autofocus />
@@ -79,11 +79,11 @@
 
             <div class="bouttons">
                 <a class="boutton-1" href="{{ route('login') }}" id="btn">
-                    Déjà inscrit
+                    J'ai un compte
                 </a>
 
                 <button class="boutton-2" id="btn">
-                    S'inscrire
+                    Créer compte
                 </button>
             </div>
         </form>

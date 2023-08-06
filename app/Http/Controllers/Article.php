@@ -53,8 +53,10 @@ class Article extends Controller
             'image_1' => ['required'],
             'image_2' => ['required'],
             'image_3' => ['required'],
-            'image_4' => ['required'],
+            //'image_4' => ['required'],
+            'quantite' => ['required'],
             'prix' => ['required'],
+            'prix_vente' => ['required'],
             'commentaire' => ['required'],
         ]);
         
@@ -92,7 +94,9 @@ class Article extends Controller
                         'pour_id' => $id_pour,
                         'categorie_id' => $id_categorie,
                         'modele_id' => $id_modele,
+                        'quantite' => (int)$request->quantite,
                         'prix' => $request->prix,
+                        'prix_vente' => $request->prix_vente,
                         'commentaire' => $request->commentaire,
                     ])->id;
 
@@ -145,16 +149,18 @@ class Article extends Controller
                         return redirect()->route('index');
                     }
                     */
+                    /*
                     // IMAGES 4
                     $path_4 = $request->image_4->storeAs(
                         'images/articles/article'.$id_article,
                         'image_4'.".".$request->image_4->getClientOriginalExtension(),
                         's3',
-                    );
+                    );*/
                     Storage::disk('s3')->setVisibility($path_1, 'public');
                     Storage::disk('s3')->setVisibility($path_2, 'public');
                     Storage::disk('s3')->setVisibility($path_3, 'public');
-                    Storage::disk('s3')->setVisibility($path_4, 'public');
+                    // J'AI ENLEVE LA QUATRIEME IMAGE
+                    //Storage::disk('s3')->setVisibility($path_4, 'public');
                     /*
                     // Si la taille d'image est superieur 2.5mb Suprimer Envoi exception 
                     if((((double)Storage::size("public/".$path_4) / 1024) / 1024) > 2.5)
@@ -171,7 +177,7 @@ class Article extends Controller
                         'path_1' => $path_1,
                         'path_2' => $path_2,
                         'path_3' => $path_3,
-                        'path_4' => $path_4,
+                        //'path_4' => $path_4, C'est rétiré des images
                     ]);
 
                     // RETOUR AVEC MESSAGE

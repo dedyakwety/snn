@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
+use App\Models\Boutiques;
 use App\Models\Roles;
 use App\Models\Adresses;
 use App\Models\Pours;
@@ -123,6 +124,12 @@ class RegisteredUserController extends Controller
                     'password' => Hash::make($request->password),
                 ]);
 
+                // ENREGISTREMENT DE LA BOUTIQUE DAD FAVORI
+                Boutiques::create([
+                    "nom" => "DADFAVORI",
+                    "contact_whatsapp" => $user->contact_whatsapp,
+                ]);
+
                 // REDIRECTION D'UTILISATEUR POUR SE CONNECTE
                 return redirect()->route('login');
 
@@ -176,7 +183,7 @@ class RegisteredUserController extends Controller
                 $user = User::findOrFail($user);
                 $user_mail = ['nom' => $user->name, 'prenom' => $user->prenom, 'sexe' => $user->sexe];
                 // ENVOYER LE MAIL A L'UTILISATEUR
-                Mail::to($user->email)->send(new Confirmation_compte($user_mail));
+                // ENVOI DE MAIL Mail::to($user->email)->send(new Confirmation_compte($user_mail));
 
                 // REDIRECTION D'UTILISATEUR POUR SE CONNECTE
                 return redirect()->route('login');
