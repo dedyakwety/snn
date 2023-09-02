@@ -107,7 +107,7 @@ use App\Models\User;
 		  	<div class="commandes">
 		  		@forelse($commandes as $commande)
 				  	<div class="commande">
-				  		Nº : {{ $numero_1-- }}</br>
+				  		Nº : {{ $numero_1 }}</br>
 				  		Date : {{ $commande->date_livraison }}</br>
 				  		Heure : {{ $commande->heure_livraion }}
 				  		Quantité : {{ $commande->nombre_article }}</br>

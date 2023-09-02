@@ -45,6 +45,7 @@
 		  	</thead>
 		  	<tbody>
 		  		@forelse($partages as $partage)
+		  			
 			    	<tr>
 			      		<td>{{ $partage->date_vente }}</td>
 			      		<td>{{ number_format($partage->achat, 2, '.', ' ') }}</td>

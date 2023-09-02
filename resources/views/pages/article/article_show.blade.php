@@ -115,10 +115,10 @@
 										<div class="infos-2">
 											<select name="taille" id="heure_livraison"  required>
 												<option>
-													@if($article->categorie->categorie == "chaussure")
-														Pointure
-													@else
+													@if($article->categorie_id == 1)
 														Taille
+													@elseif($article->categorie_id == 2)
+														Pointure
 													@endif
 												</option>
 												@if(($article->categorie->id == 1) && ((($article->modele->modele == "veste") === false) && (($article->modele->modele == "pantalon") === false)))

@@ -16,7 +16,7 @@
 				<th>Quantité</th>
 				<th>Montant</th>
 				<th>Remise</th>
-				<th>Beneficier</th>
+				<th>Beneficier11</th>
 				@if(Auth::user()->role_id == 5)
 					<th>Facture</th>
 				@endif
