@@ -28,9 +28,13 @@ class Client extends Controller
         }
 
         $clients = User::where('role_id', 5)
-                        ->orderBy('prenom', 'desc')
+                        ->orderBy('name', 'asc')
                         ->paginate(50);
-                        
+        foreach($clients as $client)
+        {
+            echo $client->id;
+        }
+        dd();
         $nombre_client = User::where('role_id', 5)->count();
 
         // LES COMMANDES LIVREES

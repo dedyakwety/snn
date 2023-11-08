@@ -49,8 +49,8 @@ class Completer_compte extends Controller
         {
             $request->validate([
                 'photo_profil' => ['required'],
-                'gain_1' => ['required'],
-                'gain_1' => ['required'],
+                /*'gain_1' => ['required'],
+                'gain_1' => ['required'],*/
                 'remise' => ['required'],
                 'transport' => ['required'],
                 'depense' => ['required'],
@@ -82,8 +82,8 @@ class Completer_compte extends Controller
             ]);
             //ENREGITREMENT GESTION
             Gestions::create([
-                'gain_1' => $request->gain_1,
-                'gain_2' => $request->gain_2,
+                /*'gain_1' => $request->gain_1,
+                'gain_2' => $request->gain_2,*/
                 'remise' => $request->remise,
                 'transport' => $request->transport,
                 'depense' => $request->depense,

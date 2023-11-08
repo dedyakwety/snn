@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('gestions', function (Blueprint $table) {
             $table->id();
-            $table->double('gain_1');
-            $table->double('gain_2');
+            /*$table->double('gain_1');
+            $table->double('gain_2');*/
             $table->double('remise');
             $table->double('transport');
             $table->double('depense');

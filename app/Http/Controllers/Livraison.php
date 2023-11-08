@@ -25,7 +25,6 @@ class Livraison extends Controller
      */
     public function index()
     {
-
         if(auth()->check())
         {
             // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
@@ -39,7 +38,7 @@ class Livraison extends Controller
 
             }
         }
-        
+        dd("dedy");
         if(Auth::user()->role_id == 1)
         {
             $commandes = Livraisons::where('valide', true)
@@ -130,6 +129,7 @@ class Livraison extends Controller
 
         $prix_achat = $commandes->sum('prix_achat');
 
+        // SOMME DE LA COMMANDE ENCOURS POUR AVOIR LA REMISE DE 3 POURCENT 
         $remise = ((double)$commandes->sum('prix_total') / 100) * ($gestion->remise);
 
         // ENREGISTREMENT D'INFORMATION DE LA LIVRAISON
@@ -199,7 +199,7 @@ class Livraison extends Controller
 
         $client = User::findOrFail($id);
         $livraisons = Livraisons::where('user_id', $client->id)
-                                ->where('livree', true)
+                                
                                 ->where('valide', true)
                                 ->orderBy('created_at', 'desc')
                                 ->paginate(50);
@@ -325,7 +325,7 @@ class Livraison extends Controller
 
                 if($livraison->user_id)
                 {
-                    // RECUPERER TOUTES LES LIVRAISONS QUI ONT LES VALEURS FALSE
+                    // RECUPERER TOUTES LES LIVRAISONS QUI ONT LES VALEURS FALSE DU CLIENT ENCOURS
                     $total_remises = Livraisons::All()
                                                 ->where('user_id', $client->id)
                                                 ->where('beneficier', false)
@@ -334,7 +334,6 @@ class Livraison extends Controller
 
                     if($total_remises == 5)
                     {
-
                         $remise_out = Livraisons::All()
                                                 ->where('user_id', $client->id)
                                                 ->where('beneficier', false)
@@ -350,7 +349,14 @@ class Livraison extends Controller
                                                 ->where('user_id', $client->id)
                                                 ->where('beneficier', false)
                                                 ->where('livree', true);
-                        
+
+                        // METTRE A JOUR LA TROISIEME COMMANDE,
+                        // LE MONTANT DE LA REMISE DU CLIENT POUR LES 5 DERNIERS ACHATS
+                        Livraisons::findOrFail($id)
+                                    ->update([
+                                        'montant_remise' => true,
+                                    ]);
+
                         foreach($livraisons2 as $livraison2)
                         {
                             Livraisons::findOrFail($livraison2->id)

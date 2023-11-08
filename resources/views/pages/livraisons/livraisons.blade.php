@@ -33,7 +33,7 @@ use App\Models\User;
 		  	<table class="table table-bordered">
 		    	<thead>
 		      		<tr>
-		        		<th>Nº</th>
+		        		<th>Nº1</th>
 		        		<th>Date Livraison</th>
 		        		<th>Heure Livraison</th>
 		        		@if(Auth::user()->role_id == 1)

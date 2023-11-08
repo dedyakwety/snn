@@ -19,35 +19,29 @@
 				<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center">
 					<span>
 
-						<!--SI LA BOUTIQUE EST DADFAVORI -->
+						${{ number_format(((double)$article->prix_vente / 100) * $gestion->remise, '2', '.', ' ') }}
 
-						
-
-						<!-- SI LA BOUTIQUE N'EST PAS DADFAVORI -->
-
-						@if($article->prix < 20)
-							${{ number_format((((double)$article->prix + (double)$gestion->gain_1) / 100) * (double)$gestion->remise, 2, '.', ' ') }}
-						@elseif($article->prix >= 20)
-							{{ "$".number_format((((((double)$article->prix / 100) * (double)$gestion->gain_2) + (double)$article->prix) / 100) * (double)$gestion->remise, 2, '.', ' ') }}
-						@endif
 					</span>
 				</div>
 			@endauth
 			<div class="product_info">
 				<h6 class="product_name">{{ $article->commentaire }}</h6>
 				@auth
-				@if((Auth::user()->role_id == 1) OR (Auth::user()->role_id == 2))
-				@if($article->boutique->nom == "DADFAVORI")
-				<div class="product_price" id="color_1">
-				@else
-				<div class="product_price" id="color_2">
-				@endif
-				@endif
+					@if((Auth::user()->role_id == 1) OR (Auth::user()->role_id == 2))
+						@if($article->boutique->nom == "DADFAVORI")
+							<div class="product_price" id="color_1">
+						@else
+							<div class="product_price" id="color_2">
+						@endif
+					@else
+						<div class="product_price">
+					@endif
 				@endauth
+
 				@guest
-				<div class="product_price">
+					<div class="product_price">
 				@endguest
-				<!-- DANS LE COMPTE DE FONDATEUR -->
+					<!-- DANS LE COMPTE DE FONDATEUR -->
 					@auth
 						@if(Auth::user()->role_id == 1)
 							
@@ -58,13 +52,13 @@
 							<!--span>{{ number_format(((double)$article->prix + $gestion->gain_1) + (((double)$article->prix / 100) * (double)12.5), 2, '.', ' ') }}</span-->
 								
 						@else
+							<span>${{ number_format((double)$article->prix_vente + (($article->prix_vente / 100) * 5.5), 2, '.', ' ') }}</span>
 							${{ number_format((double)$article->prix_vente, 2, '.', ' ') }}
-							<span>${{ number_format(((double)$article->prix + $gestion->gain_1) + (((double)$article->prix / 100) * (double)12.5), 2, '.', ' ') }}</span>
 						@endif
 					@endauth
 					@guest
+						<span>${{ number_format((double)$article->prix_vente + (($article->prix_vente / 100) * 5.5), 2, '.', ' ') }}</span>
 						${{ number_format((double)$article->prix_vente, 2, '.', ' ') }}
-						<span>${{ number_format(((double)$article->prix_vente + $gestion->gain_1) + (((double)$article->prix_vente / 100) * (double)7.5), 2, '.', ' ') }}</span>
 					@endguest
 
 					@auth

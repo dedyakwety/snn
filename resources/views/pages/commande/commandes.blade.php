@@ -16,18 +16,20 @@
 				<th>Quantité</th>
 				<th>Montant</th>
 				<th>Remise</th>
-				<th>Beneficier11</th>
+				<th>Beneficier</th>
 				@if(Auth::user()->role_id == 5)
 					<th>Facture</th>
 				@endif
 			</tr>
+			dd($livraisons);
 			@forelse($livraisons as $livraison)
-				@if($livraison->montant_remise > 0)
+
+				@if($livraison->montant_remise)
 					<tr id="remise">
 				@else
 					<tr>
 				@endif
-					<td>{{ $numero-- }}</td>
+					<td>{{ $numero-- }}</td><!-- C'est une variable-->
 					<td>{{ $livraison->date_livraison }}</td>
 					<td>{{ $livraison->heure_livraison }}</td>
 					<td>{{ $livraison->nombre_article }}</td>

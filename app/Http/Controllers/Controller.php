@@ -78,7 +78,7 @@ class Controller extends BaseController
         $roles = [
             'PDG' => 'PDG',
             'DG' => 'DG',
-            'DM' => 'DM',
+            'P' => 'p',
             'AL' => 'AL',
             'CL' => 'CL',
         ];
