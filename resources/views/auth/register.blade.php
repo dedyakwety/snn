@@ -4,9 +4,13 @@
     <div class="div-inscription">
         <form method="POST" action="{{ route('register') }}" class="form">
             @csrf
+            @if ($errors->has('g-recaptcha-response'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                </span>
+            @endif
             <p class="titre">Créer un compte</p>
             <!-- Name -->
-            
             <input type="text" name="name" placeholder="Nom" class="input-inscrit" required autofocus />
             
             @if(count($users) == 0)
@@ -76,7 +80,10 @@
                             placeholder="Confirmer mot de passe" 
                             class="input-inscrit" 
                             name="password_confirmation" required />
-
+            <div class="form-group mt-3">
+                {!! NoCaptcha::renderJs() !!}
+                {!! NoCaptcha::display() !!}
+            </div>
             <div class="bouttons">
                 <a class="boutton-1" href="{{ route('login') }}" id="btn">
                     J'ai un compte
@@ -88,4 +95,5 @@
             </div>
         </form>
     </div>
+    
 @endsection

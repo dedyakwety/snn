@@ -4,9 +4,9 @@
 
 	<div class="gestion_edit">
 		<h2>Edition de gestion</h2>
-		@if(Session::has('erreur'))
-			<p>{{ Session::get('erreur') }}</p>
-		@endif
+			@if(Session::has('erreur'))
+				<p>{{ Session::get('erreur') }}</p>
+			@endif
 		<div>
 			<form class="form-inline" id="form" method="POST" action="{{ route('Gestion.update', $gestion->id) }}">
 				@csrf

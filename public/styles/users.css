@@ -4,6 +4,10 @@
 	margin-left: 10%;
 	min-height: 75vh;
 }
+.p-erreur{
+	color: red;
+	text-align: center;
+}
 h1{
 	font-size: 30px;
 	text-align: center;

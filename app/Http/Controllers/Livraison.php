@@ -38,7 +38,7 @@ class Livraison extends Controller
 
             }
         }
-        dd("dedy");
+        
         if(Auth::user()->role_id == 1)
         {
             $commandes = Livraisons::where('valide', true)
@@ -146,7 +146,7 @@ class Livraison extends Controller
             'remise' => $remise,
             'montant_remise' => null,
         ])->id;
-
+        /*
         // RECUPERER TOUTES LES LIVRAISONS QUI ONT LES VALEURS FALSE
         $livraisons_remises = Livraisons::All()
                                         ->where('user_id', Auth::user()->id)
@@ -160,7 +160,7 @@ class Livraison extends Controller
                             'beneficier' => true,
                         ]);
         }
-
+        */
         // MODIFIER LES COMMANDES EN VALIDE
         foreach($commandes as $commande)
         {
@@ -257,6 +257,11 @@ class Livraison extends Controller
         $gestion = Gestions::findOrFail(1);
         $livraison = Livraisons::findOrFail($id);
         
+        /*dd(
+            Livraisons::All()
+            ->where('user_id', $livraison->user_id)
+            ->where('montant_user', !null)
+        );*/
         if((!$livraison->livreur_id) && (Auth::user()->role_id == 1))
         {
             if($request->livreur == "null")
@@ -294,7 +299,7 @@ class Livraison extends Controller
 
                 $commandes = Commandes::All()->where('livraison_id', $id);
 
-                // RECUPERER TOUTES LA COMMANDE ET SOUSTRAIT LA QUANTITE DANS LE NOMBRE D'ARTICLE
+                // RECUPERER TOUTES LES COMMANDES ET SOUSTRAIT LA QUANTITE DANS LE NOMBRE D'ARTICLE
                 foreach($commandes as $commande)
                 {
                     Articles::findOrFail($commande->article_id)->update([
@@ -331,7 +336,7 @@ class Livraison extends Controller
                                                 ->where('beneficier', false)
                                                 ->where('livree', true)
                                                 ->count();
-
+                    
                     if($total_remises == 5)
                     {
                         $remise_out = Livraisons::All()
@@ -339,7 +344,7 @@ class Livraison extends Controller
                                                 ->where('beneficier', false)
                                                 ->where('livree', true)
                                                 ->sum('remise');
-
+                        
                         Livraisons::findOrFail($id)
                                     ->update([
                                         'montant_remise' => $remise_out,
@@ -349,13 +354,6 @@ class Livraison extends Controller
                                                 ->where('user_id', $client->id)
                                                 ->where('beneficier', false)
                                                 ->where('livree', true);
-
-                        // METTRE A JOUR LA TROISIEME COMMANDE,
-                        // LE MONTANT DE LA REMISE DU CLIENT POUR LES 5 DERNIERS ACHATS
-                        Livraisons::findOrFail($id)
-                                    ->update([
-                                        'montant_remise' => true,
-                                    ]);
 
                         foreach($livraisons2 as $livraison2)
                         {

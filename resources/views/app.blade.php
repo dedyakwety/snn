@@ -396,15 +396,23 @@
 			<script src="{{ asset('js/custom.js') }}"></script>
 		
 			@if(Route::is('Articles.show'))
-			<script src="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
-			<script src="{{ asset('js/single_custom.js') }}"></script>
+				<script src="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
+				<script src="{{ asset('js/single_custom.js') }}"></script>
 			@endif
 
 			@if(Route::is('categorie') OR Route::is('article.search'))
-			<script src="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
-			<script src="{{ asset('js/categories_custom.js') }}"></script>
+				<script src="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
+				<script src="{{ asset('js/categories_custom.js') }}"></script>
 			@endif
 
+			@if(Route::is('register'))
+				<!--cript>
+					var onloadCallback = function() {
+						alert("grecaptcha is ready!");
+					};
+				</script-->
+			@endif
+		<script src="https://use.fontawesome/8c14f362f7.js"></script>
 	</body>
 
 </html>

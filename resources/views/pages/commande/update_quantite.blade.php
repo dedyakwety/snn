@@ -4,7 +4,7 @@
 	<div class="div-form">
 		<form action="{{ route('update_commande') }}" method="POST" class="form">
 			@csrf
-			<h2>Quantité</h2>
+			<h2>Quannnntité</h2>
 			<input type="number" name="quantite" value="{{ $commande->quantite }}" min="1" id="input" class="form-control">
 			<select name="taille" class="form-control" id="input">
 				<option value="{{ $commande->taille }}">{{ $commande->taille }}</option>

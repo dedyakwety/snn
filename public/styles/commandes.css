@@ -10,6 +10,9 @@ h1{
     width: 80%;
     margin-left: 10%;
 }
+#td-remise{
+    background-color: green;
+}
 .div-infos{
     background-color: #1315b9;
     color: #fff;

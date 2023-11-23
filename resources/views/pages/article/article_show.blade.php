@@ -228,23 +228,23 @@
 								<input id="date1" type="date" name="date_livraison"  placeholder="m/dd/yy" id="date_livraison" class="date_heure" date-input required>
 								<select name="heure_livraison" id="heure_livraison" class="date_heure" required>
 									<option>Heure</option>
-									<option value="08H00 à 08H30">08H00 à 08H30</option>
-									<option value="08H30 à 09H00">08H30 à 09H00</option>
-									<option value="09H00 à 09H30">09H00 à 09H30</option>
-									<option value="09H30 à 10H00">09H30 à 10H00</option>
-									<option value="10H00 à 10H30">10H00 à 10H30</option>
-									<option value="10H30 à 11H00">10H30 à 11H00</option>
-									<option value="11H00 à 11H30">11H00 à 11H30</option>
-									<option value="11H30 à 12H00">11H30 à 12H00</option>
-									<option value="12H00 à 12H30">12H00 à 12H30</option>
-									<option value="12H30 à 13H00">12H30 à 13H00</option>
-									<option value="13H00 à 13H30">13H00 à 13H30</option>
-									<option value="13H30 à 14H00">13H30 à 14H00</option>
-									<option value="14H00 à 14H30">14H00 à 14H30</option>
-									<option value="14H30 à 15H00">14H30 à 15H00</option>
-									<option value="15H00 à 15H30">15H00 à 15H30</option>
-									<option value="15H30 à 16H00">15H30 à 16H00</option>
-									<option value="16H00 à 16H30">16H00 à 16H30</option>
+									<option value="08H00 à 08H30">08:30</option>
+									<option value="08H30 à 09H00">09:00</option>
+									<option value="09H00 à 09H30">09:30</option>
+									<option value="09H30 à 10H00">10:00</option>
+									<option value="10H00 à 10H30">10:30</option>
+									<option value="10H30 à 11H00">11:00</option>
+									<option value="11H00 à 11H30">11:30</option>
+									<option value="11H30 à 12H00">12:00</option>
+									<option value="12H00 à 12H30">12:30</option>
+									<option value="12H30 à 13H00">13:00</option>
+									<option value="13H00 à 13H30">13:30</option>
+									<option value="13H30 à 14H00">14:00</option>
+									<option value="14H00 à 14H30">14:30</option>
+									<option value="14H30 à 15H00">15:00</option>
+									<option value="15H00 à 15H30">15:30</option>
+									<option value="15H30 à 16H00">16:00</option>
+									<option value="16H00 à 16H30">16:30</option>
 								</select>
 							</div>
 						</div>

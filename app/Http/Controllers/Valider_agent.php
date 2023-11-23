@@ -40,27 +40,33 @@ class Valider_agent extends Controller
             
             if(password_verify($request->password, Auth::user()->password))
             {
-                // RECUPERER ID DE L'UTILISATEUR
-                $user_id = User::select('id')->where('email', $request->email)->first()->id;
-                // RECUPERER L'UTILISATEUR
-                $user = User::findOrFail($user_id);
-                // RECUPER
-                $numero = Numeros::findOrFail($user->numero->id);
-
-                User::where('email', $request->email)
-                    ->update([
-                        'role_id' => $request->role,
-                        'numero_id' => null,
-                    ]);
+                // VERIFIER SI L'ADRESSE EMAIL EXISTE DANS LA BDD
+                if(User::where('email', $request->email)->exists())
+                {
+                    // RECUPERER ID DE L'UTILISATEUR
+                    $user_id = User::select('id')->where('email', $request->email)->first()->id;
+                    // RECUPERER L'UTILISATEUR
+                    $user = User::findOrFail($user_id);
+                    // RECUPER
+                    $numero = Numeros::findOrFail($user->numero->id);
+                    // MODIFIER COMME AGENT
+                    User::where('email', $request->email)
+                        ->update([
+                            'role_id' => $request->role,
+                            'numero_id' => null,
+                        ]);
+                    // SUPRIMER LE NUMERO
+                    $numero->delete();
                     
-                // SUPRIMER LE NUMERO
-                $numero->delete();
-                
-                Session::put('succes', "Le role de l'adresse email ".$request->email." est maintenant ".Roles::findOrFail($request->role)->role). " de SOMBA NA NDAKU";
-                return redirect()->route('Agents.index');
+                    Session::put('succes', "Le role de l'adresse email ".$request->email." est maintenant ".Roles::findOrFail($request->role)->role). " de SOMBA NA NDAKU";
+                    return redirect()->route('Agents.index');
+                } else{
+                    session::put('erreur', "L'adresse email n'existe non existant");
+                    return redirect()->route('Agents.index');
+                }
 
             } else{
-                Session::put('erreur', 'une erreur');
+                Session::put('erreur', 'une erreur des données saisies');
                 return redirect()->route('Agents.index');
             }
 

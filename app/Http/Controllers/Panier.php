@@ -249,7 +249,7 @@ class Panier extends Controller
     {
         if(auth()->check())
         {
-        
+
             // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
             if((Auth::user()->role_id == 1) && (count(Gestions::all()) == 0))
             {

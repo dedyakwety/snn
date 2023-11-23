@@ -45,7 +45,10 @@ class Update_commande extends Controller
     public function update_quantite(Request $request, $id)
     {
         // VERIFIER POUR REDIRIGER L'UTILISATEUR SI LE COMPTE N'EST PAS COMPLETER
-        parent::completer_compte();
+        if(!Auth::user()->role_id == 5)
+        {
+            parent::completer_compte();
+        }
 
         $commande = Commandes::findOrFail($id);
         $article = Articles::findOrFail($commande->article_id);

@@ -3,6 +3,11 @@
 @section('users')
 	<div class="users">
 		<h1>Gestion des Agents</h1>
+		<div class="p-erreur">
+			@if(Session::has('erreur'))
+				{{ Session::get('erreur') }}
+			@endif
+		</div>
 		<form method="POST" action="{{ route('valider_agent') }}" class="form-1">
 			@csrf
 	    	<div class="col" id="div-champ">

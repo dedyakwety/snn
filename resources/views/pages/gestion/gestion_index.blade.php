@@ -10,8 +10,6 @@
 				<p>{{ Session::get('succes') }}</p>
 			@endif
 			<p>
-				Gain 1 : {{ $gestion->gain_1 }}<br>
-				Gain 2 : {{ $gestion->gain_2 }}<br>
 				Remise : {{ $gestion->remise }}<br>
 				Transport : {{ $gestion->transport }}<br>
 				Dépense : {{ $gestion->depense }}<br>
@@ -45,7 +43,6 @@
 		  	</thead>
 		  	<tbody>
 		  		@forelse($partages as $partage)
-		  			
 			    	<tr>
 			      		<td>{{ $partage->date_vente }}</td>
 			      		<td>{{ number_format($partage->achat, 2, '.', ' ') }}</td>
