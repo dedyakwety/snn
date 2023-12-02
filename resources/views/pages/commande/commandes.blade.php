@@ -11,7 +11,7 @@
 		</div>
 		<table>
 			<tr>
-				<th>Nº1</th>
+				<th>Nº</th>
 				<th>Date</th>
 				<th>Heure</th>
 				<th>Quantité</th>

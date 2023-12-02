@@ -5,6 +5,31 @@
 	margin-left: 10%;
 	min-height: 75vh;
 }
+thead tr{
+	background-color: blue;
+	color: #fff;
+	text-align: center;
+	border: none;
+}
+tbody tr{
+	background-color: #d4d4dd;
+	text-align: center;
+}
+#green{
+	color: green;
+}
+#yellow{
+	color: yellow;
+}
+.yellowgreen{
+	color: yellowgreen;
+}
+.blue{
+	color: blue;
+}
+.red{
+	color: red;
+}
 h2{
 	text-align: center;
 }

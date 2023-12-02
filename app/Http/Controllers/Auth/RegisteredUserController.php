@@ -134,7 +134,7 @@ class RegisteredUserController extends Controller
                 return redirect()->route('login');
 
             } else{
-
+                
                 $request->validate([
                     'name' => ['required', 'string', 'max:255'],
                     'prenom' => ['required', 'string', 'max:255'],
@@ -143,7 +143,7 @@ class RegisteredUserController extends Controller
                     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                     'password' => ['required', 'confirmed', Rules\Password::defaults()],
                 ]);
-
+                
                 $user = User::create([
                     'role_id' => 5,
                     'name' => $request->name,
@@ -184,7 +184,7 @@ class RegisteredUserController extends Controller
                 $user_mail = ['nom' => $user->name, 'prenom' => $user->prenom, 'sexe' => $user->sexe];
                 // ENVOYER LE MAIL A L'UTILISATEUR
                 // ENVOI DE MAIL Mail::to($user->email)->send(new Confirmation_compte($user_mail));
-
+                
                 // REDIRECTION D'UTILISATEUR POUR SE CONNECTE
                 return redirect()->route('login');
             }

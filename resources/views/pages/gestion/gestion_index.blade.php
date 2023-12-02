@@ -44,19 +44,19 @@
 		  	<tbody>
 		  		@forelse($partages as $partage)
 			    	<tr>
-			      		<td>{{ $partage->date_vente }}</td>
-			      		<td>{{ number_format($partage->achat, 2, '.', ' ') }}</td>
-			      		<td>{{ number_format($partage->vente, 2, '.', ' ') }}</td>
-			      		<td>{{ number_format($partage->gain_brut, 2, '.', ' ') }}</td>
-			      		<td>{{ number_format($partage->remise_pourcentage, 2, '.', ' ') }}</td>
-			      		<td>{{ number_format($partage->remise_in, 2, '.', ' ') }}</td>
-			      		<td>{{ number_format($partage->remise_out, 2, '.', ' ') }}</td>
-			      		<td>{{ number_format($partage->transport, 2, '.', ' ') }}</td>
-			      		<td>{{ number_format($partage->gain, 2, '.', ' ') }}</td>
-			      		<td>{{ number_format($partage->depense, 2, '.', ' ') }}</td>
-			      		<td>{{ number_format($partage->agent, 2, '.', ' ') }}</td>
-			      		<td>{{ number_format($partage->admin, 2, '.', ' ') }}</td>
-			      		<td>{{ number_format($partage->entreprise, 2, '.', ' ') }}</td>
+			      		<td><strong>{{ $partage->date_vente }}</strong></td>
+			      		<td><strong>{{ number_format($partage->achat, 2, '.', ' ') }}</strong></td>
+			      		<td><strong>{{ number_format($partage->vente, 2, '.', ' ') }}</strong></td>
+			      		<td class="yellowgreen">{{ number_format($partage->gain_brut, 2, '.', ' ') }}</td>
+			      		<td><strong>{{ number_format($partage->remise_pourcentage, 2, '.', ' ') }}</strong></td>
+			      		<td><strong>{{ number_format($partage->remise_in, 2, '.', ' ') }}</strong></td>
+			      		<td><strong>{{ number_format($partage->remise_out, 2, '.', ' ') }}</strong></td>
+			      		<td><strong>{{ number_format($partage->transport, 2, '.', ' ') }}</strong></td>
+			      		<td id="yellow"><strong>{{ number_format($partage->gain, 2, '.', ' ') }}</strong></td>
+			      		<td class="red"><strong>{{ number_format($partage->depense, 2, '.', ' ') }}</strong></td>
+			      		<td><strong>{{ number_format($partage->agent, 2, '.', ' ') }}</strong></td>
+			      		<td><strong>{{ number_format($partage->admin, 2, '.', ' ') }}</strong></td>
+			      		<td id="green"><strong>{{ number_format($partage->entreprise, 2, '.', ' ') }}</strong></td>
 			    	</tr>
 		    	@empty
 		      		<td>2022-07-28</td>
