@@ -24,7 +24,7 @@
 			<table>
 				<tr>
 					<th>Nº</th>
-					<th>Pénom</th>
+					<th>Prénom</th>
 					<th>Nom</th>
 					<th>Numéro</th>
 					<th>Plus</th>
